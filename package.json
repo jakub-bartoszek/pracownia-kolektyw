@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve --proxy-config proxy.conf.json --open",
-    "dev-node": "tsx watch src/server",
+    "dev-node": "tsx watch api",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:pracownia-kolektyw": "node dist/pracownia-kolektyw/server/server.mjs"
