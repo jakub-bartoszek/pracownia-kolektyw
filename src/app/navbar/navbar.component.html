@@ -1,8 +1,16 @@
 <nav class="fixed top-0 h-20 w-screen bg-background">
   <div
-    class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4 text-text-primary"
+    class="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6 p-4 text-text-primary"
   >
     <img src="/images/logo.png" class="h-full" />
-    <app-theme-switch></app-theme-switch>
+    <div class="hidden md:flex items-center gap-x-8">
+      <app-nav-link [href]="'/o-nas'" [title]="'O nas'"></app-nav-link>
+      <app-nav-link [href]="'/portfolio'" [title]="'Portfolio'"></app-nav-link>
+      <app-nav-link [href]="'/uslugi'" [title]="'Usługi'"></app-nav-link>
+      <app-nav-link [href]="'/cennik'" [title]="'Cennik'"></app-nav-link>
+      <app-nav-link [href]="'/artysci'" [title]="'Artyści'"></app-nav-link>
+      <app-nav-link [href]="'/kontakt'" [title]="'Kontakt'"></app-nav-link>
+      <app-theme-switch></app-theme-switch>
+    </div>
   </div>
 </nav>
