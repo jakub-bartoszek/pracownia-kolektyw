@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*, html {
+ box-sizing: border-box;
+}
+
+@layer base {
+ :root {
+  /* Light mode colors */
+  --color-background: #ffffff;
+  --color-text-primary: #000000;
+  --color-text-secondary: #000000;
+ }
+
+ .dark {
+  --color-background: #121212;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #f9e76d;
+ }
+}
+
+body {
+ background-color: var(--color-background);
+ color: var(--color-text-primary);
+ @apply font-sans;
+}
