@@ -1,0 +1,12 @@
+<button class="flex" (click)="toggleTheme()">
+  <app-moon-icon
+    class="hidden dark:flex"
+    [color]="'#ffffff'"
+    [size]="'40px'"
+  ></app-moon-icon>
+  <app-sun-icon
+    class="flex dark:hidden"
+    [color]="'#000000'"
+    [size]="'40px'"
+  ></app-sun-icon>
+</button>
