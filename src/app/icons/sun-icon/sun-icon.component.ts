@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   standalone: true,
 })
 export class SunIconComponent {
-  @Input() color: string = '#000000';
   @Input() size: string = '64px';
 }
