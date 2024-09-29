@@ -1,3 +1,9 @@
-<a [href]="href" class="text-lg hover:text-text-secondary hover:transition-colors">
+<a
+  [ngClass]="[
+    'flex p-4 hover:bg-black/10 hover:text-text-secondary hover:transition-colors dark:hover:bg-white/5',
+    isSidebar ? 'justify-center w-full' : 'lg:text-lg items-center h-full'
+  ]"
+  [href]="href"
+>
   {{ title }}
 </a>

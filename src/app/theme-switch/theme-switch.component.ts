@@ -1,15 +1,17 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
 import { MoonIconComponent } from '../icons/moon-icon/moon-icon.component';
-import { isPlatformBrowser } from '@angular/common';
-import { SunIconComponent } from "../icons/sun-icon/sun-icon.component";
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { SunIconComponent } from '../icons/sun-icon/sun-icon.component';
 
 @Component({
   selector: 'app-theme-switch',
   standalone: true,
-  imports: [MoonIconComponent, SunIconComponent],
+  imports: [MoonIconComponent, SunIconComponent, CommonModule],
   templateUrl: './theme-switch.component.html',
 })
 export class ThemeSwitchComponent {
+  @Input() isSidebar: boolean = false;
+
   isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {

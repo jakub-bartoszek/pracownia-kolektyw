@@ -1,4 +1,11 @@
-<button class="flex" (click)="toggleTheme()">
-  <app-moon-icon class="hidden dark:flex" size="32px"></app-moon-icon>
-  <app-sun-icon class="flex dark:hidden" size="32px"></app-sun-icon>
+<button
+  class="flex"
+  [ngClass]="[
+    'flex p-4 hover:bg-black/10 hover:text-text-secondary hover:transition-colors dark:hover:bg-white/5',
+    isSidebar ? 'justify-center w-full' : 'items-center h-full'
+  ]"
+  (click)="toggleTheme()"
+>
+  <app-moon-icon class="hidden dark:flex" size="24px"></app-moon-icon>
+  <app-sun-icon class="flex dark:hidden" size="24px"></app-sun-icon>
 </button>

@@ -1,16 +1,89 @@
-<nav class="fixed top-0 h-20 w-screen bg-background">
+<nav class="fixed top-0 z-10 h-20 w-screen bg-background">
   <div
-    class="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6 p-4 text-text-primary"
+    class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4 text-text-primary"
   >
     <img src="/images/logo.png" class="h-full" />
-    <div class="hidden md:flex items-center gap-x-8">
-      <app-nav-link [href]="'/o-nas'" [title]="'O nas'"></app-nav-link>
-      <app-nav-link [href]="'/portfolio'" [title]="'Portfolio'"></app-nav-link>
-      <app-nav-link [href]="'/uslugi'" [title]="'Usługi'"></app-nav-link>
-      <app-nav-link [href]="'/cennik'" [title]="'Cennik'"></app-nav-link>
-      <app-nav-link [href]="'/artysci'" [title]="'Artyści'"></app-nav-link>
-      <app-nav-link [href]="'/kontakt'" [title]="'Kontakt'"></app-nav-link>
+    <div class="hidden h-full items-center md:flex">
+      <app-nav-link
+        class="h-full"
+        [href]="'/o-nas'"
+        [title]="'O nas'"
+      ></app-nav-link>
+      <app-nav-link
+        class="h-full"
+        [href]="'/portfolio'"
+        [title]="'Portfolio'"
+      ></app-nav-link>
+      <app-nav-link
+        class="h-full"
+        [href]="'/uslugi'"
+        [title]="'Usługi'"
+      ></app-nav-link>
+      <app-nav-link
+        class="h-full"
+        [href]="'/cennik'"
+        [title]="'Cennik'"
+      ></app-nav-link>
+      <app-nav-link
+        class="h-full"
+        [href]="'/artysci'"
+        [title]="'Artyści'"
+      ></app-nav-link>
+      <app-nav-link
+        class="h-full"
+        [href]="'/kontakt'"
+        [title]="'Kontakt'"
+      ></app-nav-link>
       <app-theme-switch></app-theme-switch>
     </div>
+
+    <button
+      class="h-full items-center flex p-4 hover:bg-black/10 hover:text-text-secondary hover:transition-colors dark:hover:bg-white/5"
+      (click)="toggleSidebar()"
+    >
+      <app-menu-icon size="28px"></app-menu-icon>
+    </button>
   </div>
 </nav>
+
+<div
+  class="fixed right-0 top-20 z-50 w-full transform bg-background transition-transform duration-300 ease-in-out"
+  [ngClass]="{
+    'translate-x-0': isSidebarOpen,
+    'translate-x-full': !isSidebarOpen
+  }"
+>
+  <div class="flex flex-col">
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/o-nas'"
+      [title]="'O nas'"
+    ></app-nav-link>
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/portfolio'"
+      [title]="'Portfolio'"
+    ></app-nav-link>
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/uslugi'"
+      [title]="'Usługi'"
+    ></app-nav-link>
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/cennik'"
+      [title]="'Cennik'"
+    ></app-nav-link>
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/artysci'"
+      [title]="'Artyści'"
+    ></app-nav-link>
+    <app-nav-link
+      [isSidebar]="true"
+      [href]="'/kontakt'"
+      [title]="'Kontakt'"
+    ></app-nav-link>
+    <app-theme-switch [isSidebar]="true"></app-theme-switch>
+  </div>
+</div>
