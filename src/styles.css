@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*, html {
+ box-sizing: border-box;
+}
+
+@layer base {
+ :root {
+  --color-background: #121212;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #ddb118;
+ }
+}
+
+body {
+ background-color: var(--color-background);
+ color: var(--color-text-primary);
+ @apply font-sans;
+}

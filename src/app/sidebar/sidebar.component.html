@@ -1,0 +1,20 @@
+<div
+  class="md:hidden fixed right-0 top-20 z-50 w-full transform bg-background transition-transform duration-300 ease-in-out"
+  [ngClass]="{
+    'translate-x-0': isOpen,
+    'translate-x-full': !isOpen
+  }"
+>
+  <div class="flex flex-col">
+    <app-nav-links [isSidebar]="true"></app-nav-links>
+  </div>
+</div>
+
+<div
+  class="fixed bottom-0 left-0 right-0 top-20 z-40 bg-black transition-opacity duration-300"
+  [ngClass]="{
+    'pointer-events-none  opacity-0': !isOpen,
+    'opacity-50': isOpen
+  }"
+  (click)="closeSidebar()"
+></div>

@@ -1,0 +1,18 @@
+<nav class="fixed top-0 z-10 h-20 w-full bg-background">
+  <div
+    class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4 text-text-primary"
+  >
+    <img src="/images/logo.png" class="h-full" />
+
+    <div class="hidden h-full items-center md:flex">
+      <app-nav-links [isSidebar]="false"></app-nav-links>
+    </div>
+
+    <app-menu-toggle
+      class="md:hidden"
+      (toggleSidebar)="toggleSidebar()"
+    ></app-menu-toggle>
+  </div>
+</nav>
+
+<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>

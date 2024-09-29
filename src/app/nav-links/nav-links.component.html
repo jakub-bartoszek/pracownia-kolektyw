@@ -1,0 +1,8 @@
+<div class="flex flex-col md:flex-row" [ngClass]="{ 'w-full': isSidebar }">
+  <app-nav-link
+    *ngFor="let link of links"
+    [href]="link.href"
+    [title]="link.title"
+    [isSidebar]="isSidebar"
+  ></app-nav-link>
+</div>
