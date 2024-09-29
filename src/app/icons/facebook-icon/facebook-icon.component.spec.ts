@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SunIconComponent } from './sun-icon.component';
+import { FacebookIconComponent } from './facebook-icon.component';
 
-describe('SunIconComponent', () => {
-  let component: SunIconComponent;
-  let fixture: ComponentFixture<SunIconComponent>;
+describe('FacebookIconComponent', () => {
+  let component: FacebookIconComponent;
+  let fixture: ComponentFixture<FacebookIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SunIconComponent]
+      imports: [FacebookIconComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SunIconComponent);
+    fixture = TestBed.createComponent(FacebookIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
