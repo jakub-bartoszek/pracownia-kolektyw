@@ -1,35 +1,44 @@
-<footer class="bg-zinc-900 w-full p-8 flex flex-col md:flex-row gap-6">
-  <div
-    class="flex flex-col items-center md:items-start gap-y-4 w-full md:w-1/3"
-  >
-    <img
-      src="/images/logo-2.png"
-      class="w-48 min-w-48 hidden md:block"
-      alt="Logo Salon Tatużu"
-    />
-    <img
-      src="/images/logo.png"
-      class="w-48 min-w-48 block md:hidden"
-      alt="Logo Salon Tatużu"
-    />
+<footer class="flex w-full flex-col gap-6 bg-zinc-900 p-8 md:flex-row">
+  <div class="flex w-full flex-col items-center gap-6 md:w-1/3 md:items-start">
+    <div class="flex flex-col items-center gap-4 md:items-start">
+      <img
+        src="/images/logo-2.png"
+        class="hidden w-48 md:block"
+        alt="Logo Salon Tatużu"
+      />
+      <img
+        src="/images/logo.png"
+        class="block w-48 md:hidden"
+        alt="Logo Salon Tatużu"
+      />
 
-    <div class="flex gap-x-4">
-      <a target="_blank" href="https://www.facebook.com/pracowniakolektyw/">
-        <app-facebook-icon
-          class="hover:text-text-secondary transition-colors"
-          size="32px"
-        ></app-facebook-icon
-      ></a>
-      <a target="_blank" href="https://www.instagram.com/pracowniakolektyw/">
-        <app-instagram-icon
-          class="hover:text-text-secondary transition-colors"
-          size="32px"
-        ></app-instagram-icon
-      ></a>
+      <!-- Social Icons using gap -->
+      <div class="flex gap-4">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/pracowniakolektyw/"
+          aria-label="Facebook"
+        >
+          <app-facebook-icon
+            class="transition-colors hover:text-text-secondary"
+            size="32px"
+          ></app-facebook-icon>
+        </a>
+        <a
+          target="_blank"
+          href="https://www.instagram.com/pracowniakolektyw/"
+          aria-label="Instagram"
+        >
+          <app-instagram-icon
+            class="transition-colors hover:text-text-secondary"
+            size="32px"
+          ></app-instagram-icon>
+        </a>
+      </div>
     </div>
 
     <ul
-      class="flex flex-col gap-y-1 text-lg text-white leading-normal md:text-start text-center"
+      class="flex flex-col gap-2 text-center text-lg leading-normal text-white md:text-start"
     >
       <li>
         <p class="font-semibold">Poniedziałek - Piątek</p>
@@ -47,19 +56,19 @@
   </div>
 
   <div
-    class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 text-center md:text-left justify-between w-full md:w-2/3"
+    class="grid w-full grid-cols-1 gap-6 text-center md:w-2/3 md:grid-cols-2 md:text-start xl:grid-cols-3"
   >
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Kontakt</h2>
-      <ul class="space-y-1 leading-normal">
-        <li class="text-gray-300">Ulica, Miasto, 25-000</li>
-        <li class="text-gray-300">+48 123 456 789</li>
-        <li class="text-gray-300">kolektyw&#64;kontakt.pl</li>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Kontakt</h2>
+      <ul class="space-y-1 leading-normal text-gray-300">
+        <li>Ulica, Miasto, 25-000</li>
+        <li>+48 123 456 789</li>
+        <li>kolektyw&#64;kontakt.pl</li>
       </ul>
     </div>
 
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Przydatne Linki</h2>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Przydatne Linki</h2>
       <ul class="space-y-1 leading-normal">
         <li>
           <a
@@ -96,8 +105,8 @@
       </ul>
     </div>
 
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Polityka Prywatności</h2>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Polityka Prywatności</h2>
       <ul class="space-y-1 leading-normal">
         <li>
           <a
@@ -118,8 +127,8 @@
       </ul>
     </div>
 
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Bezpieczeństwo i Higiena</h2>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Bezpieczeństwo i Higiena</h2>
       <ul class="space-y-1 leading-normal">
         <li>
           <a
@@ -132,8 +141,8 @@
       </ul>
     </div>
 
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Opinie</h2>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Opinie</h2>
       <ul class="space-y-1 leading-normal">
         <li>
           <a
@@ -146,8 +155,8 @@
       </ul>
     </div>
 
-    <div class="flex flex-col gap-y-1 text-white">
-      <h2 class="text-xl font-bold mb-3">Nasze usługi</h2>
+    <div class="flex flex-col gap-2 text-white">
+      <h2 class="text-xl font-bold">Nasze usługi</h2>
       <ul class="space-y-1 leading-normal">
         <li>
           <a
