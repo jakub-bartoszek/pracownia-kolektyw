@@ -6,10 +6,12 @@
 
     <div class="hidden h-full items-center md:flex">
       <app-nav-links [isSidebar]="false"></app-nav-links>
-      <app-theme-switch></app-theme-switch>
     </div>
 
-    <app-menu-toggle class="md:hidden" (toggleSidebar)="toggleSidebar()"></app-menu-toggle>
+    <app-menu-toggle
+      class="md:hidden"
+      (toggleSidebar)="toggleSidebar()"
+    ></app-menu-toggle>
   </div>
 </nav>
 

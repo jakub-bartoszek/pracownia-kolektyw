@@ -6,7 +6,6 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ThemeSwitchComponent } from '../theme-switch/theme-switch.component';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 import { NavLinksComponent } from '../nav-links/nav-links.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -16,7 +15,6 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    ThemeSwitchComponent,
     NavLinkComponent,
     NavLinksComponent,
     SidebarComponent,
