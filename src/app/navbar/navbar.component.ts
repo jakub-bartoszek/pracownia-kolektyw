@@ -5,7 +5,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 import { NavLinksComponent } from '../nav-links/nav-links.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -19,6 +19,7 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
     NavLinksComponent,
     SidebarComponent,
     MenuToggleComponent,
+    CommonModule,
   ],
   templateUrl: './navbar.component.html',
 })
@@ -29,6 +30,10 @@ export class NavbarComponent implements OnInit {
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebar() {
+    this.isSidebarOpen = false;
   }
 
   @HostListener('window:resize', ['$event'])
