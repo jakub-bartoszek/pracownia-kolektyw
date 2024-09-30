@@ -6,8 +6,8 @@ module.exports = {
     extend: {
       colors: {
         background: "var(--color-background)",
-        "text-primary": "var(--color-text-primary)",
-        "text-secondary": "var(--color-text-secondary)",
+        "primary": "var(--color-primary)",
+        "accent": "var(--color-accent)",
       },
     },
     fontFamily: {

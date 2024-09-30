@@ -3,13 +3,91 @@
     <app-navbar></app-navbar>
   </header>
   <main>
-    <img
-      src="/images/banner.png"
-      class="w-full object-cover object-center h-screen min-w-full brightness-50"
-    />
-    <section  class="h-screen">
-      
-    </section>
+    <div class="relative">
+      <img
+        src="/images/banner.png"
+        class="w-full object-cover object-center h-screen min-w-full brightness-50"
+      />
+
+      <div class="absolute inset-0 flex flex-col justify-end">
+        <div
+          class="flex w-full items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
+        >
+          <button
+            (click)="scrollToSection()"
+            class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background shadow-md transition-transform hover:scale-105 hover:shadow-lg focus:scale-105 focus:outline-none"
+          >
+            Poznaj nas!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto flex max-w-[1400px] flex-col gap-y-8 p-4">
+      <section id="o-nas" class="p-4">
+        <div class="relative mt-8 w-full border-2 border-accent bg-background">
+          <div
+            class="absolute inset-0 h-full w-full bg-cover bg-center opacity-40"
+            style="background-image: url('/images/studio.png')"
+          ></div>
+
+          <div
+            class="relative mx-auto flex flex-col gap-4 p-8 shadow-lg bg-gradient-to-b from-black/60 to-transparent"
+          >
+            <div>
+              <h2
+                class="text-4xl font-extrabold tracking-wide text-accent mb-2"
+              >
+                O Pracowni Kolektyw
+              </h2>
+              <p class="text-xl leading-relaxed">
+                Pracownia Kolektyw to miejsce, w którym pasja do sztuki tatuażu
+                spotyka się z indywidualnym podejściem do każdego klienta. Nasz
+                zespół doświadczonych artystów tworzy unikatowe projekty, zawsze
+                dopasowane do Twoich potrzeb.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-3xl font-semibold text-accent mb-2">
+                Nasza Misja
+              </h3>
+              <p class="text-lg leading-relaxed">
+                Pragniemy, by każdy tatuaż opowiadał wyjątkową historię. Od
+                koncepcji po wykonanie, dbamy o każdy detal, oferując pełne
+                wsparcie na każdym etapie. Gwarantujemy profesjonalizm i
+                bezpieczeństwo przy realizacji każdego projektu.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-accent mb-2">
+                Dlaczego my?
+              </h3>
+              <p class="text-lg leading-relaxed">
+                W Pracowni Kolektyw stawiamy na jakość, precyzję i
+                niepowtarzalność. W przyjaznej atmosferze tworzymy nie tylko
+                tatuaże, ale wyjątkowe dzieła sztuki, które towarzyszą Ci przez
+                całe życie.
+              </p>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="/o-nas"
+                class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background shadow-md transition-transform hover:scale-105 hover:shadow-lg focus:scale-105 focus:outline-none"
+              >
+                Dowiedz się więcej
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="absolute inset-0 -z-10 h-full w-full rotate-3 border-2 border-accent"
+          ></div>
+        </div>
+      </section>
+    </div>
   </main>
   <app-footer></app-footer>
 </div>

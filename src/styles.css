@@ -5,18 +5,19 @@
 
 *, html {
  box-sizing: border-box;
+ scroll-behavior: smooth;
 }
 
 @layer base {
  :root {
   --color-background: #121212;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #ddb118;
+  --color-primary: #ffffff;
+  --color-accent: #ddb118;
  }
 }
 
 body {
  background-color: var(--color-background);
- color: var(--color-text-primary);
+ color: var(--color-primary);
  @apply font-sans;
 }
