@@ -1,6 +1,6 @@
 <div>
   <header>
-    <app-navbar></app-navbar>
+    <app-navbar (onLogin)="openAuthModal()"></app-navbar>
   </header>
   <main>
     <div class="relative">
@@ -11,7 +11,7 @@
 
       <div class="absolute inset-0 flex flex-col justify-end">
         <div
-          class="flex w-full items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
+          class="flex w-full flex-col items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
         >
           <button
             (click)="scrollToSection()"
@@ -87,8 +87,52 @@
           ></div>
         </div>
       </section>
+
+      <section id="galeria" class="p-4">
+        <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
+          Nasze Prace
+        </h2>
+
+        <div
+          *ngIf="images.length"
+          class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+        >
+          <div
+            *ngFor="let image of images; let last = last"
+            class="relative group overflow-hidden group"
+          >
+            <img
+              class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
+              [src]="image.path"
+              alt="{{ image.artist }}"
+            />
+
+            <div
+              class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
+            >
+              <p class="transition-colors group-hover:text-accent">
+                {{ image.artist }}
+              </p>
+            </div>
+
+            <div
+              *ngIf="last && images.length > 3"
+              class="absolute inset-0 flex flex-col items-center justify-center gap-y-4 bg-black/50"
+            >
+              <span class="text-5xl">+{{ images.length - 3 }}</span>
+              <a
+                routerLink="/galeria"
+                class="cursor-pointer bg-background px-4 py-2 font-bold uppercase text-accent outline outline-1 -outline-offset-1 outline-accent transition-all hover:bg-accent hover:text-background"
+                >Zobacz Wszystkie</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+  <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
+
   <app-footer></app-footer>
 </div>
 

@@ -1,11 +1,14 @@
 <div
-  class="md:hidden fixed right-0 top-20 z-50 w-full transform bg-background transition-transform duration-300 ease-in-out"
+  class="fixed right-0 top-20 z-50 w-full transform bg-background transition-transform duration-300 ease-in-out md:hidden"
   [ngClass]="{
     'translate-x-0': isOpen,
     'translate-x-full': !isOpen
   }"
 >
   <div class="flex flex-col">
-    <app-nav-links [isSidebar]="true"></app-nav-links>
+    <app-nav-links
+      (onLogin)="onLogin.emit()"
+      [isSidebar]="true"
+    ></app-nav-links>
   </div>
 </div>

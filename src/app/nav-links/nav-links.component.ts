@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { NavLinkComponent } from '../nav-link/nav-link.component';
 })
 export class NavLinksComponent {
   @Input() isSidebar: boolean = false;
+  @Output() onLogin: EventEmitter<void> = new EventEmitter();
 
   links = [
     { href: '/o-nas', title: 'O nas' },
@@ -19,4 +20,8 @@ export class NavLinksComponent {
     { href: '/artysci', title: 'Artyści' },
     { href: '/kontakt', title: 'Kontakt' },
   ];
+
+  triggerLogin() {
+    this.onLogin.emit();
+  }
 }
