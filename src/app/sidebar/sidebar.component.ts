@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavLinksComponent } from '../nav-links/nav-links.component';
 
@@ -9,6 +9,7 @@ import { NavLinksComponent } from '../nav-links/nav-links.component';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
+  @Output() onLogin: EventEmitter<void> = new EventEmitter(); // Emit login event
   @Input() isOpen: boolean = false;
 
   closeSidebar() {

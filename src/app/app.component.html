@@ -1,6 +1,6 @@
 <div>
   <header>
-    <app-navbar></app-navbar>
+    <app-navbar (onLogin)="openAuthModal()"></app-navbar>
   </header>
   <main>
     <div class="relative">
@@ -11,7 +11,7 @@
 
       <div class="absolute inset-0 flex flex-col justify-end">
         <div
-          class="flex w-full items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
+          class="flex w-full flex-col items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
         >
           <button
             (click)="scrollToSection()"
@@ -89,6 +89,8 @@
       </section>
     </div>
   </main>
+  <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
+
   <app-footer></app-footer>
 </div>
 

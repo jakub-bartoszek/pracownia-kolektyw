@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   HostListener,
   Inject,
   OnInit,
+  Output,
   PLATFORM_ID,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -24,6 +26,8 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
+  @Output() onLogin: EventEmitter<void> = new EventEmitter();
+
   isSidebarOpen = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}

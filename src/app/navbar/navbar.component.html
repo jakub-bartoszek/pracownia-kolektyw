@@ -5,7 +5,10 @@
     <img src="/images/logo.png" class="h-full" />
 
     <div class="hidden h-full items-center md:flex">
-      <app-nav-links [isSidebar]="false"></app-nav-links>
+      <app-nav-links
+        (onLogin)="onLogin.emit()"
+        [isSidebar]="false"
+      ></app-nav-links>
     </div>
 
     <app-menu-toggle
@@ -15,8 +18,7 @@
   </div>
 </nav>
 
-<app-sidebar [isOpen]="isSidebarOpen"></app-sidebar>
-
+<app-sidebar [isOpen]="isSidebarOpen" (onLogin)="onLogin.emit()"></app-sidebar>
 <div
   class="fixed bottom-0 left-0 right-0 top-20 z-40 bg-black transition-opacity duration-300"
   [ngClass]="{

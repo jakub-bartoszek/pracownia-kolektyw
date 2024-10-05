@@ -1,0 +1,86 @@
+<div
+  class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75"
+>
+  <div
+    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-8 shadow-lg"
+  >
+    <button class="absolute right-2 top-2" (click)="close()">✕</button>
+
+    <div class="flex flex-col gap-y-4" *ngIf="isLoginView">
+      <h1 class="text-center text-2xl font-bold uppercase text-accent">
+        Logowanie
+      </h1>
+      <div class="flex flex-col">
+        <label for="email">Email</label>
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label for="password">Hasło</label>
+
+        <input
+          class="bg-zinc-900 p-2 border focus:outline-none focus:border-accent"
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+        />
+      </div>
+      <button
+        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+        (click)="signIn()"
+      >
+        Zaloguj
+      </button>
+      <button
+        class="px-4 py-2 text-lg font-bold uppercase text-accent outline outline-1 -outline-offset-1 transition-all hover:scale-105 hover:bg-accent hover:text-background hover:shadow-lg focus-visible:scale-105 focus-visible:bg-accent focus-visible:text-background focus-visible:shadow-lg focus-visible:outline-none"
+        (click)="toggleView()"
+      >
+        Załóż konto
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-y-4" *ngIf="!isLoginView">
+      <h1 class="text-center text-2xl font-bold uppercase text-accent">
+        Rejestracja
+      </h1>
+      <div class="flex flex-col">
+        <label for="email">Email</label>
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+        />
+      </div>
+      <div class="flex flex-col">
+        <label for="password">Hasło</label>
+
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="password"
+          type="password"
+          [(ngModel)]="password"
+        />
+      </div>
+      <button
+        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+        (click)="signUp()"
+      >
+        Załóż konto
+      </button>
+      <div class="text-center">
+        <span class="text-zinc-400">Masz już konto? </span>
+        <button
+          class="hover:text-accent hover:underline"
+          (click)="toggleView()"
+        >
+          Zaloguj się
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

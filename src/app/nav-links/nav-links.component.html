@@ -1,8 +1,24 @@
-<div class="flex flex-col md:flex-row" [ngClass]="{ 'w-full': isSidebar }">
+<div
+  class="flex flex-col items-center md:flex-row"
+  [ngClass]="{ 'w-full': isSidebar }"
+>
   <app-nav-link
+    class="w-full"
     *ngFor="let link of links"
     [href]="link.href"
     [title]="link.title"
     [isSidebar]="isSidebar"
   ></app-nav-link>
+
+  <button
+    (click)="triggerLogin()"
+    [ngClass]="[
+      'flex whitespace-nowrap px-4 py-2 text-accent transition-all hover:bg-accent hover:text-background',
+      isSidebar
+        ? 'w-full justify-center py-4'
+        : 'h-full items-center lg:text-lg'
+    ]"
+  >
+    Zaloguj się
+  </button>
 </div>
