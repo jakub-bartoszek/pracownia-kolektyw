@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="mx-auto flex max-w-[1400px] flex-col gap-y-8 p-4">
+    <div class="mx-auto flex max-w-[1400px] flex-col gap-y-16 p-4">
       <section id="o-nas" class="p-4">
         <div class="relative mt-8 w-full border-2 border-accent bg-background">
           <div
@@ -88,17 +88,49 @@
         </div>
       </section>
 
-      <section id="galeria" class="p-4">
+      <section id="usługi" class="p-4">
+        <h2
+          class="mb-28 text-center text-5xl font-extrabold tracking-wide text-accent"
+        >
+          Nasze Usługi
+        </h2>
+        <div class="flex justify-center gap-x-16">
+          <div class="flex flex-col justify-between gap-y-8">
+            <div
+              class="flex h-48 w-48 items-center justify-center rounded-full bg-accent"
+            >
+              <img
+                class="cursor-pointer p-12 transition-transform hover:scale-110"
+                src="/images/tatuaze.png"
+              />
+            </div>
+            <p class="text-center text-2xl font-semibold uppercase">Tatuaże</p>
+          </div>
+          <div class="flex flex-col justify-between gap-y-8">
+            <div
+              class="flex h-48 w-48 items-center justify-center rounded-full bg-accent"
+            >
+              <img
+                class="cursor-pointer p-12 transition-transform hover:scale-110"
+                src="/images/piercing.png"
+              />
+            </div>
+            <p class="text-center text-2xl font-semibold uppercase">Piercing</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria">
         <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
           Nasze Prace
         </h2>
 
         <div
           *ngIf="images.length"
-          class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3"
+          class="grid grid-cols-2 gap-4 md:grid-cols-3"
         >
           <div
-            *ngFor="let image of images; let last = last"
+            *ngFor="let image of images.slice(0, 6); let last = last"
             class="relative group overflow-hidden group"
           >
             <img
@@ -116,10 +148,10 @@
             </div>
 
             <div
-              *ngIf="last && images.length > 3"
+              *ngIf="last && images.length > 6"
               class="absolute inset-0 flex flex-col items-center justify-center gap-y-4 bg-black/50"
             >
-              <span class="text-5xl">+{{ images.length - 3 }}</span>
+              <span class="text-5xl">+{{ images.length - 6 }}</span>
               <a
                 routerLink="/galeria"
                 class="cursor-pointer bg-background px-4 py-2 font-bold uppercase text-accent outline outline-1 -outline-offset-1 outline-accent transition-all hover:bg-accent hover:text-background"
