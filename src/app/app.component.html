@@ -161,6 +161,35 @@
           </div>
         </div>
       </section>
+
+      <section id="opinie">
+        <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
+          Opinie
+        </h2>
+      
+        <div
+          *ngIf="reviews.length; else noReviews"
+          class="flex flex-col gap-6"
+        >
+          <div
+            *ngFor="let review of reviews"
+            class="relative p-6 bg-background border border-accent"
+          >
+            <div class="flex justify-between items-center mb-2">
+              <p class="text-lg font-bold text-accent">{{ review.name }}</p>
+              <p class="text-sm text-gray-600">{{ review.date }}</p>
+            </div>
+            <p class="text-sm mb-2">Ocena: <span class="font-bold">{{ review.rate }}</span> / 5</p>
+            <p class="text-lg">{{ review.content }}</p>
+          </div>
+        </div>
+      
+        <ng-template #noReviews>
+          <p class="text-lg text-gray-500">Brak opinii.</p>
+        </ng-template>
+      </section>
+      
+      
     </div>
   </main>
   <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
