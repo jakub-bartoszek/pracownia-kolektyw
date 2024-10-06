@@ -12,6 +12,13 @@ interface Image {
   artist: string;
 }
 
+interface Review {
+  content: string;
+  name: string;
+  date: string;
+  rate: number;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,18 +33,31 @@ interface Image {
 })
 export class AppComponent implements OnInit {
   images: Image[] = [];
+  reviews: Review[] = [];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   async fetchImages() {
     try {
       if (isPlatformBrowser(this.platformId)) {
-        const url = `${window.location.origin}/images/images.json`;
+        const url = `${window.location.origin}/images.json`;
         const response = await axios.get(url);
         this.images = response.data;
       }
     } catch (err) {
       console.error('Error fetching images:', err);
+    }
+  }
+
+  async fetchReviews() {
+    try {
+      if (isPlatformBrowser(this.platformId)) {
+        const url = `${window.location.origin}/reviews.json`;
+        const response = await axios.get(url);
+        this.reviews = response.data;
+      }
+    } catch (err) {
+      console.error('Error fetching reviews:', err);
     }
   }
 
@@ -67,5 +87,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchImages();
+    this.fetchReviews();
   }
 }
