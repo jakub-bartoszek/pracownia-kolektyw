@@ -27,11 +27,6 @@
       <section id="o-nas" class="p-4">
         <div class="relative mt-8 w-full border-2 border-accent bg-background">
           <div
-            class="absolute inset-0 h-full w-full bg-cover bg-center opacity-40"
-            style="background-image: url('/images/studio.png')"
-          ></div>
-
-          <div
             class="relative mx-auto flex flex-col gap-4 p-8 shadow-lg bg-gradient-to-b from-black/60 to-transparent"
           >
             <div>
@@ -166,30 +161,63 @@
         <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
           Opinie
         </h2>
-      
-        <div
-          *ngIf="reviews.length; else noReviews"
-          class="flex flex-col gap-6"
-        >
+
+        <div class="flex flex-col gap-6">
           <div
             *ngFor="let review of reviews"
             class="relative p-6 bg-background border border-accent"
           >
             <div class="flex justify-between items-center mb-2">
               <p class="text-lg font-bold text-accent">{{ review.name }}</p>
-              <p class="text-sm text-gray-600">{{ review.date }}</p>
+              <p class="text-sm text-zinc-600">{{ review.date }}</p>
             </div>
-            <p class="text-sm mb-2">Ocena: <span class="font-bold">{{ review.rate }}</span> / 5</p>
+            <p class="text-sm mb-2 text-zinc-400">
+              Ocena:
+              <span class="font-bold text-accent">{{ review.rate }} / 5</span>
+            </p>
             <p class="text-lg">{{ review.content }}</p>
           </div>
         </div>
-      
-        <ng-template #noReviews>
-          <p class="text-lg text-gray-500">Brak opinii.</p>
-        </ng-template>
+
+        <p *ngIf="reviews.length === 0" class="text-lg mt-6">Brak opinii.</p>
+
+        <div class="mt-8 p-6 border border-accent">
+          <h3 class="text-2xl font-semibold text-accent mb-4">
+            Dodaj swoją opinię
+          </h3>
+          <form class="flex flex-col gap-4 items-center">
+            <div class="flex flex-col gap-2 w-full">
+              <label for="rate" class="text-lg font-medium">Ocena</label>
+              <select
+                id="rate"
+                class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+                required
+              >
+                <option value="5">5 - Doskonała</option>
+                <option value="4">4 - Bardzo dobra</option>
+                <option value="3">3 - Dobra</option>
+                <option value="2">2 - Przeciętna</option>
+                <option value="1">1 - Słaba</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+              <label for="content" class="text-lg font-medium">Opinia</label>
+              <textarea
+                id="content"
+                rows="4"
+                class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-min whitespace-nowrap transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background shadow-md transition-transform hover:scale-105 hover:shadow-lg focus:scale-105 focus:outline-none"
+            >
+              Dodaj Opinię
+            </button>
+          </form>
+        </div>
       </section>
-      
-      
     </div>
   </main>
   <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
