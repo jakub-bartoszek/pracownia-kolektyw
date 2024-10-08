@@ -1,20 +1,14 @@
 [
   {
-    "content": "Świetne studio, polecam każdemu!",
-    "name": "Anna Kowalska",
-    "date": "09.10.2024 12:14",
-    "rate": 5.0
+    "content": "Świetna obsługa i profesjonalne podejście do klienta!",
+    "name": "Jan Kowalski",
+    "date": "2024-10-07",
+    "rate": 5
   },
   {
-    "content": "Świetne studio, polecam każdemu!",
-    "name": "Anna Kowalska",
-    "date": "19.10.2024 20:14",
-    "rate": 4.5
-  },
-  {
-    "content": "Świetne studio, polecam każdemu!",
-    "name": "Anna Kowalska",
-    "date": "11.10.2024 16:17",
+    "content": "Bardzo miła atmosfera, na pewno wrócę.",
+    "name": "Anna Nowak",
+    "date": "2024-10-06",
     "rate": 4
   }
 ]

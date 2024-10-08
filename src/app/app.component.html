@@ -15,7 +15,7 @@
         >
           <button
             (click)="scrollToSection()"
-            class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background shadow-md transition-transform hover:scale-105 hover:shadow-lg focus:scale-105 focus:outline-none"
+            class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
           >
             Poznaj nas!
           </button>
@@ -27,16 +27,11 @@
       <section id="o-nas" class="p-4">
         <div class="relative mt-8 w-full border-2 border-accent bg-background">
           <div
-            class="absolute inset-0 h-full w-full bg-cover bg-center opacity-40"
-            style="background-image: url('/images/studio.png')"
-          ></div>
-
-          <div
-            class="relative mx-auto flex flex-col gap-4 p-8 shadow-lg bg-gradient-to-b from-black/60 to-transparent"
+            class="relative mx-auto flex flex-col gap-4 p-8 bg-gradient-to-b from-black/60 to-transparent"
           >
             <div>
               <h2
-                class="text-4xl font-extrabold tracking-wide text-accent mb-2"
+                class="text-5xl font-extrabold tracking-wide text-accent mb-2"
               >
                 O Pracowni Kolektyw
               </h2>
@@ -75,7 +70,7 @@
             <div class="mt-6">
               <a
                 href="/o-nas"
-                class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background shadow-md transition-transform hover:scale-105 hover:shadow-lg focus:scale-105 focus:outline-none"
+                class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
               >
                 Dowiedz się więcej
               </a>
@@ -121,7 +116,7 @@
       </section>
 
       <section id="galeria">
-        <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
+        <h2 class="mb-4 text-5xl font-extrabold tracking-wide text-accent">
           Nasze Prace
         </h2>
 
@@ -131,65 +126,105 @@
         >
           <div
             *ngFor="let image of images.slice(0, 6); let last = last"
-            class="relative group overflow-hidden group"
+            class="relative overflow-hidden"
           >
-            <img
-              class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
-              [src]="image.path"
-              alt="{{ image.artist }}"
-            />
+            <div class="group h-full w-full cursor-pointer">
+              <img
+                class="h-full w-full transform object-cover transition-transform duration-300"
+                [class.group-hover:scale-105]="!last"
+                [src]="image.path"
+                alt="{{ image.artist }}"
+              />
 
-            <div
-              class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
-            >
-              <p class="transition-colors group-hover:text-accent">
-                {{ image.artist }}
-              </p>
+              <div
+                class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
+              >
+                <p
+                  class="transition-colors group-hover:text-accent hover:underline"
+                >
+                  {{ image.artist }}
+                </p>
+              </div>
             </div>
 
             <div
               *ngIf="last && images.length > 6"
-              class="absolute inset-0 flex flex-col items-center justify-center gap-y-4 bg-black/50"
+              class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
             >
-              <span class="text-5xl">+{{ images.length - 6 }}</span>
+              <span class="text-5xl text-white">+{{ images.length - 6 }}</span>
               <a
                 routerLink="/galeria"
-                class="cursor-pointer bg-background px-4 py-2 font-bold uppercase text-accent outline outline-1 -outline-offset-1 outline-accent transition-all hover:bg-accent hover:text-background"
-                >Zobacz Wszystkie</a
+                class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
               >
+                Zobacz Wszystkie
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <section id="opinie">
-        <h2 class="text-4xl font-extrabold tracking-wide text-accent mb-4">
+        <h2
+          class="mb-8 text-center text-5xl font-extrabold tracking-wide text-accent"
+        >
           Opinie
         </h2>
-      
-        <div
-          *ngIf="reviews.length; else noReviews"
-          class="flex flex-col gap-6"
-        >
-          <div
-            *ngFor="let review of reviews"
-            class="relative p-6 bg-background border border-accent"
-          >
-            <div class="flex justify-between items-center mb-2">
+
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div *ngFor="let review of reviews" class="relative bg-zinc-900 p-6">
+            <div class="mb-4 flex items-center justify-between">
               <p class="text-lg font-bold text-accent">{{ review.name }}</p>
-              <p class="text-sm text-gray-600">{{ review.date }}</p>
+              <p class="text-sm text-zinc-500">{{ review.date }}</p>
             </div>
-            <p class="text-sm mb-2">Ocena: <span class="font-bold">{{ review.rate }}</span> / 5</p>
-            <p class="text-lg">{{ review.content }}</p>
+            <p class="mb-2 text-sm text-zinc-400">
+              Ocena:
+              <span class="font-bold text-accent">{{ review.rate }} / 5</span>
+            </p>
+            <p class="text-lg text-zinc-300">{{ review.content }}</p>
           </div>
         </div>
-      
-        <ng-template #noReviews>
-          <p class="text-lg text-gray-500">Brak opinii.</p>
-        </ng-template>
+
+        <p *ngIf="reviews.length === 0" class="mt-6 text-center text-lg">
+          Brak opinii.
+        </p>
+
+        <div class="mt-12 bg-zinc-900 p-8">
+          <h3 class="mb-6 text-center text-2xl font-semibold text-accent">
+            Dodaj swoją opinię
+          </h3>
+          <form class="flex flex-col items-center gap-4">
+            <div class="flex w-full flex-col gap-2">
+              <label for="rate" class="text-lg font-medium">Ocena</label>
+              <select
+                id="rate"
+                class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
+                required
+              >
+                <option value="5">5 - Doskonała</option>
+                <option value="4">4 - Bardzo dobra</option>
+                <option value="3">3 - Dobra</option>
+                <option value="2">2 - Przeciętna</option>
+                <option value="1">1 - Słaba</option>
+              </select>
+            </div>
+            <div class="flex w-full flex-col gap-2">
+              <label for="content" class="text-lg font-medium">Opinia</label>
+              <textarea
+                id="content"
+                rows="4"
+                class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-min transform whitespace-nowrap bg-accent px-8 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+            >
+              Dodaj Opinię
+            </button>
+          </form>
+        </div>
       </section>
-      
-      
     </div>
   </main>
   <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
