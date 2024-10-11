@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
+import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-nav-links',
@@ -21,7 +24,18 @@ export class NavLinksComponent {
     { href: '/kontakt', title: 'Kontakt' },
   ];
 
+  user$: Observable<User | null>;
+  constructor(private authService: AuthService) {
+    this.user$ = this.authService.currentUser$;
+  }
+
   triggerLogin() {
     this.onLogin.emit();
+  }
+
+  logout() {
+    this.authService.logout().then(() => {
+      console.log('Wylogowano pomyślnie');
+    });
   }
 }

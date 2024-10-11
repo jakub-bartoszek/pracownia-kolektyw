@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './auth.service';
 
 @Component({
   standalone: true,
@@ -15,34 +15,62 @@ export class AuthComponent {
   email: string = '';
   password: string = '';
   isLoginView: boolean = true;
+  errorMessage: string = '';
 
   constructor(private authService: AuthService) {}
 
   toggleView() {
     this.isLoginView = !this.isLoginView;
+    this.errorMessage = '';
   }
 
   close() {
     this.closeModal.emit();
   }
 
-  async signUp() {
-    try {
-      await this.authService.signUp(this.email, this.password);
-      alert('Rejestracja udana! Sprawdź email, aby zweryfikować konto.');
-      this.toggleView();
-    } catch (error: any) {
-      alert('Błąd: ' + error.message);
-    }
+  validateEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   }
 
-  async signIn() {
-    try {
-      await this.authService.signIn(this.email, this.password);
-      alert('Zalogowano pomyślnie!');
-      this.close();
-    } catch (error: any) {
-      alert('Błąd: ' + error.message);
+  validatePassword(password: string): boolean {
+    return password.length >= 8;
+  }
+
+  login() {
+    this.errorMessage = '';
+
+    this.authService
+      .login(this.email, this.password)
+      .then(() => {
+        this.close();
+      })
+      .catch((error) => {
+        this.errorMessage =
+          'Nieprawidłowe hasło lub adres e-mail.' + error.message;
+      });
+  }
+
+  register() {
+    this.errorMessage = '';
+
+    if (!this.validateEmail(this.email)) {
+      this.errorMessage = 'Nieprawidłowy adres e-mail.';
+      return;
     }
+
+    if (!this.validatePassword(this.password)) {
+      this.errorMessage = 'Hasło musi mieć co najmniej 8 znaków.';
+      return;
+    }
+
+    this.authService
+      .register(this.email, this.password)
+      .then(() => {
+        this.toggleView();
+      })
+      .catch((error) => {
+        this.errorMessage = 'Błąd rejestracji: ' + error.message;
+      });
   }
 }

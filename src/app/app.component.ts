@@ -6,6 +6,7 @@ import { AuthComponent } from './auth/auth.component';
 import { CommonModule } from '@angular/common';
 import axios from 'axios';
 import { isPlatformBrowser } from '@angular/common';
+import { AuthService } from './auth/auth.service';
 
 interface Image {
   path: string;
@@ -34,8 +35,12 @@ interface Review {
 export class AppComponent implements OnInit {
   images: Image[] = [];
   reviews: Review[] = [];
+  isAuthModalOpen = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService: AuthService
+  ) {}
 
   async fetchImages() {
     try {
@@ -61,8 +66,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  isAuthModalOpen = false;
-
   openAuthModal() {
     this.isAuthModalOpen = true;
   }
@@ -73,15 +76,25 @@ export class AppComponent implements OnInit {
 
   scrollToSection() {
     const section = document.getElementById('o-nas');
-
     if (section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = sectionTop - 80;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
+    }
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  addReview() {
+    if (!this.isLoggedIn()) {
+      this.openAuthModal();
+    } else {
+      // Logika zapisywania opinii
     }
   }
 
