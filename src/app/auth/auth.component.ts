@@ -28,18 +28,42 @@ export class AuthComponent {
     this.closeModal.emit();
   }
 
+  validateEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+
+  validatePassword(password: string): boolean {
+    return password.length >= 8;
+  }
+
   login() {
+    this.errorMessage = '';
+
     this.authService
       .login(this.email, this.password)
       .then(() => {
         this.close();
       })
       .catch((error) => {
-        this.errorMessage = 'Błąd logowania: ' + error.message;
+        this.errorMessage =
+          'Nieprawidłowe hasło lub adres e-mail.' + error.message;
       });
   }
 
   register() {
+    this.errorMessage = '';
+
+    if (!this.validateEmail(this.email)) {
+      this.errorMessage = 'Nieprawidłowy adres e-mail.';
+      return;
+    }
+
+    if (!this.validatePassword(this.password)) {
+      this.errorMessage = 'Hasło musi mieć co najmniej 8 znaków.';
+      return;
+    }
+
     this.authService
       .register(this.email, this.password)
       .then(() => {
