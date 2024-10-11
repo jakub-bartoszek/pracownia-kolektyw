@@ -10,6 +10,9 @@
       <h1 class="text-center text-2xl font-bold uppercase text-accent">
         Logowanie
       </h1>
+
+      <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+
       <div class="flex flex-col">
         <label for="email">Email</label>
         <input
@@ -21,7 +24,6 @@
       </div>
       <div class="flex flex-col">
         <label for="password">Hasło</label>
-
         <input
           class="bg-zinc-900 p-2 border focus:outline-none focus:border-accent"
           id="password"
@@ -31,7 +33,7 @@
       </div>
       <button
         class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
-        (click)="signIn()"
+        (click)="login()"
       >
         Zaloguj
       </button>
@@ -47,6 +49,9 @@
       <h1 class="text-center text-2xl font-bold uppercase text-accent">
         Rejestracja
       </h1>
+
+      <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+
       <div class="flex flex-col">
         <label for="email">Email</label>
         <input
@@ -58,7 +63,6 @@
       </div>
       <div class="flex flex-col">
         <label for="password">Hasło</label>
-
         <input
           class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
           id="password"
@@ -68,7 +72,7 @@
       </div>
       <button
         class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
-        (click)="signUp()"
+        (click)="register()"
       >
         Załóż konto
       </button>

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './auth.service';
 
 @Component({
   standalone: true,
@@ -15,34 +15,38 @@ export class AuthComponent {
   email: string = '';
   password: string = '';
   isLoginView: boolean = true;
+  errorMessage: string = '';
 
   constructor(private authService: AuthService) {}
 
   toggleView() {
     this.isLoginView = !this.isLoginView;
+    this.errorMessage = '';
   }
 
   close() {
     this.closeModal.emit();
   }
 
-  async signUp() {
-    try {
-      await this.authService.signUp(this.email, this.password);
-      alert('Rejestracja udana! Sprawdź email, aby zweryfikować konto.');
-      this.toggleView();
-    } catch (error: any) {
-      alert('Błąd: ' + error.message);
-    }
+  login() {
+    this.authService
+      .login(this.email, this.password)
+      .then(() => {
+        this.close();
+      })
+      .catch((error) => {
+        this.errorMessage = 'Błąd logowania: ' + error.message;
+      });
   }
 
-  async signIn() {
-    try {
-      await this.authService.signIn(this.email, this.password);
-      alert('Zalogowano pomyślnie!');
-      this.close();
-    } catch (error: any) {
-      alert('Błąd: ' + error.message);
-    }
+  register() {
+    this.authService
+      .register(this.email, this.password)
+      .then(() => {
+        this.toggleView();
+      })
+      .catch((error) => {
+        this.errorMessage = 'Błąd rejestracji: ' + error.message;
+      });
   }
 }
