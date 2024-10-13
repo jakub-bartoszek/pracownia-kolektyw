@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   standalone: true,
@@ -14,6 +14,8 @@ export class AuthComponent {
 
   email: string = '';
   password: string = '';
+  firstName: string = ''; // Pole na imię
+  lastName: string = ''; // Pole na nazwisko
   isLoginView: boolean = true;
   errorMessage: string = '';
 
@@ -64,10 +66,11 @@ export class AuthComponent {
       return;
     }
 
+    // Rejestrujemy użytkownika z imieniem i nazwiskiem
     this.authService
-      .register(this.email, this.password)
+      .register(this.email, this.password, this.firstName, this.lastName)
       .then(() => {
-        this.toggleView();
+        this.toggleView(); // Po rejestracji przełączamy na ekran logowania
       })
       .catch((error) => {
         this.errorMessage = 'Błąd rejestracji: ' + error.message;
