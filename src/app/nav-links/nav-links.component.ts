@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs';
 import { User } from '@angular/fire/auth';
 
