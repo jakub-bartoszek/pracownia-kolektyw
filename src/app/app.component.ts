@@ -1,23 +1,18 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import axios from 'axios';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
-import { CommonModule } from '@angular/common';
-import axios from 'axios';
-import { isPlatformBrowser } from '@angular/common';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
+import { ReviewsService } from './services/reviews.service';
+import { Review } from './services/reviews.service';
 
 interface Image {
   path: string;
   artist: string;
-}
-
-interface Review {
-  content: string;
-  name: string;
-  date: string;
-  rate: number;
 }
 
 @Component({
@@ -30,16 +25,26 @@ interface Review {
     FooterComponent,
     AuthComponent,
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class AppComponent implements OnInit {
   images: Image[] = [];
   reviews: Review[] = [];
   isAuthModalOpen = false;
+  isLoggedIn = false;
+  userEmail: string | null = null;
+  userFirstName: string | null = null;
+  userLastName: string | null = null;
+  userReview: Review | null = null;
+  newReviewContent: string = '';
+  newReviewRate: number = 5;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private authService: AuthService
+    private authService: AuthService,
+    private reviewsService: ReviewsService
   ) {}
 
   async fetchImages() {
@@ -51,18 +56,6 @@ export class AppComponent implements OnInit {
       }
     } catch (err) {
       console.error('Error fetching images:', err);
-    }
-  }
-
-  async fetchReviews() {
-    try {
-      if (isPlatformBrowser(this.platformId)) {
-        const url = `${window.location.origin}/reviews.json`;
-        const response = await axios.get(url);
-        this.reviews = response.data;
-      }
-    } catch (err) {
-      console.error('Error fetching reviews:', err);
     }
   }
 
@@ -86,20 +79,89 @@ export class AppComponent implements OnInit {
     }
   }
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
+  async addReview() {
+    if (!this.newReviewContent) {
+      return;
+    }
+
+    if (this.userReview) {
+      console.log('You can only submit one review.');
+      return;
+    }
+
+    const user = this.authService.currentUser;
+
+    if (!user) {
+      console.error('User is not logged in.');
+      return;
+    }
+
+    try {
+      await this.reviewsService.createReview(
+        this.newReviewContent,
+        this.newReviewRate,
+        this.userFirstName,
+        this.userLastName,
+        user.uid
+      );
+      this.newReviewContent = '';
+      this.newReviewRate = 5;
+      this.loadUserReview();
+      this.loadReviews();
+    } catch (error) {
+      console.error('Error adding review:', error);
+    }
   }
 
-  addReview() {
-    if (!this.isLoggedIn()) {
-      this.openAuthModal();
-    } else {
-      // Logika zapisywania opinii
+  async deleteReview() {
+    const user = this.authService.currentUser;
+
+    if (!user) {
+      console.error('User is not logged in.');
+      return;
     }
+
+    try {
+      await this.reviewsService.deleteUserReview(user.uid);
+      this.userReview = null;
+      this.loadReviews();
+    } catch (error) {
+      console.error('Error deleting review:', error);
+    }
+  }
+
+  loadUserReview() {
+    this.authService.currentUser$.subscribe(async (user) => {
+      if (user) {
+        const userReview = await this.reviewsService.getUserReview(user.uid);
+        this.userReview = userReview;
+      }
+    });
+  }
+
+  loadReviews() {
+    this.reviewsService.loadReviews().subscribe((reviews) => {
+      this.reviews = reviews;
+    });
   }
 
   ngOnInit(): void {
     this.fetchImages();
-    this.fetchReviews();
+    this.loadReviews();
+    this.loadUserReview();
+
+    this.authService.currentUser$.subscribe((user) => {
+      this.isLoggedIn = !!user;
+      this.userEmail = user?.email || null;
+
+      if (user) {
+        this.authService.getUserInfo(user.uid).then((userInfo) => {
+          if (userInfo) {
+            this.userFirstName = userInfo.firstName;
+            this.userLastName = userInfo.lastName;
+          }
+        });
+      }
+    });
   }
 }
