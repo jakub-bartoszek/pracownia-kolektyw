@@ -39,15 +39,15 @@
     >
       <li>
         <p class="font-semibold">Poniedziałek - Piątek</p>
-        <p class="text-gray-300">09:00 - 16:00</p>
+        <p class="text-gray-300">11:00 - 18:00</p>
       </li>
       <li>
         <p class="font-semibold">Sobota</p>
-        <p class="text-gray-300">09:00 - 16:00</p>
+        <p class="text-gray-300">12:00 - 16:00</p>
       </li>
       <li>
         <p class="font-semibold">Niedziela</p>
-        <p class="text-gray-300">09:00 - 16:00</p>
+        <p class="text-gray-300">Zamknięte</p>
       </li>
     </ul>
   </div>
@@ -58,9 +58,28 @@
     <div class="flex flex-col gap-2 text-white">
       <h2 class="text-xl font-bold">Kontakt</h2>
       <ul class="space-y-1 leading-normal text-gray-300">
-        <li>Ulica, Miasto, 25-000</li>
-        <li>+48 123 456 789</li>
-        <li>kolektyw&#64;kontakt.pl</li>
+        <li>
+          <a
+            target="_blank"
+            class="text-gray-300 hover:text-white hover:underline"
+            href="https://www.google.pl/maps/place/Pracownia+Kolektyw/@50.872099,20.6219422,17z/data=!4m6!3m5!1s0x4718275674803dab:0x67ef9f09cacad38c!8m2!3d50.872099!4d20.6245171!16s%2Fg%2F11fpyw_kbb?entry=ttu&g_ep=EgoyMDI0MTAxMy4wIKXMDSoASAFQAw%3D%3D"
+            >Henryka Sienkiewicza 45, 25-005 Kielce</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-gray-300 hover:text-white hover:underline"
+            href="tel:+48 576 028 525"
+            >+48 576 028 525</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-gray-300 hover:text-white hover:underline"
+            href="mailto:kolektyw@kontakt.pl"
+            >kolektyw&#64;kontakt.pl</a
+          >
+        </li>
       </ul>
     </div>
 
@@ -68,17 +87,17 @@
       <h2 class="text-xl font-bold">Przydatne Linki</h2>
       <ul class="space-y-1 leading-normal">
         <li>
-          <a
-            target="_blank"
-            href="#"
+          <button
+            (click)="scrollToSection('kontakt')"
             class="text-gray-300 hover:text-white hover:underline"
-            >Formularz Kontaktowy</a
           >
+            Formularz Kontaktowy
+          </button>
         </li>
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/artysci"
             class="text-gray-300 hover:text-white hover:underline"
             >Zespół Artystów</a
           >
@@ -86,7 +105,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/galeria"
             class="text-gray-300 hover:text-white hover:underline"
             >Galeria Tatuaży</a
           >
@@ -94,7 +113,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/faq"
             class="text-gray-300 hover:text-white hover:underline"
             >FAQ</a
           >
@@ -108,7 +127,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/polityka-prawnosci"
             class="text-gray-300 hover:text-white hover:underline"
             >Polityka Prywatności</a
           >
@@ -116,7 +135,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/regulamin"
             class="text-gray-300 hover:text-white hover:underline"
             >Regulamin</a
           >
@@ -130,7 +149,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/bezpieczenstwo-i-higiena"
             class="text-gray-300 hover:text-white hover:underline"
             >Nasze zasady bezpieczeństwa i higieny</a
           >
@@ -142,12 +161,12 @@
       <h2 class="text-xl font-bold">Opinie</h2>
       <ul class="space-y-1 leading-normal">
         <li>
-          <a
-            target="_blank"
-            href="#"
+          <button
+            (click)="scrollToSection('opinie')"
             class="text-gray-300 hover:text-white hover:underline"
-            >Opinie naszych klientów</a
           >
+            Opinie naszych klientów
+          </button>
         </li>
       </ul>
     </div>
@@ -158,7 +177,7 @@
         <li>
           <a
             target="_blank"
-            href="#"
+            href="/uslugi"
             class="text-gray-300 hover:text-white hover:underline"
             >Usługi</a
           >

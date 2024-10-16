@@ -14,7 +14,7 @@
           class="flex w-full flex-col items-center justify-center bg-gradient-to-b from-transparent to-background p-16"
         >
           <button
-            (click)="scrollToSection()"
+            (click)="scrollToSection('o-nas')"
             class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
           >
             Poznaj nas!
@@ -337,7 +337,7 @@
 
   <app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
 
-  <app-footer></app-footer>
+  <app-footer [scrollToSection]="scrollToSection"></app-footer>
 </div>
 
 <router-outlet />
