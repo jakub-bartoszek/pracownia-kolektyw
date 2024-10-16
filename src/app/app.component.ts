@@ -67,8 +67,8 @@ export class AppComponent implements OnInit {
     this.isAuthModalOpen = false;
   }
 
-  scrollToSection() {
-    const section = document.getElementById('o-nas');
+  scrollToSection(sectionName: string) {
+    const section = document.getElementById(sectionName);
     if (section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = sectionTop - 80;
