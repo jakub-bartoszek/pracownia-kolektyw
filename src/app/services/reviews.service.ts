@@ -14,6 +14,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 export interface Review {
   id?: string;
@@ -28,7 +29,7 @@ export interface Review {
   providedIn: 'root',
 })
 export class ReviewsService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private authService: AuthService) {}
 
   loadReviews(): Observable<Review[]> {
     const reviewsCollection = collection(this.firestore, 'reviews');
@@ -42,27 +43,27 @@ export class ReviewsService {
     ) as Observable<Review[]>;
   }
 
-  async createReview(
-    content: string,
-    rate: number,
-    firstName: string | null,
-    lastName: string | null,
-    userId: string
-  ): Promise<void> {
-    if (!content || !firstName || !lastName) {
-      throw new Error('Missing required fields');
+  async submitReview(content: string, rate: number): Promise<void> {
+    const user = this.authService.currentUser;
+    if (!user) {
+      throw new Error('User is not logged in.');
     }
 
-    const existingReview = await this.getUserReview(userId);
+    const userInfo = await this.authService.getUserInfo(user.uid);
+    if (!userInfo) {
+      throw new Error('User information not available.');
+    }
+
+    const existingReview = await this.getUserReview(user.uid);
     if (existingReview) {
       throw new Error('You have already submitted a review.');
     }
 
     const review: Omit<Review, 'date'> = {
       content,
-      name: `${firstName} ${lastName}`,
+      name: `${userInfo.firstName} ${userInfo.lastName}`,
       rate,
-      userId,
+      userId: user.uid,
     };
 
     const reviewsCollection = collection(this.firestore, 'reviews');
@@ -87,8 +88,13 @@ export class ReviewsService {
     return null;
   }
 
-  async deleteUserReview(userId: string): Promise<void> {
-    const existingReview = await this.getUserReview(userId);
+  async removeUserReview(): Promise<void> {
+    const user = this.authService.currentUser;
+    if (!user) {
+      throw new Error('User is not logged in.');
+    }
+
+    const existingReview = await this.getUserReview(user.uid);
     if (existingReview && existingReview.id) {
       const reviewDoc = doc(this.firestore, `reviews/${existingReview.id}`);
       await deleteDoc(reviewDoc);
@@ -108,5 +114,9 @@ export class ReviewsService {
       return `${day}-${month}-${year} ${hours}:${minutes}`;
     }
     return '';
+  }
+
+  async loadUserReview(userId: string): Promise<Review | null> {
+    return this.getUserReview(userId);
   }
 }

@@ -26,7 +26,7 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  @Output() onLogin: EventEmitter<void> = new EventEmitter();
+  @Output() openModal: EventEmitter<void> = new EventEmitter();
 
   isSidebarOpen = false;
 
