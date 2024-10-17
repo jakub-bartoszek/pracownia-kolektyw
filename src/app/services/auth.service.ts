@@ -17,6 +17,8 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
   currentRole: string | null = null;
+  private isAuthModalOpenSubject = new BehaviorSubject<boolean>(false);
+  isAuthModalOpen$ = this.isAuthModalOpenSubject.asObservable();
 
   constructor(private auth: Auth, private firestore: Firestore) {
     onAuthStateChanged(this.auth, async (user) => {
@@ -25,6 +27,14 @@ export class AuthService {
         this.currentRole = await this.getUserRole(user.uid);
       }
     });
+  }
+
+  openAuthModal() {
+    this.isAuthModalOpenSubject.next(true);
+  }
+
+  closeAuthModal() {
+    this.isAuthModalOpenSubject.next(false);
   }
 
   get currentUser() {
