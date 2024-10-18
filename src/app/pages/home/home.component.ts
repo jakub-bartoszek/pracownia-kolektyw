@@ -4,7 +4,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Review, ReviewsService } from '../../services/reviews.service';
 import { AuthService } from '../../services/auth.service';
-import { AuthComponent } from '../../auth/auth.component';
+import { AuthComponent } from '../../components/auth/auth.component';
 import axios from 'axios';
 
 interface Image {

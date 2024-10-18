@@ -9,7 +9,7 @@ import { NavLinksComponent } from '../nav-links/nav-links.component';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-  @Output() onLogin: EventEmitter<void> = new EventEmitter(); // Emit login event
+  @Output() onLogin: EventEmitter<void> = new EventEmitter();
   @Input() isOpen: boolean = false;
 
   closeSidebar() {

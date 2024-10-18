@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
-import { AuthComponent } from './auth/auth.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,8 @@ import { FooterComponent } from './footer/footer.component';
   templateUrl: './app.component.html',
   imports: [
     RouterOutlet,
-    NavbarComponent,
     FooterComponent,
+    NavbarComponent,
     AuthComponent,
     CommonModule,
   ],
