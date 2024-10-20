@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs';
-import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-nav-links',
@@ -17,7 +17,7 @@ export class NavLinksComponent {
 
   links = [
     { href: '/o-nas', title: 'O nas' },
-    { href: '/portfolio', title: 'Portfolio' },
+    { href: '/galeria', title: 'Galeria' },
     { href: '/uslugi', title: 'Usługi' },
     { href: '/cennik', title: 'Cennik' },
     { href: '/artysci', title: 'Artyści' },
@@ -34,8 +34,6 @@ export class NavLinksComponent {
   }
 
   logout() {
-    this.authService.logout().then(() => {
-      console.log('Wylogowano pomyślnie');
-    });
+    this.authService.logout().then(() => {});
   }
 }
