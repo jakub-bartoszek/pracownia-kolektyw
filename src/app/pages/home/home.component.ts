@@ -1,41 +1,34 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Review, ReviewsService } from '../../services/reviews.service';
+import { Artist, ImageData, Review } from '../../models/models';
+import { ReviewsService } from '../../services/reviews.service';
 import { AuthService } from '../../services/auth.service';
-import { AuthComponent } from '../../components/auth/auth.component';
-import axios from 'axios';
-
-interface Image {
-  path: string;
-  artist: string;
-}
+import { GalleryService } from '../../services/gallery.service';
+import { ArtistsService } from '../../services/artists.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    AuthComponent,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [RouterOutlet, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  images: Image[] = [];
   reviews: Review[] = [];
   isLoggedIn = false;
+  isAdmin = false;
+  artists: Artist[] = [];
+  images: ImageData[] = [];
   userReview: Review | null = null;
   newReviewContent: string = '';
   newReviewRate: number = 5;
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
     private authService: AuthService,
-    private reviewsService: ReviewsService
+    private reviewsService: ReviewsService,
+    private galleryService: GalleryService,
+    private artistsService: ArtistsService
   ) {}
 
   openModal() {
@@ -54,26 +47,13 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async fetchImages() {
-    try {
-      if (isPlatformBrowser(this.platformId)) {
-        const url = `${window.location.origin}/images.json`;
-        const response = await axios.get(url);
-        this.images = response.data;
-      }
-    } catch (err) {
-      console.error('Error fetching images:', err);
-    }
-  }
-
   async addReview() {
     try {
       await this.reviewsService.submitReview(
         this.newReviewContent,
         this.newReviewRate
       );
-      this.newReviewContent = '';
-      this.newReviewRate = 5;
+      this.resetReviewFields();
       this.loadUserReview();
       this.loadReviews();
     } catch (error) {
@@ -81,9 +61,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  async deleteReview() {
+  async deleteReview(reviewId: string) {
     try {
-      await this.reviewsService.removeUserReview();
+      await this.reviewsService.removeReview(reviewId);
       this.userReview = null;
       this.loadReviews();
     } catch (error) {
@@ -91,11 +71,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  loadUserReview() {
+  async loadUserReview() {
     this.authService.currentUser$.subscribe(async (user) => {
       if (user) {
-        const userReview = await this.reviewsService.loadUserReview(user.uid);
-        this.userReview = userReview;
+        this.userReview = await this.reviewsService.loadUserReview(user.uid);
       }
     });
   }
@@ -106,13 +85,27 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.fetchImages();
+  async ngOnInit(): Promise<void> {
+    this.artists = await this.artistsService.loadArtists();
+    this.images = await this.galleryService.loadImages();
     this.loadReviews();
     this.loadUserReview();
 
-    this.authService.currentUser$.subscribe((user) => {
-      this.isLoggedIn = this.authService.isLoggedIn();
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
     });
+
+    this.authService.isAdmin$.subscribe((admin) => {
+      this.isAdmin = admin;
+    });
+  }
+
+  getArtistFullName(artistId: string): string {
+    return this.artistsService.getArtistFullName(artistId, this.artists);
+  }
+
+  private resetReviewFields() {
+    this.newReviewContent = '';
+    this.newReviewRate = 5;
   }
 }
