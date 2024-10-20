@@ -7,15 +7,15 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [FormsModule, CommonModule],
   selector: 'app-auth',
-  templateUrl: './auth.component.html',
+  templateUrl: './auth-modal.component.html',
 })
-export class AuthComponent {
+export class AuthModalComponent {
   @Output() closeModal = new EventEmitter<void>();
 
   email: string = '';
   password: string = '';
-  firstName: string = ''; // Pole na imię
-  lastName: string = ''; // Pole na nazwisko
+  firstName: string = '';
+  lastName: string = '';
   isLoginView: boolean = true;
   errorMessage: string = '';
 
@@ -66,11 +66,10 @@ export class AuthComponent {
       return;
     }
 
-    // Rejestrujemy użytkownika z imieniem i nazwiskiem
     this.authService
       .register(this.email, this.password, this.firstName, this.lastName)
       .then(() => {
-        this.toggleView(); // Po rejestracji przełączamy na ekran logowania
+        this.toggleView();
       })
       .catch((error) => {
         this.errorMessage = 'Błąd rejestracji: ' + error.message;

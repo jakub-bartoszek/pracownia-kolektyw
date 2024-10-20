@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
-import { AuthComponent } from './components/auth/auth.component';
+import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -14,7 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RouterOutlet,
     FooterComponent,
     NavbarComponent,
-    AuthComponent,
+    AuthModalComponent,
     CommonModule,
   ],
 })
