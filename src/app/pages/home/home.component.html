@@ -117,17 +117,17 @@
           <img
             class="h-full w-full transform object-cover transition-transform duration-300"
             [class.group-hover:scale-105]="!last"
-            [src]="image.path"
-            alt="{{ image.artist }}"
+            [src]="image.imageUrl"
+            alt="{{ image.artistId }}"
           />
 
           <div
             class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
           >
             <p
-              class="transition-colors group-hover:text-accent hover:underline"
+              class="transition-colors group-hover:text-accent hover:underline w-min whitespace-nowrap"
             >
-              {{ image.artist }}
+              {{ getArtistFullName(image.artistId) }}
             </p>
           </div>
         </div>
@@ -138,7 +138,7 @@
         >
           <span class="text-5xl text-white">+{{ images.length - 6 }}</span>
           <a
-            routerLink="/galeria"
+            href="/galeria"
             class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
           >
             Zobacz Wszystkie
@@ -227,8 +227,8 @@
         <p>{{ review.content }}</p>
 
         <button
-          *ngIf="isLoggedIn && userReview?.id === review.id"
-          (click)="deleteReview()"
+          *ngIf="isLoggedIn && (userReview?.id === review.id || isAdmin)"
+          (click)="review.id && deleteReview(review.id)"
           class="mt-4 transform bg-accent w-min whitespace-nowrap px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
         >
           Usuń opinię
@@ -240,7 +240,7 @@
       Brak opinii.
     </p>
 
-    <ng-container *ngIf="isLoggedIn; else loginPrompt">
+    <ng-container *ngIf="!isAdmin">
       <ng-container *ngIf="!userReview; else existingReview">
         <div class="mt-4 bg-zinc-900 p-8">
           <h3 class="mb-4 text-center text-2xl font-semibold text-accent">

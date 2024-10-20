@@ -12,18 +12,10 @@ import {
   doc,
   deleteDoc,
 } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-
-export interface Review {
-  id?: string;
-  content: string;
-  name: string;
-  date: any;
-  rate: number;
-  userId: string;
-}
+import { Review } from '../models/models';
 
 @Injectable({
   providedIn: 'root',
@@ -88,19 +80,26 @@ export class ReviewsService {
     return null;
   }
 
-  async removeUserReview(): Promise<void> {
+  async removeReview(reviewId: string): Promise<void> {
     const user = this.authService.currentUser;
     if (!user) {
       throw new Error('User is not logged in.');
     }
 
+    const reviewDoc = doc(this.firestore, `reviews/${reviewId}`);
     const existingReview = await this.getUserReview(user.uid);
-    if (existingReview && existingReview.id) {
-      const reviewDoc = doc(this.firestore, `reviews/${existingReview.id}`);
+
+    const isAdmin = await firstValueFrom(this.authService.isAdmin$);
+
+    if (existingReview?.id === reviewId || isAdmin) {
       await deleteDoc(reviewDoc);
     } else {
-      throw new Error('No review found to delete.');
+      throw new Error('You do not have permission to delete this review.');
     }
+  }
+
+  async loadUserReview(userId: string): Promise<Review | null> {
+    return this.getUserReview(userId);
   }
 
   private formatTimestamp(timestamp: any): string {
@@ -114,9 +113,5 @@ export class ReviewsService {
       return `${day}-${month}-${year} ${hours}:${minutes}`;
     }
     return '';
-  }
-
-  async loadUserReview(userId: string): Promise<Review | null> {
-    return this.getUserReview(userId);
   }
 }

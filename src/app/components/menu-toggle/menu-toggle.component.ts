@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { MenuIconComponent } from '../icons/menu-icon/menu-icon.component';
+import { MenuIconComponent } from '../../icons/menu-icon/menu-icon.component';
 
 @Component({
   selector: 'app-menu-toggle',

@@ -1,0 +1,46 @@
+<div class="flex h-screen items-center justify-center">
+  <button (click)="openModal()" class="mb-4 rounded bg-blue-500 p-2 text-white">
+    Dodaj Artystę
+  </button>
+
+  <div
+    *ngIf="isModalOpen"
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+  >
+    <div class="rounded bg-white p-6 shadow-lg">
+      <h2 class="mb-4 text-xl">Dodaj Artystę</h2>
+      <form [formGroup]="artistForm" (ngSubmit)="addArtist()">
+        <div>
+          <label for="name">Imię:</label>
+          <input
+            type="text"
+            formControlName="name"
+            required
+            class="mb-2 w-full border p-2"
+          />
+        </div>
+        <div>
+          <label for="surname">Nazwisko:</label>
+          <input
+            type="text"
+            formControlName="surname"
+            required
+            class="mb-2 w-full border p-2"
+          />
+        </div>
+        <div class="flex justify-between">
+          <button
+            type="button"
+            (click)="closeModal()"
+            class="rounded bg-gray-300 p-2"
+          >
+            Anuluj
+          </button>
+          <button type="submit" class="rounded bg-blue-500 p-2 text-white">
+            Dodaj
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

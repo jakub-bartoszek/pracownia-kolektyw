@@ -1,0 +1,68 @@
+<div
+  class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75"
+>
+  <div
+    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-8 shadow-lg"
+  >
+    <button class="absolute right-2 top-2" (click)="closeModal()">✕</button>
+
+    <div class="flex flex-col gap-y-4">
+      <h2 class="text-center text-2xl font-bold uppercase text-accent">
+        Prześlij pracę
+      </h2>
+
+      <form
+        class="flex flex-col gap-y-4"
+        [formGroup]="uploadForm"
+        (ngSubmit)="onUpload()"
+      >
+        <ngx-file-drop
+          dropZoneClassName="border border-2 border-dashed border-accent bg-zinc-900 p-4"
+          dropZoneLabel="Upuść zdjęcie tutaj"
+          (onFileDrop)="onFileDropped($event)"
+          (onFileOver)="fileOver($event)"
+          (onFileLeave)="fileLeave($event)"
+        >
+          <ng-template
+            ngx-file-drop-content-tmp
+            let-openFileSelector="openFileSelector"
+          >
+            <div class="space-y-4">
+              <p class="text-zinc-400">Upuść zdjęcie tutaj</p>
+              <button
+                type="button"
+                class="mt-2 bg-accent px-4 py-2 text-background transition-transform hover:scale-105"
+                (click)="openFileSelector()"
+              >
+                Przeglądaj pliki
+              </button>
+            </div>
+          </ng-template>
+        </ngx-file-drop>
+
+        <div *ngIf="selectedFile" class="flex items-center justify-between">
+          <strong>{{ selectedFile.name }}</strong>
+          <button type="button" (click)="removeFile()">✕</button>
+        </div>
+
+        <select
+          class="w-full border border-accent bg-background px-4 py-2 text-accent"
+          formControlName="artistId"
+          required
+        >
+          <option value="" disabled selected>Wybierz artystę</option>
+          <option *ngFor="let artist of artists" [value]="artist.id">
+            {{ artist.name }} {{ artist.surname }}
+          </option>
+        </select>
+
+        <button
+          type="submit"
+          class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+        >
+          Prześlij
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
