@@ -1,0 +1,44 @@
+<div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4">
+  <div class="flex items-center justify-center">
+    <button
+      *ngIf="isAdmin"
+      (click)="openModal()"
+      class="w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+    >
+      Dodaj Pracę
+    </button>
+  </div>
+
+  <app-upload-artwork-modal
+    *ngIf="isModalOpen"
+    [artists]="artists"
+    (close)="closeModal()"
+  ></app-upload-artwork-modal>
+
+  <section id="galeria">
+    <h2 class="mb-4 text-5xl font-extrabold tracking-wide text-accent">
+      Nasze Prace
+    </h2>
+
+    <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-3">
+      <div *ngFor="let image of images" class="relative overflow-hidden">
+        <div class="group h-full w-full cursor-pointer">
+          <img
+            class="h-full w-full transform object-cover transition-transform duration-300 hover:scale-105"
+            [src]="image.imageUrl"
+            alt="{{ image.artistId }}"
+          />
+          <div
+            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
+          >
+            <p
+              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
+            >
+              {{ getArtistFullName(image.artistId) }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
