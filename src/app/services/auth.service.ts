@@ -16,15 +16,30 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
-  currentRole: string | null = null;
+
+  private currentRoleSubject = new BehaviorSubject<string | null>(null);
+  currentRole$ = this.currentRoleSubject.asObservable();
+
   private isAuthModalOpenSubject = new BehaviorSubject<boolean>(false);
   isAuthModalOpen$ = this.isAuthModalOpenSubject.asObservable();
+
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  isAdmin$ = this.isAdminSubject.asObservable();
 
   constructor(private auth: Auth, private firestore: Firestore) {
     onAuthStateChanged(this.auth, async (user) => {
       this.currentUserSubject.next(user);
+      this.isLoggedInSubject.next(!!user);
       if (user) {
-        this.currentRole = await this.getUserRole(user.uid);
+        const role = await this.getUserRole(user.uid);
+        this.currentRoleSubject.next(role);
+        this.isAdminSubject.next(role === 'admin');
+      } else {
+        this.currentRoleSubject.next(null);
+        this.isAdminSubject.next(false);
       }
     });
   }
@@ -44,7 +59,10 @@ export class AuthService {
   login(email: string, password: string) {
     return signInWithEmailAndPassword(this.auth, email, password).then(
       async (userCredential) => {
-        await this.getUserRole(userCredential.user.uid);
+        const role = await this.getUserRole(userCredential.user.uid);
+        this.currentRoleSubject.next(role);
+        this.isAdminSubject.next(role === 'admin');
+        this.isLoggedInSubject.next(true);
         window.location.reload();
       }
     );
@@ -84,16 +102,11 @@ export class AuthService {
 
   logout() {
     return signOut(this.auth).then(() => {
+      this.currentRoleSubject.next(null);
+      this.isAdminSubject.next(false);
+      this.isLoggedInSubject.next(false);
       window.location.reload();
     });
-  }
-
-  isLoggedIn(): boolean {
-    return !!this.currentUser;
-  }
-
-  isAdmin(): boolean {
-    return this.currentRole === 'admin';
   }
 
   async getUserInfo(
