@@ -2,8 +2,9 @@
   <div
     class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4"
   >
-    <img src="/images/logo.png" class="h-full" />
-
+    <a href="/" class="h-full">
+      <img src="/images/logo.png" class="h-full" />
+    </a>
     <div class="hidden h-full items-center md:flex">
       <app-nav-links
         (onLogin)="openModal.emit()"
