@@ -1,7 +1,6 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4">
-  <div class="flex items-center justify-center">
+  <div *ngIf="isAdmin" class="flex items-center justify-center">
     <button
-      *ngIf="isAdmin"
       (click)="openModal()"
       class="w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
     >
