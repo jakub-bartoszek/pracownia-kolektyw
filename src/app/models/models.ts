@@ -8,9 +8,11 @@ export interface Review {
 }
 
 export interface Artist {
-  id: string;
+  id?: string;
   name: string;
   surname: string;
+  profileImageUrl: string;
+  biography: string;
 }
 
 export interface ImageData {

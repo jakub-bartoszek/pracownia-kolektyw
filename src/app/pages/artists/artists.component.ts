@@ -1,37 +1,44 @@
+import { ArtistsService } from './../../services/artists.service';
+import { Component, OnInit } from '@angular/core';
+import { Artist } from '../../models/models';
+import { UploadArtistModalComponent } from '../../components/upload-artist-modal/upload-artist-modal.component';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-artists',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [UploadArtistModalComponent, CommonModule],
+  selector: 'app-artists',
   templateUrl: './artists.component.html',
 })
-export class ArtistsComponent {
-  artistForm: FormGroup;
+export class ArtistsComponent implements OnInit {
+  artists: Artist[] = [];
   isModalOpen = false;
+  isAdmin = false;
+  isLoggedIn = false;
 
-  constructor(private fb: FormBuilder, private firestore: Firestore) {
-    this.artistForm = this.fb.group({
-      name: [''],
-      surname: [''],
+  constructor(
+    private authService: AuthService,
+    private artistsService: ArtistsService
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    this.artists = await this.artistsService.loadArtists();
+
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
+
+    this.authService.isAdmin$.subscribe((admin) => {
+      this.isAdmin = admin;
     });
   }
 
-  openModal(): void {
+  openModal() {
     this.isModalOpen = true;
   }
 
-  closeModal(): void {
+  closeModal() {
     this.isModalOpen = false;
-    this.artistForm.reset();
-  }
-
-  async addArtist(): Promise<void> {
-    const artistData = this.artistForm.value;
-    await addDoc(collection(this.firestore, 'artists'), artistData);
-    this.closeModal();
   }
 }

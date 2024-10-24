@@ -1,46 +1,44 @@
-<div class="flex h-screen items-center justify-center">
-  <button (click)="openModal()" class="mb-4 rounded bg-blue-500 p-2 text-white">
-    Dodaj Artystę
-  </button>
-
-  <div
-    *ngIf="isModalOpen"
-    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-  >
-    <div class="rounded bg-white p-6 shadow-lg">
-      <h2 class="mb-4 text-xl">Dodaj Artystę</h2>
-      <form [formGroup]="artistForm" (ngSubmit)="addArtist()">
-        <div>
-          <label for="name">Imię:</label>
-          <input
-            type="text"
-            formControlName="name"
-            required
-            class="mb-2 w-full border p-2"
-          />
-        </div>
-        <div>
-          <label for="surname">Nazwisko:</label>
-          <input
-            type="text"
-            formControlName="surname"
-            required
-            class="mb-2 w-full border p-2"
-          />
-        </div>
-        <div class="flex justify-between">
-          <button
-            type="button"
-            (click)="closeModal()"
-            class="rounded bg-gray-300 p-2"
-          >
-            Anuluj
-          </button>
-          <button type="submit" class="rounded bg-blue-500 p-2 text-white">
-            Dodaj
-          </button>
-        </div>
-      </form>
-    </div>
+<div
+  class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-6 p-6 bg-dark text-white"
+>
+  <div *ngIf="isAdmin" class="flex justify-center">
+    <button
+      (click)="openModal()"
+      class="w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+    >
+      Dodaj Artystę
+    </button>
   </div>
+
+  <app-upload-artist-modal
+    *ngIf="isModalOpen"
+    (close)="closeModal()"
+  ></app-upload-artist-modal>
+
+  <section id="artysci">
+    <h2
+      class="mb-8 text-5xl font-extrabold tracking-widest text-accent text-center"
+    >
+      Nasi Artyści
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" *ngIf="artists.length">
+      <div
+        *ngFor="let artist of artists"
+        class="group flex gap-x-8 items-center bg-zinc-900 p-4 cursor-pointer"
+      >
+        <div class="h-32 w-32 flex rounded-full overflow-hidden">
+          <img
+            class="h-full w-full object-cover group-hover:scale-105 transition-transform"
+            [src]="artist.profileImageUrl"
+            alt="{{ artist.name }} {{ artist.surname }}"
+          />
+        </div>
+
+        <p class="text-3xl group-hover:text-accent font-bold transition-colors">
+          {{ artist.name }} {{ artist.surname }}
+        </p>
+      </div>
+    </div>
+  </section>
 </div>
