@@ -104,7 +104,9 @@
   </section>
 
   <section id="galeria">
-    <h2 class="mb-4 text-5xl font-extrabold tracking-wide text-accent">
+    <h2
+      class="mb-8 text-5xl font-extrabold tracking-wide text-accent text-center"
+    >
       Nasze Prace
     </h2>
 
@@ -144,6 +146,33 @@
             Zobacz Wszystkie
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="artysci">
+    <h2
+      class="mb-8 text-5xl font-extrabold tracking-widest text-accent text-center"
+    >
+      Nasi Artyści
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" *ngIf="artists.length">
+      <div
+        *ngFor="let artist of artists"
+        class="group flex gap-x-8 items-center bg-zinc-900 p-4 cursor-pointer"
+      >
+        <div class="h-32 w-32 flex rounded-full overflow-hidden">
+          <img
+            class="h-full w-full object-cover group-hover:scale-105 transition-transform"
+            [src]="artist.profileImageUrl"
+            alt="{{ artist.name }} {{ artist.surname }}"
+          />
+        </div>
+
+        <p class="text-3xl group-hover:text-accent font-bold transition-colors">
+          {{ artist.name }} {{ artist.surname }}
+        </p>
       </div>
     </div>
   </section>
