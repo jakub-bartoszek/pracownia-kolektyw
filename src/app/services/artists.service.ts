@@ -69,6 +69,11 @@ export class ArtistsService {
     }
   }
 
+  async getArtistById(id: string): Promise<Artist | null> {
+    const artists = await this.loadArtists();
+    return artists.find((artist) => artist.id === id) || null;
+  }
+
   async removeArtist(artistId: string): Promise<void> {
     const artistDoc = doc(this.firestore, `artists/${artistId}`);
     await deleteDoc(artistDoc);
