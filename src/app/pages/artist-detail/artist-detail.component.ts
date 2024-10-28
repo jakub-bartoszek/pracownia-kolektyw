@@ -4,16 +4,20 @@ import { ActivatedRoute } from '@angular/router';
 import { ArtistsService } from '../../services/artists.service';
 import { CommonModule } from '@angular/common';
 import { GalleryService } from '../../services/gallery.service';
+import { FormsModule } from '@angular/forms';
+import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
 
 @Component({
   selector: 'app-artist-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, NgxFileDropModule],
   templateUrl: './artist-detail.component.html',
 })
 export class ArtistDetailComponent implements OnInit {
   artist: Artist | null = null;
   artworks: ImageData[] = [];
+  isEditing = false;
+  selectedProfileImageFile?: File;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +30,47 @@ export class ArtistDetailComponent implements OnInit {
     if (id) {
       this.artist = await this.artistsService.getArtistById(id);
       this.artworks = await this.galleryService.loadImagesByArtist(id);
+    }
+  }
+
+  public onFileDropped(files: NgxFileDropEntry[]): void {
+    if (files.length > 0) {
+      const droppedFile = files[0];
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        fileEntry.file((file) => {
+          this.selectedProfileImageFile = file;
+        });
+      }
+    }
+  }
+
+  public fileOver(event: any): void {
+    console.log('File over', event);
+  }
+
+  public fileLeave(event?: any): void {
+    console.log('File leave', event);
+  }
+
+  async saveChanges(): Promise<void> {
+    if (this.artist && this.artist.id) {
+      try {
+        await this.artistsService.updateArtistWithProfileImage(
+          this.artist.id,
+          {
+            name: this.artist.name,
+            surname: this.artist.surname,
+            biography: this.artist.biography,
+          },
+          this.selectedProfileImageFile
+        );
+        this.isEditing = false;
+      } catch (error) {
+        console.error('Error updating artist:', error);
+      }
+    } else {
+      console.error('Artist or artist ID is missing.');
     }
   }
 }

@@ -1,52 +1,118 @@
 <div
   *ngIf="artist"
-  class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4"
+  class="mx-auto mt-8 sm:mt-20 flex max-w-full sm:max-w-[1400px] flex-col gap-y-4 p-4"
 >
   <section id="artysta" class="p-4">
-    <div class="relative mt-8 w-full border-2 border-accent bg-background">
+    <div
+      class="relative mt-4 sm:mt-8 w-full border-2 border-accent bg-background rounded-lg shadow-lg overflow-hidden"
+    >
       <div
-        class="relative mx-auto flex flex-col items-center gap-6 p-8 bg-gradient-to-b from-black/60 to-transparent"
+        class="relative mx-auto flex flex-col items-center gap-4 sm:gap-6 p-4 sm:p-8 bg-gradient-to-b from-black/60 to-transparent rounded-lg"
       >
-        <div
-          class="h-48 w-48 mb-6 rounded-full overflow-hidden border-4 border-accent shadow-lg transform transition-transform hover:scale-105"
-        >
+        <div *ngIf="isEditing; else profileImage">
+          <ngx-file-drop
+            dropZoneClassName="border border-2 border-dashed border-accent bg-zinc-900 p-4 rounded-full h-32 w-32 sm:h-48 sm:w-48 flex items-center justify-center"
+            dropZoneLabel="Upuść zdjęcie tutaj"
+            (onFileDrop)="onFileDropped($event)"
+            (onFileOver)="fileOver($event)"
+            (onFileLeave)="fileLeave($event)"
+          >
+            <ng-template
+              ngx-file-drop-content-tmp
+              let-openFileSelector="openFileSelector"
+            >
+              <div class="space-y-2 sm:space-y-4 text-center">
+                <p class="text-zinc-400 text-sm sm:text-base">
+                  Upuść zdjęcie tutaj
+                </p>
+                <button
+                  type="button"
+                  class="mt-1 sm:mt-2 bg-accent px-3 py-1 sm:px-4 sm:py-2 text-background transition-transform hover:scale-105 text-sm sm:text-base"
+                  (click)="openFileSelector()"
+                >
+                  Przeglądaj
+                </button>
+              </div>
+            </ng-template>
+          </ngx-file-drop>
+        </div>
+        <ng-template #profileImage>
           <img
-            class="h-full w-full object-cover"
+            class="h-32 w-32 sm:h-48 sm:w-48 mb-4 sm:mb-6 rounded-full overflow-hidden border-4 border-accent shadow-lg object-cover transition-opacity duration-300"
             [src]="artist.profileImageUrl"
             alt="{{ artist.name }} {{ artist.surname }}"
           />
-        </div>
+        </ng-template>
 
-        <h1 class="text-5xl font-extrabold text-accent mb-4 tracking-widest">
-          {{ artist.name }} {{ artist.surname }}
-        </h1>
-
-        <p
-          class="text-lg leading-relaxed text-center text-zinc-300 max-w-3xl bg-black/60 p-4 rounded-lg shadow-md transition-colors hover:bg-black/80"
+        <div
+          class="w-full flex flex-col sm:flex-row sm:space-x-8 space-y-4 sm:space-y-0"
+          *ngIf="isEditing"
         >
-          {{ artist.biography }}
-        </p>
-
-        <div class="flex gap-4 mt-4">
-          <!-- Późniejsze linki do social media -->
+          <input
+            type="text"
+            [(ngModel)]="artist.name"
+            placeholder="Name"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none w-full sm:w-auto text-center sm:text-left"
+          />
+          <input
+            type="text"
+            [(ngModel)]="artist.surname"
+            placeholder="Surname"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none w-full sm:w-auto text-center sm:text-left"
+          />
         </div>
-      </div>
+        <ng-container *ngIf="!isEditing">
+          <h1
+            class="text-4xl sm:text-5xl font-extrabold text-accent mb-2 sm:mb-4 tracking-widest text-center"
+          >
+            {{ artist.name }} {{ artist.surname }}
+          </h1>
+        </ng-container>
 
-      <div
-        class="absolute inset-0 -z-10 h-full w-full rotate-3 border-2 border-accent"
-      ></div>
-    </div>
-  </section>
+        <div class="w-full" *ngIf="isEditing">
+          <textarea
+            [(ngModel)]="artist.biography"
+            placeholder="Artist biography..."
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none w-full text-sm sm:text-base"
+            rows="4"
+          ></textarea>
+        </div>
+        <ng-container *ngIf="!isEditing">
+          <p
+            class="text-base sm:text-lg leading-relaxed text-center text-zinc-300 max-w-3xl bg-black/60 p-4 rounded-lg shadow-md"
+          >
+            {{ artist.biography }}
+          </p>
+        </ng-container>
 
-  <section class="p-4">
-    <h2 class="text-4xl font-bold text-accent mb-6">Moje prace</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div *ngFor="let artwork of artworks" class="relative overflow-hidden">
-        <img
-          [src]="artwork.imageUrl"
-          alt="Artwork by {{ artist.name }} {{ artist.surname }}"
-          class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-        />
+        <div class="flex w-full justify-center">
+          <button
+            *ngIf="!isEditing"
+            (click)="isEditing = true"
+            class="bg-accent px-3 sm:px-4 py-2 text-base sm:text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+          >
+            Edit
+          </button>
+
+          <div
+            *ngIf="isEditing"
+            class="flex flex-col sm:flex-row sm:justify-between w-full sm:p-4 space-y-2 sm:space-y-0"
+          >
+            <button
+              (click)="isEditing = false"
+              class="bg-zinc-700 px-3 sm:px-4 py-2 text-base sm:text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+            >
+              Cancel
+            </button>
+            <button
+              *ngIf="isEditing"
+              (click)="saveChanges()"
+              class="bg-accent px-3 sm:px-4 py-2 text-base sm:text-lg font-bold uppercase text-background transition-all hover:scale-105 hover:shadow-lg focus-visible:scale-105 focus-visible:shadow-lg focus-visible:outline-none"
+            >
+              Save
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
