@@ -2,7 +2,12 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  InMemoryScrollingFeature,
+  InMemoryScrollingOptions,
+  provideRouter,
+  withInMemoryScrolling,
+} from '@angular/router';
 import { routes } from './app.routes';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 
@@ -15,10 +20,18 @@ const firebaseConfig = {
   appId: '1:724265975052:web:d36baaa614ea972c691d29',
 };
 
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'top', // Przewijanie do góry przy zmianie trasy
+  anchorScrolling: 'enabled', // Włączenie przewijania do kotwic
+};
+
+const inMemoryScrollingFeature: InMemoryScrollingFeature =
+  withInMemoryScrolling(scrollConfig);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, inMemoryScrollingFeature),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
