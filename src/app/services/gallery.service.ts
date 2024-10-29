@@ -43,6 +43,26 @@ export class GalleryService {
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 
+  async loadImagesByArtist(artistId: string): Promise<ImageData[]> {
+    const querySnapshot = await getDocs(collection(this.firestore, 'images'));
+    return querySnapshot.docs
+      .map((doc) => {
+        const data = doc.data() as {
+          artistId: string;
+          imageUrl: string;
+          createdAt: any;
+        };
+        return {
+          id: doc.id,
+          artistId: data.artistId || '',
+          imageUrl: data.imageUrl || '',
+          createdAt: data.createdAt ? data.createdAt.toDate() : new Date(),
+        } as ImageData;
+      })
+      .filter((image) => image.artistId === artistId)
+      .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  }
+
   async uploadImage(file: File, artistId: string): Promise<void> {
     const artists = await this.artistsService.loadArtists();
     const artistExists = artists.some((artist) => artist.id === artistId);

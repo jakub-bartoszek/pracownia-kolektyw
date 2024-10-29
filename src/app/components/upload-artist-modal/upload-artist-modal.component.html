@@ -2,7 +2,7 @@
   class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75"
 >
   <div
-    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-8 shadow-lg"
+    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-8"
   >
     <button class="absolute right-2 top-2" (click)="closeModal()">✕</button>
 
@@ -79,7 +79,7 @@
           [disabled]="artistForm.invalid"
           [ngClass]="{
             'bg-zinc-800 cursor-not-allowed': artistForm.invalid,
-            'bg-accent hover:scale-105 hover:shadow-lg': artistForm.valid
+            'bg-accent hover:scale-105': artistForm.valid
           }"
         >
           Prześlij

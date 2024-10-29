@@ -4,10 +4,11 @@ import { Artist } from '../../models/models';
 import { UploadArtistModalComponent } from '../../components/upload-artist-modal/upload-artist-modal.component';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [UploadArtistModalComponent, CommonModule],
+  imports: [UploadArtistModalComponent, CommonModule, RouterModule],
   selector: 'app-artists',
   templateUrl: './artists.component.html',
 })

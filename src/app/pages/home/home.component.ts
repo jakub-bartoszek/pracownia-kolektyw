@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Artist, ImageData, Review } from '../../models/models';
@@ -11,7 +11,13 @@ import { ArtistsService } from '../../services/artists.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
