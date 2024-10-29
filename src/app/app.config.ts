@@ -21,8 +21,8 @@ const firebaseConfig = {
 };
 
 const scrollConfig: InMemoryScrollingOptions = {
-  scrollPositionRestoration: 'top', // Przewijanie do góry przy zmianie trasy
-  anchorScrolling: 'enabled', // Włączenie przewijania do kotwic
+  scrollPositionRestoration: 'top',
+  anchorScrolling: 'enabled',
 };
 
 const inMemoryScrollingFeature: InMemoryScrollingFeature =

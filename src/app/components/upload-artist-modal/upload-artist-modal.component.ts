@@ -29,7 +29,7 @@ export class UploadArtistModalComponent {
     });
   }
 
-  public onFileDropped(files: NgxFileDropEntry[]): void {
+  onFileDropped(files: NgxFileDropEntry[]): void {
     if (files.length > 0) {
       const droppedFile = files[0];
       if (droppedFile.fileEntry.isFile) {
@@ -42,7 +42,7 @@ export class UploadArtistModalComponent {
     }
   }
 
-  public removeFile(): void {
+  removeFile(): void {
     this.selectedFile = null;
     this.artistForm.patchValue({ profileImage: null });
   }

@@ -1,10 +1,10 @@
-import { ArtistsService } from './../../services/artists.service';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { ArtistsService } from '../../services/artists.service';
+import { AuthService } from '../../services/auth.service';
 import { Artist } from '../../models/models';
 import { UploadArtistModalComponent } from '../../components/upload-artist-modal/upload-artist-modal.component';
-import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
-import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,

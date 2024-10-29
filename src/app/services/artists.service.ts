@@ -44,29 +44,18 @@ export class ArtistsService {
   ): Promise<void> {
     let profileImageUrl: string;
 
-    try {
-      if (file) {
-        const filePath = `artists/${Date.now()}_${file.name}`;
-        const fileRef = ref(this.storage, filePath);
-
-        const uploadResult = await uploadBytes(fileRef, file);
-
-        profileImageUrl = await getDownloadURL(uploadResult.ref);
-      } else {
-        profileImageUrl = this.defaultProfileImageUrl;
-      }
-
-      const artistWithImage = {
-        ...artist,
-        profileImageUrl,
-      };
-
-      const artistsCollection = collection(this.firestore, 'artists');
-      await addDoc(artistsCollection, artistWithImage);
-    } catch (error) {
-      console.error('Błąd podczas przesyłania artysty z obrazem:', error);
-      throw error;
+    if (file) {
+      const filePath = `artists/${Date.now()}_${file.name}`;
+      const fileRef = ref(this.storage, filePath);
+      const uploadResult = await uploadBytes(fileRef, file);
+      profileImageUrl = await getDownloadURL(uploadResult.ref);
+    } else {
+      profileImageUrl = this.defaultProfileImageUrl;
     }
+
+    const artistWithImage = { ...artist, profileImageUrl };
+    const artistsCollection = collection(this.firestore, 'artists');
+    await addDoc(artistsCollection, artistWithImage);
   }
 
   async getArtistById(id: string): Promise<Artist | null> {
@@ -92,24 +81,19 @@ export class ArtistsService {
     updatedData: Partial<Artist>,
     file?: File
   ): Promise<void> {
-    try {
-      let profileImageUrl = updatedData.profileImageUrl;
+    let profileImageUrl = updatedData.profileImageUrl;
 
-      if (file) {
-        const filePath = `artists/${Date.now()}_${file.name}`;
-        const fileRef = ref(this.storage, filePath);
-        const uploadResult = await uploadBytes(fileRef, file);
-        profileImageUrl = await getDownloadURL(uploadResult.ref);
-      }
-
-      const artistDoc = doc(this.firestore, `artists/${artistId}`);
-      await updateDoc(artistDoc, {
-        ...updatedData,
-        profileImageUrl: profileImageUrl || this.defaultProfileImageUrl,
-      });
-    } catch (error) {
-      console.error('Error updating artist with image:', error);
-      throw error;
+    if (file) {
+      const filePath = `artists/${Date.now()}_${file.name}`;
+      const fileRef = ref(this.storage, filePath);
+      const uploadResult = await uploadBytes(fileRef, file);
+      profileImageUrl = await getDownloadURL(uploadResult.ref);
     }
+
+    const artistDoc = doc(this.firestore, `artists/${artistId}`);
+    await updateDoc(artistDoc, {
+      ...updatedData,
+      profileImageUrl: profileImageUrl || this.defaultProfileImageUrl,
+    });
   }
 }

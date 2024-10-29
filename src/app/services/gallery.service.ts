@@ -90,12 +90,11 @@ export class GalleryService {
 
     window.location.reload();
   }
+
   async deleteImage(imageId: string, imageUrl: string): Promise<void> {
-    // Usuwanie obrazu ze Storage
     const storageRef = ref(this.storage, imageUrl);
     await deleteObject(storageRef);
 
-    // Usuwanie dokumentu z Firestore
     const imageDocRef = doc(this.firestore, 'images', imageId);
     await deleteDoc(imageDocRef);
   }

@@ -27,7 +27,15 @@ export class AppComponent {
     });
   }
 
-  scrollToSection(sectionName: string) {
+  openAuthModal(): void {
+    this.authService.openAuthModal();
+  }
+
+  closeAuthModal(): void {
+    this.authService.closeAuthModal();
+  }
+
+  scrollToSection(sectionName: string): void {
     const section = document.getElementById(sectionName);
     if (section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
@@ -37,13 +45,5 @@ export class AppComponent {
         behavior: 'smooth',
       });
     }
-  }
-
-  openAuthModal() {
-    this.authService.openAuthModal();
-  }
-
-  closeAuthModal() {
-    this.authService.closeAuthModal();
   }
 }
