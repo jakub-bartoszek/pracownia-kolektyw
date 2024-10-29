@@ -35,6 +35,13 @@
             >
               {{ getArtistFullName(image.artistId) }}
             </p>
+            <button
+              *ngIf="isAdmin"
+              (click)="deleteImage(image.id, image.imageUrl)"
+              class="w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+            >
+              Usuń
+            </button>
           </div>
         </div>
       </div>

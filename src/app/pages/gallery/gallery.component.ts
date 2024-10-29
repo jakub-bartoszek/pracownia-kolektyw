@@ -45,15 +45,22 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-  openModal() {
+  openModal(): void {
     this.isModalOpen = true;
   }
 
-  closeModal() {
+  closeModal(): void {
     this.isModalOpen = false;
   }
 
   getArtistFullName(artistId: string): string {
     return this.artistsService.getArtistFullName(artistId, this.artists);
+  }
+
+  async deleteImage(imageId: string, imageUrl: string): Promise<void> {
+    if (confirm('Czy na pewno chcesz usunąć tę pracę?')) {
+      await this.galleryService.deleteImage(imageId, imageUrl);
+      this.images = this.images.filter((image) => image.id !== imageId);
+    }
   }
 }
