@@ -4,12 +4,15 @@ import {
   collection,
   addDoc,
   getDocs,
+  doc,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import {
   Storage,
   ref,
   uploadBytes,
   getDownloadURL,
+  deleteObject,
 } from '@angular/fire/storage';
 import { ArtistsService } from './artists.service';
 import { ImageData } from '../models/models';
@@ -86,5 +89,14 @@ export class GalleryService {
     await addDoc(collection(this.firestore, 'images'), data);
 
     window.location.reload();
+  }
+  async deleteImage(imageId: string, imageUrl: string): Promise<void> {
+    // Usuwanie obrazu ze Storage
+    const storageRef = ref(this.storage, imageUrl);
+    await deleteObject(storageRef);
+
+    // Usuwanie dokumentu z Firestore
+    const imageDocRef = doc(this.firestore, 'images', imageId);
+    await deleteDoc(imageDocRef);
   }
 }
