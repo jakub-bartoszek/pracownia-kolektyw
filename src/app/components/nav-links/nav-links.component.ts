@@ -19,7 +19,6 @@ export class NavLinksComponent {
     { href: '/o-nas', title: 'O nas' },
     { href: '/galeria', title: 'Galeria' },
     { href: '/uslugi', title: 'Usługi' },
-    { href: '/cennik', title: 'Cennik' },
     { href: '/artysci', title: 'Artyści' },
     { href: '/kontakt', title: 'Kontakt' },
   ];

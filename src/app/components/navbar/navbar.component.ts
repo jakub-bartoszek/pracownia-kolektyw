@@ -27,7 +27,6 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
 })
 export class NavbarComponent implements OnInit {
   @Output() openModal: EventEmitter<void> = new EventEmitter();
-
   isSidebarOpen = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
@@ -49,10 +48,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (window.innerWidth >= 768) {
-        this.isSidebarOpen = false;
-      }
+    if (isPlatformBrowser(this.platformId) && window.innerWidth >= 768) {
+      this.isSidebarOpen = false;
     }
   }
 }

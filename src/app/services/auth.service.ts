@@ -20,14 +20,14 @@ export class AuthService {
   private currentRoleSubject = new BehaviorSubject<string | null>(null);
   currentRole$ = this.currentRoleSubject.asObservable();
 
-  private isAuthModalOpenSubject = new BehaviorSubject<boolean>(false);
-  isAuthModalOpen$ = this.isAuthModalOpenSubject.asObservable();
-
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   private isAdminSubject = new BehaviorSubject<boolean>(false);
   isAdmin$ = this.isAdminSubject.asObservable();
+
+  private isAuthModalOpenSubject = new BehaviorSubject<boolean>(false);
+  isAuthModalOpen$ = this.isAuthModalOpenSubject.asObservable();
 
   constructor(private auth: Auth, private firestore: Firestore) {
     onAuthStateChanged(this.auth, async (user) => {
@@ -42,14 +42,6 @@ export class AuthService {
         this.isAdminSubject.next(false);
       }
     });
-  }
-
-  openAuthModal() {
-    this.isAuthModalOpenSubject.next(true);
-  }
-
-  closeAuthModal() {
-    this.isAuthModalOpenSubject.next(false);
   }
 
   get currentUser() {
@@ -80,13 +72,30 @@ export class AuthService {
 
         const userDocRef = doc(this.firestore, `users/${uid}`);
         await setDoc(userDocRef, {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
+          firstName,
+          lastName,
+          email,
           role: 'user',
         });
       }
     );
+  }
+
+  logout() {
+    return signOut(this.auth).then(() => {
+      this.currentRoleSubject.next(null);
+      this.isAdminSubject.next(false);
+      this.isLoggedInSubject.next(false);
+      window.location.reload();
+    });
+  }
+
+  openAuthModal() {
+    this.isAuthModalOpenSubject.next(true);
+  }
+
+  closeAuthModal() {
+    this.isAuthModalOpenSubject.next(false);
   }
 
   async getUserRole(uid: string): Promise<string | null> {
@@ -98,15 +107,6 @@ export class AuthService {
     } else {
       return null;
     }
-  }
-
-  logout() {
-    return signOut(this.auth).then(() => {
-      this.currentRoleSubject.next(null);
-      this.isAdminSubject.next(false);
-      this.isLoggedInSubject.next(false);
-      window.location.reload();
-    });
   }
 
   async getUserInfo(

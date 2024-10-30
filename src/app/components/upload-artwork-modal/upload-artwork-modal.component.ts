@@ -28,7 +28,7 @@ export class UploadArtworkModalComponent {
     });
   }
 
-  public onFileDropped(files: NgxFileDropEntry[]): void {
+  onFileDropped(files: NgxFileDropEntry[]): void {
     if (files.length > 0) {
       const droppedFile = files[0];
       if (droppedFile.fileEntry.isFile) {
@@ -40,15 +40,15 @@ export class UploadArtworkModalComponent {
     }
   }
 
-  public fileOver(event: any): void {
+  fileOver(event: any): void {
     console.log('File over', event);
   }
 
-  public fileLeave(event?: any): void {
+  fileLeave(event?: any): void {
     console.log('File leave', event);
   }
 
-  public removeFile(): void {
+  removeFile(): void {
     this.selectedFile = null;
   }
 

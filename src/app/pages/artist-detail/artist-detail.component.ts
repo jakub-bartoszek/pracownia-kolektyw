@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist, ImageData } from '../../models/models';
 import { ActivatedRoute } from '@angular/router';
-import { ArtistsService } from '../../services/artists.service';
 import { CommonModule } from '@angular/common';
-import { GalleryService } from '../../services/gallery.service';
 import { FormsModule } from '@angular/forms';
+import { Artist, ImageData } from '../../models/models';
+import { ArtistsService } from '../../services/artists.service';
+import { GalleryService } from '../../services/gallery.service';
 import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
 
 @Component({
@@ -33,7 +33,7 @@ export class ArtistDetailComponent implements OnInit {
     }
   }
 
-  public onFileDropped(files: NgxFileDropEntry[]): void {
+  onFileDropped(files: NgxFileDropEntry[]): void {
     if (files.length > 0) {
       const droppedFile = files[0];
       if (droppedFile.fileEntry.isFile) {
@@ -45,11 +45,11 @@ export class ArtistDetailComponent implements OnInit {
     }
   }
 
-  public fileOver(event: any): void {
+  fileOver(event: any): void {
     console.log('File over', event);
   }
 
-  public fileLeave(event?: any): void {
+  fileLeave(event?: any): void {
     console.log('File leave', event);
   }
 

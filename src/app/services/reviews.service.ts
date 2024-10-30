@@ -37,19 +37,13 @@ export class ReviewsService {
 
   async submitReview(content: string, rate: number): Promise<void> {
     const user = this.authService.currentUser;
-    if (!user) {
-      throw new Error('User is not logged in.');
-    }
+    if (!user) throw new Error('User is not logged in.');
 
     const userInfo = await this.authService.getUserInfo(user.uid);
-    if (!userInfo) {
-      throw new Error('User information not available.');
-    }
+    if (!userInfo) throw new Error('User information not available.');
 
     const existingReview = await this.getUserReview(user.uid);
-    if (existingReview) {
-      throw new Error('You have already submitted a review.');
-    }
+    if (existingReview) throw new Error('You have already submitted a review.');
 
     const review: Omit<Review, 'date'> = {
       content,
@@ -82,13 +76,10 @@ export class ReviewsService {
 
   async removeReview(reviewId: string): Promise<void> {
     const user = this.authService.currentUser;
-    if (!user) {
-      throw new Error('User is not logged in.');
-    }
+    if (!user) throw new Error('User is not logged in.');
 
     const reviewDoc = doc(this.firestore, `reviews/${reviewId}`);
     const existingReview = await this.getUserReview(user.uid);
-
     const isAdmin = await firstValueFrom(this.authService.isAdmin$);
 
     if (existingReview?.id === reviewId || isAdmin) {
