@@ -25,6 +25,7 @@ export class UploadArtworkModalComponent {
   constructor(private fb: FormBuilder, private galleryService: GalleryService) {
     this.uploadForm = this.fb.group({
       artistId: ['', Validators.required],
+      category: ['', Validators.required],
     });
   }
 
@@ -54,9 +55,13 @@ export class UploadArtworkModalComponent {
 
   async onUpload() {
     if (this.uploadForm.valid && this.selectedFile) {
-      const artistId = this.uploadForm.value.artistId;
+      const { artistId, category } = this.uploadForm.value;
       try {
-        await this.galleryService.uploadImage(this.selectedFile, artistId);
+        await this.galleryService.uploadImage(
+          this.selectedFile,
+          artistId,
+          category
+        );
         this.close.emit();
       } catch (error) {
         console.error('Error uploading image:', error);
