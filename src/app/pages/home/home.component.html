@@ -192,53 +192,7 @@
       Skontaktuj się z nami
     </h2>
 
-    <div class="relative bg-zinc-900 p-8">
-      <form class="flex flex-col items-center gap-4">
-        <div class="flex w-full flex-col gap-2">
-          <label for="name" class="text-lg font-medium text-accent">Imię</label>
-          <input
-            type="text"
-            id="name"
-            class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-            placeholder="Twoje imię"
-            required
-          />
-        </div>
-
-        <div class="flex w-full flex-col gap-2">
-          <label for="email" class="text-lg font-medium text-accent"
-            >Email</label
-          >
-          <input
-            type="email"
-            id="email"
-            class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-            placeholder="Twój email"
-            required
-          />
-        </div>
-
-        <div class="flex w-full flex-col gap-2">
-          <label for="message" class="text-lg font-medium text-accent"
-            >Wiadomość</label
-          >
-          <textarea
-            id="message"
-            rows="4"
-            class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-            placeholder="Twoja wiadomość"
-            required
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="w-min transform whitespace-nowrap bg-accent px-8 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Wyślij
-        </button>
-      </form>
-    </div>
+    <app-contact-form></app-contact-form>
   </section>
 
   <section id="opinie">

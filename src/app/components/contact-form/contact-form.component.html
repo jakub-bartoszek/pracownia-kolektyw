@@ -1,0 +1,101 @@
+<div class="bg-zinc-900 p-4">
+  <!-- Ładowanie -->
+  <div class="flex flex-col items-center" *ngIf="formStatus === 'loading'">
+    <app-mail-send-icon class="text-accent" size="64px"></app-mail-send-icon>
+    <span class="text-xl font-semibold">Wysyłanie...</span>
+  </div>
+
+  <!-- Błąd -->
+  <div
+    class="flex flex-col items-center gap-y-4"
+    *ngIf="formStatus === 'error'"
+  >
+    <p class="font-bold text-3xl text-accent">Błąd!</p>
+    <div class="text-center">
+      <p class="font-semibold">Wystąpił błąd podczas wysyłania wiadomości.</p>
+      <p>Proszę spróbować ponownie.</p>
+    </div>
+
+    <button
+      (click)="resetForm()"
+      
+      class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
+    >
+      Spróbuj ponownie
+    </button>
+  </div>
+
+  <!-- Sukces -->
+  <div
+    class="flex flex-col items-center gap-y-4"
+    *ngIf="formStatus === 'success'"
+  >
+    <app-mail-success-icon
+      class="text-accent"
+      size="64px"
+    ></app-mail-success-icon>
+    <div class="text-center">
+      <p class="font-semibold">Dziękujemy za wiadomość!</p>
+      <p>Odpowiemy tak szybko jak to możliwe.</p>
+    </div>
+    <button
+      class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
+      (click)="resetForm()"
+      
+    >
+      Wyślij kolejną wiadomość
+    </button>
+  </div>
+
+  <!-- Formularz -->
+  <div *ngIf="!formStatus">
+    <form
+      class="flex flex-col gap-y-4 items-center"
+      (ngSubmit)="onFormSubmit()"
+      #contactForm="ngForm"
+    >
+      <div class="flex flex-col w-full gap-y-2">
+        <label for="name">Twoje imię</label>
+        <input
+          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          [(ngModel)]="name"
+          name="name"
+          required
+          type="text"
+          
+        />
+      </div>
+
+      <div class="flex flex-col w-full gap-y-2">
+        <label for="email">Twój adres e-mail</label>
+        <input
+          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          [(ngModel)]="email"
+          name="email"
+          required
+          type="email"
+          
+        />
+      </div>
+
+      <div class="flex flex-col w-full gap-y-2">
+        <label for="message">Twoja wiadomość</label>
+        <textarea
+          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          [(ngModel)]="message"
+          name="message"
+          required
+          
+        ></textarea>
+      </div>
+
+      <button
+        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
+        [disabled]="!name || !email || !message"
+        type="submit"
+      >
+        Wyślij
+      </button>
+    </form>
+  </div>
+</div>

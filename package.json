@@ -6,6 +6,7 @@
     "dev": "ng serve --proxy-config proxy.conf.json --open",
     "dev-node": "tsx watch api",
     "start": "ng serve",
+    "config": "node src/environments/set-env.js",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,6 +24,7 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.6",
+    "@emailjs/browser": "^4.4.1",
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
