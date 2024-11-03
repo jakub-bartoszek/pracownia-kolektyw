@@ -1,10 +1,10 @@
 <div
   *ngIf="artist"
-  class="mx-auto mt-8 sm:mt-20 flex max-w-full sm:max-w-[1400px] flex-col gap-y-4 p-4"
+  class="mx-auto mt-20 flex max-w-full sm:max-w-[1400px] flex-col gap-y-4 p-4"
 >
   <section id="artysta">
     <div
-      class="relative mt-4 sm:mt-8 w-full border-2 border-accent bg-background overflow-hidden"
+      class="relative w-full border-2 border-accent bg-background overflow-hidden"
     >
       <div
         class="relative mx-auto flex flex-col items-center gap-4 sm:gap-6 sm:p-8 bg-gradient-to-b from-black/60 to-transparent"
@@ -60,13 +60,29 @@
             placeholder="Surname"
             class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none w-full sm:w-auto text-center sm:text-left"
           />
+
+          <select
+            [(ngModel)]="artist.category"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none w-full sm:w-auto text-center sm:text-left"
+            required
+          >
+            <option value="" disabled selected>Wybierz kategorię</option>
+            <option value="piercing">Piercing</option>
+            <option value="tattoo">Tattoo</option>
+          </select>
         </div>
+
         <ng-container *ngIf="!isEditing">
           <h1
             class="text-4xl sm:text-5xl font-extrabold text-accent mb-2 sm:mb-4 tracking-widest text-center"
           >
             {{ artist.name }} {{ artist.surname }}
           </h1>
+          <p
+            class="text-2xl font-semibold text-accent mb-2 sm:mb-4 tracking-widest text-center"
+          >
+            {{ artist.category | titlecase }}
+          </p>
         </ng-container>
 
         <div class="w-full" *ngIf="isEditing">

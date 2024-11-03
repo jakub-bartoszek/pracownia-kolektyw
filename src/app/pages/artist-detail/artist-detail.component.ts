@@ -62,6 +62,7 @@ export class ArtistDetailComponent implements OnInit {
             name: this.artist.name,
             surname: this.artist.surname,
             biography: this.artist.biography,
+            category: this.artist.category,
           },
           this.selectedProfileImageFile
         );

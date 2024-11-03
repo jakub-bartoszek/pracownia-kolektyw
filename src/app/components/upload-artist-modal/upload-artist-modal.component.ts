@@ -26,6 +26,7 @@ export class UploadArtistModalComponent {
       lastName: ['', Validators.required],
       biography: [''],
       profileImage: [null],
+      category: ['', Validators.required],
     });
   }
 
@@ -53,6 +54,7 @@ export class UploadArtistModalComponent {
         name: this.artistForm.value.firstName,
         surname: this.artistForm.value.lastName,
         biography: this.artistForm.value.biography,
+        category: this.artistForm.value.category,
       };
 
       try {

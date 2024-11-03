@@ -5,8 +5,8 @@ import {
   addDoc,
   getDocs,
   doc,
-  deleteDoc,
   updateDoc,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import {
   getDownloadURL,

@@ -27,7 +27,7 @@ export class GalleryService {
     private artistsService: ArtistsService
   ) {}
 
-  async loadImages(): Promise<ImageData[]> {
+  async loadImages(category?: 'piercing' | 'tattoo'): Promise<ImageData[]> {
     const querySnapshot = await getDocs(collection(this.firestore, 'images'));
     return querySnapshot.docs
       .map((doc) => {
@@ -35,18 +35,24 @@ export class GalleryService {
           artistId: string;
           imageUrl: string;
           createdAt: any;
+          category: 'piercing' | 'tattoo';
         };
         return {
           id: doc.id,
           artistId: data.artistId || '',
           imageUrl: data.imageUrl || '',
+          category: data.category,
           createdAt: data.createdAt ? data.createdAt.toDate() : new Date(),
         } as ImageData;
       })
+      .filter((image) => !category || image.category === category)
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 
-  async loadImagesByArtist(artistId: string): Promise<ImageData[]> {
+  async loadImagesByArtist(
+    artistId: string,
+    category?: 'piercing' | 'tattoo'
+  ): Promise<ImageData[]> {
     const querySnapshot = await getDocs(collection(this.firestore, 'images'));
     return querySnapshot.docs
       .map((doc) => {
@@ -54,19 +60,29 @@ export class GalleryService {
           artistId: string;
           imageUrl: string;
           createdAt: any;
+          category: 'piercing' | 'tattoo';
         };
         return {
           id: doc.id,
           artistId: data.artistId || '',
           imageUrl: data.imageUrl || '',
+          category: data.category,
           createdAt: data.createdAt ? data.createdAt.toDate() : new Date(),
         } as ImageData;
       })
-      .filter((image) => image.artistId === artistId)
+      .filter(
+        (image) =>
+          image.artistId === artistId &&
+          (!category || image.category === category)
+      )
       .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   }
 
-  async uploadImage(file: File, artistId: string): Promise<void> {
+  async uploadImage(
+    file: File,
+    artistId: string,
+    category: 'piercing' | 'tattoo'
+  ): Promise<void> {
     const artists = await this.artistsService.loadArtists();
     const artistExists = artists.some((artist) => artist.id === artistId);
 
@@ -83,6 +99,7 @@ export class GalleryService {
     const data = {
       artistId: artistId,
       imageUrl: downloadURL,
+      category,
       createdAt: new Date(),
     };
 

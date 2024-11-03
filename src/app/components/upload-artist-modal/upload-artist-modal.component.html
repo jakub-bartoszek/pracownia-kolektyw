@@ -73,6 +73,17 @@
           placeholder="Biogram"
           class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
         ></textarea>
+
+        <select
+          formControlName="category"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          required
+        >
+          <option value="" disabled selected>Wybierz kategorię</option>
+          <option value="piercing">Piercing</option>
+          <option value="tattoo">Tattoo</option>
+        </select>
+
         <button
           type="submit"
           class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all"
