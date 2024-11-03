@@ -7,6 +7,7 @@ import { ReviewsService } from '../../services/reviews.service';
 import { AuthService } from '../../services/auth.service';
 import { GalleryService } from '../../services/gallery.service';
 import { ArtistsService } from '../../services/artists.service';
+import { ContactFormComponent } from "../../components/contact-form/contact-form.component";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import { ArtistsService } from '../../services/artists.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-  ],
+    ContactFormComponent
+],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
