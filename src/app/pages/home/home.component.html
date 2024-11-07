@@ -57,7 +57,7 @@
 
         <div class="mt-6">
           <a
-            href="/o-nas"
+            [routerLink]="['/o-nas']"
             class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
           >
             Dowiedz się więcej
@@ -147,7 +147,7 @@
         >
           <span class="text-5xl text-white">+{{ images.length - 6 }}</span>
           <a
-            href="/galeria"
+            [routerLink]="['/galeria']"
             class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
           >
             Zobacz Wszystkie
