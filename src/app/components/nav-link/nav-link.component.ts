@@ -10,5 +10,6 @@ import { Component, Input } from '@angular/core';
 export class NavLinkComponent {
   @Input() href: string = '#';
   @Input() title: string = '';
+  @Input() content?: { href: string; title: string }[];
   @Input() isSidebar: boolean = false;
 }
