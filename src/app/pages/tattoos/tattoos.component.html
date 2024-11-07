@@ -1,101 +1,141 @@
-<div class="mx-auto flex max-w-[1400px] flex-col gap-y-16 p-4 mt-20">
-  <section id="intro" class="text-center">
+<div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
+  <section class="text-center md:text-left" id="intro">
     <h2
-      class="text-5xl font-extrabold tracking-wide text-accent mb-4 underline underline-offset-8"
+      class="mb-6 text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Tatuaże
     </h2>
-    <p class="text-xl leading-relaxed max-w-2xl mx-auto">
+    <p class="bg-zinc-900 p-4 text-lg">
       Nasze tatuaże to wyjątkowa sztuka, która podkreśla Twoją indywidualność.
       Stworzone z pasją i precyzją, projekty dostosowujemy do Twoich potrzeb i
       osobowości, dbając o każdy detal na każdym etapie.
     </p>
   </section>
 
-  <section id="process" class="text-center p-6">
-    <h3 class="text-3xl font-semibold text-accent mb-2">Proces Tworzenia</h3>
-    <p class="text-lg leading-relaxed max-w-2xl mx-auto">
+  <section class="text-center md:text-left" id="process">
+    <h3
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
+    >
+      Proces Tworzenia
+    </h3>
+    <p class="bg-zinc-900 p-4 text-lg">
       Każdy tatuaż zaczynamy od konsultacji, aby poznać Twoje oczekiwania.
       Tworzymy projekt zgodnie z Twoją wizją, dbając o każdy detal. Na każdym
       etapie dbamy o komfort i zadowolenie.
     </p>
   </section>
 
-  <section id="tips" class="p-8">
-    <h3 class="text-3xl font-semibold text-accent mb-2 text-center">
+  <section class="text-center md:text-left" id="tips">
+    <h3
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8 md:text-4xl"
+    >
       Porady Przed i Po Zabiegu
     </h3>
-    <p class="text-lg leading-relaxed mb-4 text-center max-w-2xl mx-auto">
-      Przygotowanie do zabiegu jest ważne – zadbaj o odpowiedni wypoczynek i
-      unikaj alkoholu. Po wykonaniu tatuażu otrzymasz wskazówki dotyczące jego
-      pielęgnacji, aby zapewnić optymalne gojenie.
-    </p>
-    <ul
-      class="list-disc pl-6 text-lg leading-relaxed max-w-2xl mx-auto space-y-2"
-    >
-      <li>
-        Przed sesją tatuażu dobrze się wyśpij i zjedz pełnowartościowy posiłek.
-      </li>
-      <li>
-        Unikaj alkoholu i leków przeciwzapalnych na 24 godziny przed wizytą.
-      </li>
-      <li>
-        Pamiętaj o odpowiedniej pielęgnacji i stosowaniu zaleconych kosmetyków
-        po zabiegu.
-      </li>
-    </ul>
+    <div class="space-y-4 rounded-md bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
+      <p class="text-lg">
+        Przygotowanie do zabiegu jest ważne – zadbaj o odpowiedni wypoczynek i
+        unikaj alkoholu. Po wykonaniu tatuażu otrzymasz wskazówki dotyczące jego
+        pielęgnacji, aby zapewnić optymalne gojenie.
+      </p>
+      <ul
+        class="ml-4 list-disc space-y-1 text-left marker:text-accent md:space-y-3"
+      >
+        <li class="text-base">
+          Przed sesją tatuażu dobrze się wyśpij i zjedz pełnowartościowy
+          posiłek.
+        </li>
+        <li class="text-base">
+          Unikaj alkoholu i leków przeciwzapalnych na 24 godziny przed wizytą.
+        </li>
+        <li class="text-base">
+          Pamiętaj o odpowiedniej pielęgnacji i stosowaniu zaleconych kosmetyków
+          po zabiegu.
+        </li>
+      </ul>
+    </div>
   </section>
 
-  <section id="portfolio" class="mt-16">
+  <section id="portfolio">
     <h3
-      class="text-3xl font-semibold text-accent mb-4 text-center underline underline-offset-8"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Portfolio
     </h3>
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      <div *ngFor="let image of tattooImages" class="relative overflow-hidden">
-        <img
-          class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-          [src]="image.imageUrl"
-          alt="Tatuaż {{ getArtistFullName(image.artistId) }}"
-        />
-      </div>
-    </div>
-    <div class="mt-6 text-center">
-      <a
-        routerLink="/galeria"
-        class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+    <div
+      *ngIf="tattooImages.length"
+      class="grid grid-cols-2 gap-4 md:grid-cols-4"
+    >
+      <div
+        *ngFor="let image of tattooImages.slice(0, 8); let last = last"
+        class="relative overflow-hidden"
       >
-        Zobacz Więcej
-      </a>
+        <div class="group h-full w-full cursor-pointer">
+          <img
+            class="h-full w-full transform object-cover transition-transform duration-300"
+            [class.group-hover:scale-105]="!last"
+            [src]="image.imageUrl"
+            alt="{{ image.artistId }}"
+          />
+
+          <div
+            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
+          >
+            <a
+              [routerLink]="['/artysci', image.artistId]"
+              class="transition-colors group-hover:text-accent hover:underline w-min whitespace-nowrap"
+            >
+              {{ getArtistFullName(image.artistId) }}
+            </a>
+          </div>
+        </div>
+
+        <div
+          *ngIf="last && tattooImages.length > 8"
+          class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
+        >
+          <span class="text-5xl text-white"
+            >+{{ tattooImages.length - 8 }}</span
+          >
+          <a
+            href="/galeria"
+            class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+          >
+            Zobacz Wszystkie
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="artists" class="mt-16">
+  <section id="artists">
     <h3
-      class="text-3xl font-semibold text-accent mb-4 text-center underline underline-offset-8"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Nasi Artyści
     </h3>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <div
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <a
+        class="group flex gap-x-4 bg-zinc-900 p-4 transition hover:bg-zinc-800"
+        [routerLink]="['/artysci', artist.id]"
         *ngFor="let artist of tattooArtists"
-        class="flex items-center gap-x-8 bg-zinc-900 p-6"
       >
-        <img
-          [src]="artist.profileImageUrl"
-          alt="{{ artist.name }} {{ artist.surname }}"
-          class="h-32 w-32 rounded-full object-cover"
-        />
+        <div
+          class="flex h-32 min-h-32 w-32 min-w-32 overflow-hidden rounded-full"
+        >
+          <img
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            [src]="artist.profileImageUrl"
+            alt="{{ artist.name }} {{ artist.surname }}"
+          />
+        </div>
+
         <div>
-          <p class="text-2xl font-semibold text-accent mb-1">
+          <p class="text-2xl font-semibold text-accent">
             {{ artist.name }} {{ artist.surname }}
           </p>
-          <p class="text-lg leading-relaxed">
-            {{ artist.biography }}
-          </p>
+          <p>{{ artist.biography | slice : 0 : 150 }}...</p>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </div>
