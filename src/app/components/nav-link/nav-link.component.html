@@ -23,7 +23,7 @@
         *ngFor="let item of content; let i = index"
         [ngStyle]="{'transition-delay': (i * 100) + 'ms'}">
       <a
-        class="flex whitespace-nowrap px-4 py-2 hover:text-accent transition-colors justify-center"
+        class="flex whitespace-nowrap p-4 hover:text-accent transition-colors justify-center"
         [href]="item.href"
       >
         {{ item.title }}
