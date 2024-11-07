@@ -3,11 +3,12 @@ import { Artist, ImageData } from '../../models/models';
 import { ArtistsService } from '../../services/artists.service';
 import { GalleryService } from '../../services/gallery.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tattoos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './tattoos.component.html',
 })
 export class TattoosComponent implements OnInit {

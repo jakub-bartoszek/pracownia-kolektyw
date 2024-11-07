@@ -1,0 +1,42 @@
+<div class="mx-auto max-w-[1400px] mt-10 min-h-[400px] h-screen text-white">
+  <section
+    id="usługi"
+    class="p-4 flex flex-col justify-center items-center h-full"
+  >
+    <h2
+      class="text-center text-5xl font-extrabold tracking-wide text-accent mb-8"
+    >
+      Nasze Usługi
+    </h2>
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+      <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
+        <div
+          class="flex h-36 w-36 md:h-48 md:w-48 items-center justify-center rounded-full bg-accent mb-4"
+        >
+          <img
+            class="cursor-pointer p-12 transition-transform hover:scale-110"
+            src="/images/tatuaze.png"
+            alt="Tatuaże"
+          />
+        </div>
+        <p class="text-center text-xl md:text-2xl font-semibold uppercase">
+          Tatuaże
+        </p>
+      </a>
+      <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
+        <div
+          class="flex h-36 w-36 md:h-48 md:w-48 items-center justify-center rounded-full bg-accent mb-4"
+        >
+          <img
+            class="cursor-pointer p-12 transition-transform hover:scale-110"
+            src="/images/piercing.png"
+            alt="Piercing"
+          />
+        </div>
+        <p class="text-center text-xl md:text-2xl font-semibold uppercase">
+          Piercing
+        </p>
+      </a>
+    </div>
+  </section>
+</div>

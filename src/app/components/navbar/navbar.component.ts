@@ -8,6 +8,7 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 import { NavLinksComponent } from '../nav-links/nav-links.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -22,6 +23,7 @@ import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
     SidebarComponent,
     MenuToggleComponent,
     CommonModule,
+    RouterModule,
   ],
   templateUrl: './navbar.component.html',
 })

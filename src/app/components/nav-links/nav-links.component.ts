@@ -18,7 +18,14 @@ export class NavLinksComponent {
   links = [
     { href: '/o-nas', title: 'O nas' },
     { href: '/galeria', title: 'Galeria' },
-    { href: '/uslugi', title: 'Usługi' },
+    {
+      href: '/uslugi',
+      title: 'Usługi',
+      content: [
+        { href: '/uslugi/tatuaze', title: 'Tatuaże' },
+        { href: '/uslugi/piercing', title: 'Piercing' },
+      ],
+    },
     { href: '/artysci', title: 'Artyści' },
     { href: '/kontakt', title: 'Kontakt' },
   ];
