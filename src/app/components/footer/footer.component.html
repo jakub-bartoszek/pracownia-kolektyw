@@ -88,7 +88,7 @@
       <ul class="space-y-1 leading-normal">
         <li>
           <button
-            (click)="scrollToSection('kontakt')"
+            (click)="navigateAndScrollToSection('kontakt')"
             class="text-gray-300 hover:text-white hover:underline"
           >
             Formularz Kontaktowy
@@ -96,25 +96,20 @@
         </li>
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/artysci']"
+            href="/artysci"
             class="text-gray-300 hover:text-white hover:underline"
             >Zespół Artystów</a
           >
         </li>
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/galeria']"
+            href="/galeria"
             class="text-gray-300 hover:text-white hover:underline"
             >Galeria Tatuaży</a
           >
         </li>
         <li>
-          <a
-            target="_blank"
-            [routerLink]="['/faq']"
-            class="text-gray-300 hover:text-white hover:underline"
+          <a href="/faq" class="text-gray-300 hover:text-white hover:underline"
             >FAQ</a
           >
         </li>
@@ -126,16 +121,14 @@
       <ul class="space-y-1 leading-normal">
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/polityka-prawnosci']"
+            href="/polityka-prawnosci"
             class="text-gray-300 hover:text-white hover:underline"
             >Polityka Prywatności</a
           >
         </li>
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/regulamin']"
+            href="/regulamin"
             class="text-gray-300 hover:text-white hover:underline"
             >Regulamin</a
           >
@@ -148,8 +141,7 @@
       <ul class="space-y-1 leading-normal">
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/bezpieczenstwo-i-higiena']"
+            href="/bezpieczenstwo-i-higiena"
             class="text-gray-300 hover:text-white hover:underline"
             >Nasze zasady bezpieczeństwa i higieny</a
           >
@@ -162,7 +154,7 @@
       <ul class="space-y-1 leading-normal">
         <li>
           <button
-            (click)="scrollToSection('opinie')"
+            (click)="navigateAndScrollToSection('opinie')"
             class="text-gray-300 hover:text-white hover:underline"
           >
             Opinie naszych klientów
@@ -176,8 +168,7 @@
       <ul class="space-y-1 leading-normal">
         <li>
           <a
-            target="_blank"
-            [routerLink]="['/uslugi']"
+            href="/uslugi"
             class="text-gray-300 hover:text-white hover:underline"
             >Usługi</a
           >
