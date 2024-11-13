@@ -6,6 +6,8 @@ import { ArtistDetailComponent } from './pages/artist-detail/artist-detail.compo
 import { TattoosComponent } from './pages/tattoos/tattoos.component';
 import { PiercingComponent } from './pages/piercing/piercing.component';
 import { ServicesComponent } from './pages/services/services.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'uslugi', component: ServicesComponent },
   { path: 'uslugi/tatuaze', component: TattoosComponent },
   { path: 'uslugi/piercing', component: PiercingComponent },
+  { path: 'regulamin', component: TermsComponent },
+  { path: 'polityka-prawnosci', component: PrivacyPolicyComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

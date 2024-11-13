@@ -1,7 +1,7 @@
 <div class="relative">
   <img
     src="/images/banner.png"
-    class="w-full object-cover object-center h-dvh min-w-full brightness-50"
+    class="h-dvh w-full min-w-full object-cover object-center brightness-50"
   />
 
   <div class="absolute inset-0 flex flex-col justify-end">
@@ -10,7 +10,7 @@
     >
       <button
         (click)="scrollToSection('o-nas')"
-        class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+        class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
       >
         Poznaj nas!
       </button>
@@ -22,10 +22,12 @@
   <section id="o-nas" class="p-4">
     <div class="relative mt-8 w-full border-2 border-accent bg-background">
       <div
-        class="relative mx-auto flex flex-col gap-4 p-8 bg-gradient-to-b from-black/60 to-transparent"
+        class="relative mx-auto flex flex-col gap-4 bg-gradient-to-b from-black/60 to-transparent p-8"
       >
         <div>
-          <h2 class="text-5xl font-extrabold tracking-wide text-accent mb-2">
+          <h2
+            class="mb-4 text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
+          >
             O Pracowni Kolektyw
           </h2>
           <p class="text-xl leading-relaxed">
@@ -37,7 +39,7 @@
         </div>
 
         <div>
-          <h3 class="text-3xl font-semibold text-accent mb-2">Nasza Misja</h3>
+          <h3 class="mb-2 text-3xl font-semibold text-accent">Nasza Misja</h3>
           <p class="text-lg leading-relaxed">
             Pragniemy, by każdy tatuaż opowiadał wyjątkową historię. Od
             koncepcji po wykonanie, dbamy o każdy detal, oferując pełne wsparcie
@@ -47,7 +49,7 @@
         </div>
 
         <div>
-          <h3 class="text-xl font-semibold text-accent mb-2">Dlaczego my?</h3>
+          <h3 class="mb-2 text-xl font-semibold text-accent">Dlaczego my?</h3>
           <p class="text-lg leading-relaxed">
             W Pracowni Kolektyw stawiamy na jakość, precyzję i niepowtarzalność.
             W przyjaznej atmosferze tworzymy nie tylko tatuaże, ale wyjątkowe
@@ -58,7 +60,7 @@
         <div class="mt-6">
           <a
             [routerLink]="['/o-nas']"
-            class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+            class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
           >
             Dowiedz się więcej
           </a>
@@ -71,60 +73,62 @@
     </div>
   </section>
 
-  <section id="usługi" class="p-4">
+  <section
+    class="flex h-[600px] flex-col items-center justify-center"
+    id="usługi"
+  >
     <h2
-      class="mb-28 text-center text-5xl font-extrabold tracking-wide text-accent"
+      class="mb-12 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Nasze Usługi
     </h2>
-    <div class="flex justify-center gap-x-16">
-      <a
-        routerLink="/uslugi/tatuaze"
-        class="flex flex-col justify-between gap-y-8"
-      >
+    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+      <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
         <div
-          class="flex h-48 w-48 items-center justify-center rounded-full bg-accent"
+          class="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
         >
           <img
-            class="cursor-pointer p-12 transition-transform hover:scale-110"
+            class="cursor-pointer p-12 transition duration-200 hover:scale-110"
             src="/images/tatuaze.png"
+            alt="Tatuaże"
           />
         </div>
-        <p class="text-center text-2xl font-semibold uppercase">Tatuaże</p>
+        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
+          Tatuaże
+        </p>
       </a>
-      <a
-        routerLink="/uslugi/piercing"
-        class="flex flex-col justify-between gap-y-8"
-      >
+      <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
         <div
-          class="flex h-48 w-48 items-center justify-center rounded-full bg-accent"
+          class="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
         >
           <img
-            class="cursor-pointer p-12 transition-transform hover:scale-110"
+            class="cursor-pointer p-12 transition duration-200 hover:scale-110"
             src="/images/piercing.png"
+            alt="Piercing"
           />
         </div>
-        <p class="text-center text-2xl font-semibold uppercase">Piercing</p>
+        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
+          Piercing
+        </p>
       </a>
     </div>
   </section>
 
   <section id="galeria">
     <h2
-      class="mb-8 text-5xl font-extrabold tracking-wide text-accent text-center"
+      class="mb-6 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Nasze Prace
     </h2>
 
-    <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-3">
+    <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-4">
       <div
-        *ngFor="let image of images.slice(0, 6); let last = last"
+        *ngFor="let image of images.slice(0, 8); let last = last"
         class="relative overflow-hidden"
       >
         <div class="group h-full w-full cursor-pointer">
           <img
-            class="h-full w-full transform object-cover transition-transform duration-300"
-            [class.group-hover:scale-105]="!last"
+            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
             [src]="image.imageUrl"
             alt="{{ image.artistId }}"
           />
@@ -134,7 +138,7 @@
           >
             <a
               [routerLink]="['/artysci', image.artistId]"
-              class="transition-colors group-hover:text-accent hover:underline w-min whitespace-nowrap"
+              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
             >
               {{ getArtistFullName(image.artistId) }}
             </a>
@@ -142,13 +146,13 @@
         </div>
 
         <div
-          *ngIf="last && images.length > 6"
+          *ngIf="last && images.length > 8"
           class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
         >
-          <span class="text-5xl text-white">+{{ images.length - 6 }}</span>
+          <span class="text-5xl text-white">+{{ images.length - 8 }}</span>
           <a
             [routerLink]="['/galeria']"
-            class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+            class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
           >
             Zobacz Wszystkie
           </a>
@@ -159,26 +163,26 @@
 
   <section id="artysci">
     <h2
-      class="mb-8 text-5xl font-extrabold tracking-widest text-accent text-center"
+      class="mb-6 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
     >
       Nasi Artyści
     </h2>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" *ngIf="artists.length">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2" *ngIf="artists.length">
       <a
         [routerLink]="['/artysci', artist.id]"
         *ngFor="let artist of artists"
-        class="group flex gap-x-8 items-center bg-zinc-900 p-4 cursor-pointer"
+        class="group flex cursor-pointer items-center gap-x-8 bg-zinc-900 p-4"
       >
-        <div class="h-32 w-32 flex rounded-full overflow-hidden">
+        <div class="flex h-32 w-32 overflow-hidden rounded-full">
           <img
-            class="h-full w-full object-cover group-hover:scale-105 transition-transform"
+            class="h-full w-full object-cover transition-transform group-hover:scale-105"
             [src]="artist.profileImageUrl"
             alt="{{ artist.name }} {{ artist.surname }}"
           />
         </div>
 
-        <p class="text-3xl group-hover:text-accent font-bold transition-colors">
+        <p class="text-3xl font-bold transition-colors group-hover:text-accent">
           {{ artist.name }} {{ artist.surname }}
         </p>
       </a>
@@ -187,7 +191,7 @@
 
   <section id="kontakt">
     <h2
-      class="mb-8 text-center text-5xl font-extrabold tracking-wide text-accent"
+      class="mb-4 text-center text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
     >
       Skontaktuj się z nami
     </h2>
@@ -197,7 +201,7 @@
 
   <section id="opinie">
     <h2
-      class="mb-8 text-center text-5xl font-extrabold tracking-wide text-accent"
+      class="mb-4 text-center text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
     >
       Opinie
     </h2>
@@ -205,13 +209,13 @@
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div
         *ngFor="let review of reviews"
-        class="relative bg-zinc-900 p-4 flex flex-col"
+        class="relative flex flex-col bg-zinc-900 p-4"
       >
         <div class="flex justify-between items-center">
-          <p class="text-accent font-bold">{{ review.name }}</p>
+          <p class="font-bold text-accent">{{ review.name }}</p>
           <p class="text-xs text-zinc-400">{{ review.date }}</p>
         </div>
-        <p class="text-sm text-zinc-400 mb-4">
+        <p class="mb-4 text-sm text-zinc-400">
           Ocena:
           <span class="font-semibold text-accent">{{ review.rate }} / 5</span>
         </p>
@@ -220,7 +224,7 @@
         <button
           *ngIf="isLoggedIn && (userReview?.id === review.id || isAdmin)"
           (click)="review.id && deleteReview(review.id)"
-          class="mt-4 transform bg-accent w-min whitespace-nowrap px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+          class="mt-4 w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
         >
           Usuń opinię
         </button>
