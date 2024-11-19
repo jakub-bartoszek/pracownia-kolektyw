@@ -1,9 +1,9 @@
-<div class="relative group flex flex-col items-center">
+<div class="group relative flex flex-col items-center">
   <a
     [ngClass]="[
-      'flex whitespace-nowrap px-4 py-2 hover:text-accent transition-colors',
+      'flex whitespace-nowrap px-4 py-2 transition-colors hover:text-accent',
       isSidebar
-        ? 'justify-center py-4'
+        ? 'w-full justify-center py-4 hover:bg-zinc-900'
         : 'h-full w-full items-center lg:text-lg'
     ]"
     [href]="href"
@@ -14,16 +14,25 @@
   <ul
     [ngClass]="[
       isSidebar
-        ? 'flex flex-col overflow-hidden max-h-0 transition-[max-height] duration-500 ease-in-out group-hover:max-h-[500px] space-y-2'
-        : 'absolute top-full scale-y-0 group-hover:scale-y-100 transition-transform origin-top'
+        ? 'flex max-h-0 w-full flex-col overflow-hidden transition-[max-height] duration-500 ease-in-out group-hover:max-h-[500px]'
+        : 'absolute top-full origin-top scale-y-0 transition-transform group-hover:scale-y-100'
     ]"
     *ngIf="content"
   >
-    <li class="bg-background transform -translate-y-5 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100" 
-        *ngFor="let item of content; let i = index"
-        [ngStyle]="{'transition-delay': (i * 100) + 'ms'}">
+    <li
+      *ngFor="let item of content; let i = index"
+      [ngClass]="[
+        'bg-background transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100',
+        isSidebar
+          ? 'w-full bg-zinc-900 hover:bg-zinc-800'
+          : '-translate-y-5 opacity-0'
+      ]"
+      [ngStyle]="{
+        'transition-delay': isSidebar ? i * 100 + 'ms' : i * 50 + 'ms'
+      }"
+    >
       <a
-        class="flex whitespace-nowrap p-4 hover:text-accent transition-colors justify-center"
+        class="flex justify-center whitespace-nowrap p-4 transition-colors hover:text-accent"
         [href]="item.href"
       >
         {{ item.title }}
