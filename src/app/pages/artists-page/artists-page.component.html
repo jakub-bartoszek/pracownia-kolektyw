@@ -1,0 +1,19 @@
+<div
+  class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4 bg-dark text-white"
+>
+  <div *ngIf="isAdmin" class="flex justify-center">
+    <button
+      (click)="openModal()"
+      class="w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+    >
+      Dodaj Artystę
+    </button>
+  </div>
+
+  <app-artists-section></app-artists-section>
+
+  <app-upload-artist-modal
+    *ngIf="isModalOpen"
+    (close)="closeModal()"
+  ></app-upload-artist-modal>
+</div>
