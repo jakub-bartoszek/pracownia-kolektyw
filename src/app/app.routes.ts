@@ -9,6 +9,7 @@ import { ServicesPageComponent } from './pages/services-page/services-page.compo
 import { TermsPageComponent } from './pages/terms-page/terms-page.component';
 import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'uslugi', component: ServicesPageComponent },
   { path: 'uslugi/tatuaze', component: TattoosPageComponent },
   { path: 'uslugi/piercing', component: PiercingPageComponent },
+  { path: 'kontakt', component: ContactPageComponent },
   { path: 'regulamin', component: TermsPageComponent },
   { path: 'polityka-prawnosci', component: PrivacyPolicyPageComponent },
   { path: 'faq', component: FaqPageComponent },
