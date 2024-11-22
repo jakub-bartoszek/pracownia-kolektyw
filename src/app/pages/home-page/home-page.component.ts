@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Artist, ImageData, Review } from '../../models/models';
@@ -11,7 +11,7 @@ import { ContactFormComponent } from '../../components/contact-form/contact-form
 import { ArtistsSectionComponent } from '../../components/artists-section/artists-section.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -21,9 +21,9 @@ import { ArtistsSectionComponent } from '../../components/artists-section/artist
     ContactFormComponent,
     ArtistsSectionComponent,
   ],
-  templateUrl: './home.component.html',
+  templateUrl: './home-page.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
   reviews: Review[] = [];
   isLoggedIn = false;
   isAdmin = false;

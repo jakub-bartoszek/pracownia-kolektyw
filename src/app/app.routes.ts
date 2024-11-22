@@ -1,25 +1,25 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { GalleryComponent } from './pages/gallery/gallery.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
-import { ArtistDetailComponent } from './pages/artist-detail/artist-detail.component';
-import { TattoosComponent } from './pages/tattoos/tattoos.component';
-import { PiercingComponent } from './pages/piercing/piercing.component';
-import { ServicesComponent } from './pages/services/services.component';
-import { TermsComponent } from './pages/terms/terms.component';
-import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
-import { FaqComponent } from './pages/faq/faq.component';
+import { ArtistPageComponent } from './pages/artist-page/artist-page.component';
+import { TattoosPageComponent } from './pages/tattoos-page/tattoos-page.component';
+import { PiercingPageComponent } from './pages/piercing-page/piercing-page.component';
+import { ServicesPageComponent } from './pages/services-page/services-page.component';
+import { TermsPageComponent } from './pages/terms-page/terms-page.component';
+import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-policy-page.component';
+import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'galeria', component: GalleryComponent },
+  { path: '', component: HomePageComponent },
+  { path: 'galeria', component: GalleryPageComponent },
   { path: 'artysci', component: ArtistsPageComponent },
-  { path: 'artysci/:id', component: ArtistDetailComponent },
-  { path: 'uslugi', component: ServicesComponent },
-  { path: 'uslugi/tatuaze', component: TattoosComponent },
-  { path: 'uslugi/piercing', component: PiercingComponent },
-  { path: 'regulamin', component: TermsComponent },
-  { path: 'polityka-prawnosci', component: PrivacyPolicyComponent },
-  { path: 'faq', component: FaqComponent },
+  { path: 'artysci/:id', component: ArtistPageComponent },
+  { path: 'uslugi', component: ServicesPageComponent },
+  { path: 'uslugi/tatuaze', component: TattoosPageComponent },
+  { path: 'uslugi/piercing', component: PiercingPageComponent },
+  { path: 'regulamin', component: TermsPageComponent },
+  { path: 'polityka-prawnosci', component: PrivacyPolicyPageComponent },
+  { path: 'faq', component: FaqPageComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

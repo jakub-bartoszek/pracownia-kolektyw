@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-tattoos',
+  selector: 'app-tattoos-page',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './tattoos.component.html',
+  templateUrl: './tattoos-page.component.html',
 })
-export class TattoosComponent implements OnInit {
+export class TattoosPageComponent implements OnInit {
   tattooArtists: Artist[] = [];
   tattooImages: ImageData[] = [];
   tattooStyles = [

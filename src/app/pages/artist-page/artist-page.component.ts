@@ -8,12 +8,12 @@ import { GalleryService } from '../../services/gallery.service';
 import { NgxFileDropEntry, NgxFileDropModule } from 'ngx-file-drop';
 
 @Component({
-  selector: 'app-artist-detail',
+  selector: 'app-artist-page',
   standalone: true,
   imports: [CommonModule, FormsModule, NgxFileDropModule],
-  templateUrl: './artist-detail.component.html',
+  templateUrl: './artist-page.component.html',
 })
-export class ArtistDetailComponent implements OnInit {
+export class ArtistPageComponent implements OnInit {
   artist: Artist | null = null;
   artworks: ImageData[] = [];
   isEditing = false;

@@ -9,7 +9,7 @@ import { ArtistsService } from '../../services/artists.service';
 import { UploadArtworkModalComponent } from '../../components/upload-artwork-modal/upload-artwork-modal.component';
 
 @Component({
-  selector: 'app-gallery',
+  selector: 'app-gallery-page',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -17,9 +17,9 @@ import { UploadArtworkModalComponent } from '../../components/upload-artwork-mod
     CommonModule,
     UploadArtworkModalComponent,
   ],
-  templateUrl: './gallery.component.html',
+  templateUrl: './gallery-page.component.html',
 })
-export class GalleryComponent implements OnInit {
+export class GalleryPageComponent implements OnInit {
   artists: Artist[] = [];
   images: ImageData[] = [];
   isLoggedIn = false;
