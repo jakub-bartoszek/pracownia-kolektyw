@@ -31,7 +31,7 @@
           {{ artist.name }} {{ artist.surname }}
         </p>
         <p class="mt-2 text-sm sm:text-base text-gray-400">
-          {{ truncateBiography(artist.biography) }}
+          {{ artist.biography | slice : 0 : 150 }}...
         </p>
       </div>
     </a>

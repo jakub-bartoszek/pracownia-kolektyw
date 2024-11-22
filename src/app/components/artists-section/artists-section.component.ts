@@ -32,10 +32,4 @@ export class ArtistsSectionComponent implements OnInit {
       this.isAdmin = admin;
     });
   }
-
-  truncateBiography(biography: string, maxLength: number = 120): string {
-    return biography.length > maxLength
-      ? biography.substring(0, maxLength).trimEnd() + '...'
-      : biography;
-  }
 }
