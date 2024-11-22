@@ -1,26 +1,33 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
   <section class="text-left" id="regulamin">
     <h2
-      class="mb-6 text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
-      Regulamin Salonu
+      FAQ
     </h2>
-    <div class="bg-zinc-900 p-4 pl-6">
-      <ol
-        class="list-decimal pl-3 text-lg space-y-8 marker:text-accent marker:font-bold"
-      >
-        <li *ngFor="let rule of rules; let i = index">
-          <div
-            (click)="toggleAnswer(i)"
-            class="cursor-pointer font-bold"
+    <ol class="space-y-4 text-lg md:text-xl">
+      <li *ngFor="let rule of rules; let i = index">
+        <div
+          (click)="toggleAnswer(i)"
+          class="flex cursor-pointer justify-between bg-zinc-900 p-3 font-bold text-white transition-colors hover:bg-zinc-800"
+        >
+          {{ rule.question }}
+          <span
+            class="h-min transform text-accent transition-transform"
+            [ngClass]="{
+              'rotate-180': openedIndex === i
+            }"
           >
-            {{ rule.question }}
-          </div>
-          <div *ngIf="openedIndex === i" class="mt-2 text-white leading-tight">
-            {{ rule.answer }}
-          </div>
-        </li>
-      </ol>
-    </div>
+            ▼
+          </span>
+        </div>
+        <div
+          *ngIf="openedIndex === i"
+          class="bg-zinc-800 p-4 text-sm leading-relaxed text-white md:text-base"
+        >
+          {{ rule.answer }}
+        </div>
+      </li>
+    </ol>
   </section>
 </div>
