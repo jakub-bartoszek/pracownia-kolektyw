@@ -1,7 +1,7 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section class="text-center md:text-left" id="intro">
+  <section id="intro">
     <h2
-      class="mb-6 text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Tatuaże
     </h2>
@@ -12,9 +12,9 @@
     </p>
   </section>
 
-  <section class="text-center md:text-left" id="process">
+  <section id="process">
     <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Proces Tworzenia
     </h3>
@@ -25,9 +25,9 @@
     </p>
   </section>
 
-  <section class="text-center md:text-left" id="tips">
+  <section id="tips">
     <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8 md:text-4xl"
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Porady Przed i Po Zabiegu
     </h3>
@@ -57,7 +57,7 @@
 
   <section id="portfolio">
     <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Portfolio
     </h3>
@@ -109,31 +109,38 @@
 
   <section id="artists">
     <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Nasi Artyści
     </h3>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div
+      class="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2"
+      *ngIf="tattooArtists.length"
+    >
       <a
-        class="group flex gap-x-4 bg-zinc-900 p-4 transition hover:bg-zinc-800"
         [routerLink]="['/artysci', artist.id]"
         *ngFor="let artist of tattooArtists"
+        class="group flex cursor-pointer items-center gap-x-4 sm:gap-x-8 bg-zinc-900 p-4"
       >
         <div
-          class="flex h-32 min-h-32 w-32 min-w-32 overflow-hidden rounded-full"
+          class="flex aspect-square h-24 w-24 min-w-24 overflow-hidden rounded-full sm:h-32 sm:w-32 sm:min-w-32"
         >
           <img
-            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            class="h-full w-full object-cover transition-transform group-hover:scale-105"
             [src]="artist.profileImageUrl"
             alt="{{ artist.name }} {{ artist.surname }}"
           />
         </div>
 
         <div>
-          <p class="text-2xl font-semibold text-accent">
+          <p
+            class="text-2xl sm:text-3xl font-bold transition-colors group-hover:text-accent"
+          >
             {{ artist.name }} {{ artist.surname }}
           </p>
-          <p>{{ artist.biography | slice : 0 : 150 }}...</p>
+          <p class="mt-2 text-sm sm:text-base text-gray-400">
+            {{ artist.biography | slice : 0 : 150 }}...
+          </p>
         </div>
       </a>
     </div>

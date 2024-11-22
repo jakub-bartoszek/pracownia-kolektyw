@@ -19,18 +19,18 @@
 </div>
 
 <div class="mx-auto flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section id="o-nas" class="p-4">
+  <section id="o-nas">
     <div class="relative mt-8 w-full border-2 border-accent bg-background">
       <div
-        class="relative mx-auto flex flex-col gap-4 bg-gradient-to-b from-black/60 to-transparent p-8"
+        class="relative mx-auto flex flex-col gap-4 bg-gradient-to-b from-black/60 to-transparent p-4"
       >
         <div>
           <h2
-            class="mb-4 text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
+            class="mb-4 text-4xl sm:text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
           >
             O Pracowni Kolektyw
           </h2>
-          <p class="text-xl leading-relaxed">
+          <p class="leading-relaxed sm:text-xl">
             Pracownia Kolektyw to miejsce, w którym pasja do sztuki tatuażu
             spotyka się z indywidualnym podejściem do każdego klienta. Nasz
             zespół doświadczonych artystów tworzy unikatowe projekty, zawsze
@@ -39,8 +39,10 @@
         </div>
 
         <div>
-          <h3 class="mb-2 text-3xl font-semibold text-accent">Nasza Misja</h3>
-          <p class="text-lg leading-relaxed">
+          <h3 class="mb-2 text-3xl font-semibold text-accent sm:text-4xl">
+            Nasza Misja
+          </h3>
+          <p class="leading-relaxed sm:text-lg">
             Pragniemy, by każdy tatuaż opowiadał wyjątkową historię. Od
             koncepcji po wykonanie, dbamy o każdy detal, oferując pełne wsparcie
             na każdym etapie. Gwarantujemy profesjonalizm i bezpieczeństwo przy
@@ -49,8 +51,10 @@
         </div>
 
         <div>
-          <h3 class="mb-2 text-xl font-semibold text-accent">Dlaczego my?</h3>
-          <p class="text-lg leading-relaxed">
+          <h3 class="mb-2 text-3xl font-semibold text-accent sm:text-4xl">
+            Dlaczego my?
+          </h3>
+          <p class="leading-relaxed sm:text-lg">
             W Pracowni Kolektyw stawiamy na jakość, precyzję i niepowtarzalność.
             W przyjaznej atmosferze tworzymy nie tylko tatuaże, ale wyjątkowe
             dzieła sztuki, które towarzyszą Ci przez całe życie.
@@ -68,7 +72,7 @@
       </div>
 
       <div
-        class="absolute inset-0 -z-10 h-full w-full rotate-3 border-2 border-accent"
+        class="absolute inset-0 -z-10 h-full w-full rotate-2 border-2 border-accent sm:rotate-3"
       ></div>
     </div>
   </section>
@@ -78,17 +82,17 @@
     id="usługi"
   >
     <h2
-      class="mb-12 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-12 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Usługi
     </h2>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
       <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
         <div
-          class="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
+          class="mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-accent p-8 sm:h-40 sm:w-40 md:h-48 md:w-48"
         >
           <img
-            class="cursor-pointer p-12 transition duration-200 hover:scale-110"
+            class="cursor-pointer transition duration-200 hover:scale-110"
             src="/images/tatuaze.png"
             alt="Tatuaże"
           />
@@ -99,10 +103,10 @@
       </a>
       <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
         <div
-          class="mb-4 flex h-40 w-40 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
+          class="mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-accent p-8 sm:h-40 sm:w-40 md:h-48 md:w-48"
         >
           <img
-            class="cursor-pointer p-12 transition duration-200 hover:scale-110"
+            class="cursor-pointer transition duration-200 hover:scale-110"
             src="/images/piercing.png"
             alt="Piercing"
           />
@@ -116,7 +120,7 @@
 
   <section id="galeria">
     <h2
-      class="mb-6 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
+      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Prace
     </h2>
@@ -126,7 +130,7 @@
         *ngFor="let image of images.slice(0, 8); let last = last"
         class="relative overflow-hidden"
       >
-        <div class="group h-full w-full cursor-pointer">
+        <div class="group h-full w-full cursor-pointer aspect-[3/4]">
           <img
             class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
             [src]="image.imageUrl"
@@ -161,37 +165,11 @@
     </div>
   </section>
 
-  <section id="artysci">
-    <h2
-      class="mb-6 text-center text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
-    >
-      Nasi Artyści
-    </h2>
-
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2" *ngIf="artists.length">
-      <a
-        [routerLink]="['/artysci', artist.id]"
-        *ngFor="let artist of artists"
-        class="group flex cursor-pointer items-center gap-x-8 bg-zinc-900 p-4"
-      >
-        <div class="flex h-32 w-32 overflow-hidden rounded-full">
-          <img
-            class="h-full w-full object-cover transition-transform group-hover:scale-105"
-            [src]="artist.profileImageUrl"
-            alt="{{ artist.name }} {{ artist.surname }}"
-          />
-        </div>
-
-        <p class="text-3xl font-bold transition-colors group-hover:text-accent">
-          {{ artist.name }} {{ artist.surname }}
-        </p>
-      </a>
-    </div>
-  </section>
+  <app-artists-section></app-artists-section>
 
   <section id="kontakt">
     <h2
-      class="mb-4 text-center text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
+      class="mb-4 text-center text-4xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Skontaktuj się z nami
     </h2>
@@ -201,7 +179,7 @@
 
   <section id="opinie">
     <h2
-      class="mb-4 text-center text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
+      class="mb-4 text-center text-4xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Opinie
     </h2>
@@ -237,7 +215,7 @@
 
     <ng-container *ngIf="!isAdmin">
       <ng-container *ngIf="!userReview; else existingReview">
-        <div class="mt-4 bg-zinc-900 p-8">
+        <div class="mt-4 bg-zinc-900 p-4 sm:p-8">
           <h3 class="mb-4 text-center text-2xl font-semibold text-accent">
             Dodaj swoją opinię
           </h3>

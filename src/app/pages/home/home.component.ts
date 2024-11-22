@@ -7,19 +7,20 @@ import { ReviewsService } from '../../services/reviews.service';
 import { AuthService } from '../../services/auth.service';
 import { GalleryService } from '../../services/gallery.service';
 import { ArtistsService } from '../../services/artists.service';
-import { ContactFormComponent } from "../../components/contact-form/contact-form.component";
+import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
+import { ArtistsSectionComponent } from '../../components/artists-section/artists-section.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    RouterOutlet,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    ContactFormComponent
-],
+    ContactFormComponent,
+    ArtistsSectionComponent,
+  ],
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {

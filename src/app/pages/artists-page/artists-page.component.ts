@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ArtistsService } from '../../services/artists.service';
 import { AuthService } from '../../services/auth.service';
-import { Artist } from '../../models/models';
 import { UploadArtistModalComponent } from '../../components/upload-artist-modal/upload-artist-modal.component';
+import { ArtistsSectionComponent } from '../../components/artists-section/artists-section.component';
 
 @Component({
   standalone: true,
-  imports: [UploadArtistModalComponent, CommonModule, RouterModule],
-  selector: 'app-artists',
-  templateUrl: './artists.component.html',
+  imports: [
+    UploadArtistModalComponent,
+    CommonModule,
+    RouterModule,
+    ArtistsSectionComponent,
+  ],
+  selector: 'app-artists-page',
+  templateUrl: './artists-page.component.html',
 })
-export class ArtistsComponent implements OnInit {
-  artists: Artist[] = [];
+export class ArtistsPageComponent implements OnInit {
   isModalOpen = false;
   isAdmin = false;
   isLoggedIn = false;
 
-  constructor(
-    private authService: AuthService,
-    private artistsService: ArtistsService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   async ngOnInit(): Promise<void> {
-    this.artists = await this.artistsService.loadArtists();
-
     this.authService.isLoggedIn$.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
     });

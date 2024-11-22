@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
-import { ArtistsComponent } from './pages/artists/artists.component';
+import { ArtistsPageComponent } from './pages/artists-page/artists-page.component';
 import { ArtistDetailComponent } from './pages/artist-detail/artist-detail.component';
 import { TattoosComponent } from './pages/tattoos/tattoos.component';
 import { PiercingComponent } from './pages/piercing/piercing.component';
@@ -13,7 +13,7 @@ import { FaqComponent } from './pages/faq/faq.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'galeria', component: GalleryComponent },
-  { path: 'artysci', component: ArtistsComponent },
+  { path: 'artysci', component: ArtistsPageComponent },
   { path: 'artysci/:id', component: ArtistDetailComponent },
   { path: 'uslugi', component: ServicesComponent },
   { path: 'uslugi/tatuaze', component: TattoosComponent },

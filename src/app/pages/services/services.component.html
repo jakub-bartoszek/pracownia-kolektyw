@@ -1,17 +1,17 @@
 <div class="mx-auto max-w-[1400px] mt-10 min-h-[400px] h-screen text-white">
   <section
     id="usługi"
-    class="p-4 flex flex-col justify-center items-center h-full"
+    class="flex h-full flex-col items-center justify-center gap-y-6 p-4 sm:gap-y-12"
   >
     <h2
-      class="text-center text-5xl font-extrabold tracking-wide text-accent mb-8"
+      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Usługi
     </h2>
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
       <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
         <div
-          class="flex h-36 w-36 md:h-48 md:w-48 items-center justify-center rounded-full bg-accent mb-4"
+          class="mb-4 flex h-36 w-36 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
         >
           <img
             class="cursor-pointer p-12 transition-transform hover:scale-110"
@@ -25,7 +25,7 @@
       </a>
       <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
         <div
-          class="flex h-36 w-36 md:h-48 md:w-48 items-center justify-center rounded-full bg-accent mb-4"
+          class="mb-4 flex h-36 w-36 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
         >
           <img
             class="cursor-pointer p-12 transition-transform hover:scale-110"
