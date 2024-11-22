@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PiercingComponent } from './piercing.component';
+import { PiercingPageComponent } from './piercing-page.component';
 
 describe('PiercingComponent', () => {
-  let component: PiercingComponent;
-  let fixture: ComponentFixture<PiercingComponent>;
+  let component: PiercingPageComponent;
+  let fixture: ComponentFixture<PiercingPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PiercingComponent]
-    })
-    .compileComponents();
+      imports: [PiercingPageComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(PiercingComponent);
+    fixture = TestBed.createComponent(PiercingPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

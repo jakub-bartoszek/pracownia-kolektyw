@@ -1,11 +1,9 @@
 <div class="bg-zinc-900 p-4">
-  <!-- Ładowanie -->
   <div class="flex flex-col items-center" *ngIf="formStatus === 'loading'">
     <app-mail-send-icon class="text-accent" size="64px"></app-mail-send-icon>
     <span class="text-xl font-semibold">Wysyłanie...</span>
   </div>
 
-  <!-- Błąd -->
   <div
     class="flex flex-col items-center gap-y-4"
     *ngIf="formStatus === 'error'"
@@ -18,14 +16,12 @@
 
     <button
       (click)="resetForm()"
-      
       class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
     >
       Spróbuj ponownie
     </button>
   </div>
 
-  <!-- Sukces -->
   <div
     class="flex flex-col items-center gap-y-4"
     *ngIf="formStatus === 'success'"
@@ -41,13 +37,11 @@
     <button
       class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
       (click)="resetForm()"
-      
     >
       Wyślij kolejną wiadomość
     </button>
   </div>
 
-  <!-- Formularz -->
   <div *ngIf="!formStatus">
     <form
       class="flex flex-col gap-y-4 items-center"
@@ -62,7 +56,6 @@
           name="name"
           required
           type="text"
-          
         />
       </div>
 
@@ -74,7 +67,6 @@
           name="email"
           required
           type="email"
-          
         />
       </div>
 
@@ -85,7 +77,6 @@
           [(ngModel)]="message"
           name="message"
           required
-          
         ></textarea>
       </div>
 

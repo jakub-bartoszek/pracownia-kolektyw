@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-faq',
+  selector: 'app-faq-page',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './faq.component.html',
+  templateUrl: './faq-page.component.html',
 })
-export class FaqComponent {
+export class FaqPageComponent {
   rules = [
     {
       question:

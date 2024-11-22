@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TattoosComponent } from './tattoos.component';
+import { TattoosPageComponent } from './tattoos-page.component';
 
 describe('TattoosComponent', () => {
-  let component: TattoosComponent;
-  let fixture: ComponentFixture<TattoosComponent>;
+  let component: TattoosPageComponent;
+  let fixture: ComponentFixture<TattoosPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TattoosComponent]
-    })
-    .compileComponents();
+      imports: [TattoosPageComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(TattoosComponent);
+    fixture = TestBed.createComponent(TattoosPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
