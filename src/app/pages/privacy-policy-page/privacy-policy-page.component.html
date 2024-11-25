@@ -1,63 +1,21 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section class="text-left" id="regulamin">
-    <h2
-      class="mb-6 text-5xl font-bold tracking-wide text-accent underline underline-offset-8"
+  <section id="regulamin">
+    <h1
+      class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
-      Polityka Prywatności
-    </h2>
-    <div class="bg-zinc-900 p-4 pl-6">
-      <ol
-        class="list-decimal pl-3 text-lg space-y-8 marker:text-accent marker:font-bold"
-      >
-        <li>
-          <h3 class="text-xl font-bold">Zakres Zbieranych Danych</h3>
-          <p class="leading-tight">
-            Na potrzeby założenia konta na stronie internetowej oraz napisania
-            opinii zbieramy następujące dane osobowe: Imię i nazwisko Adres
-            e-mail
-          </p>
-        </li>
-
-        <li>
-          <h3 class="text-xl font-bold">Cel Zbierania Danych</h3>
-          <p class="leading-tight">
-            Dane osobowe zbierane są wyłącznie w celu umożliwienia użytkownikom
-            założenia konta i wystawiania opinii na stronie salonu.
-          </p>
-        </li>
-        <li>
-          <h3 class="text-xl font-bold">Okres Przechowywania Danych</h3>
-          <p class="leading-tight">
-            Dane osobowe przechowywane są przez czas istnienia konta
-            użytkownika. W momencie usunięcia konta dane są natychmiastowo
-            usuwane z naszej bazy.
-          </p>
-        </li>
-        <li>
-          <h3 class="text-xl font-bold">Udostępnianie Danych Osobowych</h3>
-          <p class="leading-tight">
-            Zebrane dane osobowe nie są udostępniane podmiotom trzecim i służą
-            wyłącznie do celów wskazanych powyżej.
-          </p>
-        </li>
-        <li>
-          <h3 class="text-xl font-bold">Prawa Użytkownika</h3>
-          <p class="leading-tight">
-            Użytkownik ma prawo do dostępu do swoich danych, ich edycji oraz
-            trwałego usunięcia poprzez usunięcie konta na stronie. Wszelkie
-            prośby dotyczące zarządzania danymi osobowymi można zgłaszać za
-            pośrednictwem formularza kontaktowego na stronie.
-          </p>
-        </li>
-        <li>
-          <h3 class="text-xl font-bold">Kontakt</h3>
-          <p class="leading-tight">
-            W razie jakichkolwiek pytań lub wątpliwości dotyczących ochrony
-            danych osobowych prosimy o kontakt za pośrednictwem formularza
-            dostępnego na stronie internetowej salonu.
-          </p>
-        </li>
-      </ol>
-    </div>
+      Polityka prywatności
+    </h1>
+    <ul class="bg-zinc-900 p-4 space-y-4">
+      <li *ngFor="let section of privacyPolicyList">
+        <h2
+          class="text-2xl font-bold leading-tight tracking-wide text-accent sm:text-3xl"
+        >
+          {{ section.title }}
+        </h2>
+        <p class="text-base sm:text-lg text-zinc-300">
+          {{ section.content }}
+        </p>
+      </li>
+    </ul>
   </section>
 </div>

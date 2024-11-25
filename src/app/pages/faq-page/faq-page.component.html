@@ -1,19 +1,21 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
   <section id="faq">
-    <h2
+    <h1
       class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       FAQ
-    </h2>
+    </h1>
     <div *ngFor="let category of rules; let i = index">
-      <h3 class="text-3xl font-semibold text-accent mt-10">
+      <h2
+        class="mb-2 text-2xl font-bold leading-tight tracking-wide text-accent sm:text-3xl"
+      >
         {{ category.category }}
-      </h3>
-      <ul class="space-y-4 text-lg md:text-xl mt-6">
+      </h2>
+      <ul class="text-lg md:text-xl mb-8">
         <li *ngFor="let question of category.questions; let j = index">
           <div
             (click)="toggleAnswer(i * 100 + j)"
-            class="flex cursor-pointer justify-between bg-zinc-900 p-3 font-bold text-white transition-colors hover:bg-zinc-800"
+            class="flex cursor-pointer justify-between bg-zinc-900 p-4 transition-colors hover:bg-zinc-800"
           >
             {{ question.question }}
             <span
@@ -27,17 +29,23 @@
           </div>
           <div
             *ngIf="openedIndex === i * 100 + j"
-            class="bg-zinc-800 p-4 text-sm leading-relaxed text-white md:text-base"
+            class="bg-zinc-800 p-4 text-sm leading-relaxed text-zinc-300 md:text-base"
           >
             {{ question.answer }}
           </div>
         </li>
       </ul>
     </div>
-    <div>
-      <h3 class="text-3xl font-semibold text-accent mt-10">Pamiętaj</h3>
+
+    <h2
+      class="mb-2 text-2xl font-bold leading-tight tracking-wide text-accent sm:text-3xl"
+    >
+      Pamiętaj
+    </h2>
+
+    <div class="bg-zinc-900 p-4 space-y-4">
       <ul
-        class="space-y-4 text-lg md:text-xl mt-6 bg-zinc-900 p-3 list-disc pl-8 marker:text-accent"
+        class="list-disc space-y-1 pl-5 text-base text-zinc-300 marker:text-accent sm:text-lg"
       >
         <li>
           Zaufanie do tatuatora jest bardzo ważne. Wybierz takiego, który
