@@ -1,33 +1,57 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section class="text-left" id="regulamin">
+  <section id="faq">
     <h2
       class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       FAQ
     </h2>
-    <ol class="space-y-4 text-lg md:text-xl">
-      <li *ngFor="let rule of rules; let i = index">
-        <div
-          (click)="toggleAnswer(i)"
-          class="flex cursor-pointer justify-between bg-zinc-900 p-3 font-bold text-white transition-colors hover:bg-zinc-800"
-        >
-          {{ rule.question }}
-          <span
-            class="h-min transform text-accent transition-transform"
-            [ngClass]="{
-              'rotate-180': openedIndex === i
-            }"
+    <div *ngFor="let category of rules; let i = index">
+      <h3 class="text-3xl font-semibold text-accent mt-10">
+        {{ category.category }}
+      </h3>
+      <ul class="space-y-4 text-lg md:text-xl mt-6">
+        <li *ngFor="let question of category.questions; let j = index">
+          <div
+            (click)="toggleAnswer(i * 100 + j)"
+            class="flex cursor-pointer justify-between bg-zinc-900 p-3 font-bold text-white transition-colors hover:bg-zinc-800"
           >
-            ▼
-          </span>
-        </div>
-        <div
-          *ngIf="openedIndex === i"
-          class="bg-zinc-800 p-4 text-sm leading-relaxed text-white md:text-base"
-        >
-          {{ rule.answer }}
-        </div>
-      </li>
-    </ol>
+            {{ question.question }}
+            <span
+              class="h-min transform text-accent transition-transform"
+              [ngClass]="{
+                'rotate-180': openedIndex === i * 100 + j
+              }"
+            >
+              ▼
+            </span>
+          </div>
+          <div
+            *ngIf="openedIndex === i * 100 + j"
+            class="bg-zinc-800 p-4 text-sm leading-relaxed text-white md:text-base"
+          >
+            {{ question.answer }}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-3xl font-semibold text-accent mt-10">Pamiętaj</h3>
+      <ul
+        class="space-y-4 text-lg md:text-xl mt-6 bg-zinc-900 p-3 list-disc pl-8 marker:text-accent"
+      >
+        <li>
+          Zaufanie do tatuatora jest bardzo ważne. Wybierz takiego, który
+          wzbudza w Tobie zaufanie i którego styl Ci odpowiada.
+        </li>
+        <li>
+          Przygotuj się na sesję. Odpowiednie przygotowanie pozwoli Ci cieszyć
+          się pięknym tatuażem przez wiele lat.
+        </li>
+        <li>
+          Zadawaj pytania. Nie bój się pytać o wszystko, co Cię interesuje.
+          Dobry tatuator chętnie odpowie na wszystkie Twoje pytania.
+        </li>
+      </ul>
+    </div>
   </section>
 </div>

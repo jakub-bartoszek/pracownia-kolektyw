@@ -10,72 +10,96 @@ import { Component } from '@angular/core';
 export class FaqPageComponent {
   rules = [
     {
-      question:
-        'Czy muszę umówić się na wizytę, czy mogę przyjść bez zapowiedzi?',
-      answer:
-        'Zachęcamy do wcześniejszego umawiania się na wizytę, aby mieć pewność, że znajdzie się odpowiedni czas na realizację projektu. Przyjście bez zapowiedzi może nie gwarantować dostępności artystów, ale zawsze warto zapytać!',
+      category: 'Najczęstsze zagadnienia dotyczące procesu tatuowania',
+      questions: [
+        {
+          question: 'Czy tatuowanie bardzo boli?',
+          answer:
+            'Ból jest subiektywny i zależy od progu bólu danej osoby, miejsca na ciele i wielkości tatuażu. Tatuaż to nie rurki z bitą śmietaną, ale też nie jest to ból nie do przeżycia. W wielu przypadkach tatuowanie przebiega bezboleśnie. Zdarza się, że czasami w trudnych przypadkach stosujemy środki znieczulające, aby zminimalizować dyskomfort.',
+        },
+        {
+          question: 'Jak powinienem się przygotować do sesji tatuażu?',
+          answer:
+            'Przed sesją warto dobrze się wyspać, zjeść posiłek i unikać alkoholu. Skóra powinna być czysta i nieposmarowana żadnymi kosmetykami.',
+        },
+        {
+          question: 'Jak długo trwa sesja tatuażu?',
+          answer:
+            'Czas trwania sesji zależy od wielkości i złożoności projektu. Małe tatuaże mogą zająć kilkanaście minut, większe nawet kilka godzin.',
+        },
+        {
+          question: 'Jak długo goi się tatuaż i jak o niego dbać?',
+          answer:
+            'Czas gojenia zależy od indywidualnych predyspozycji, ale zazwyczaj trwa od kilkunastu dni do kilku tygodni. Podajemy szczegółowe instrukcje pielęgnacji po zabiegu.',
+        },
+      ],
     },
     {
-      question: 'Jak mogę się przygotować do tatuażu?',
-      answer:
-        'Przed wizytą zadbaj o wypoczynek i dobre nawodnienie organizmu. Unikaj alkoholu, kawy oraz leków rozrzedzających krew dzień przed sesją. Zjedz pełnowartościowy posiłek, aby utrzymać energię podczas tatuowania.',
+      category: 'Pytania dotyczące projektów i wzorów',
+      questions: [
+        {
+          question: 'Jak znaleźć inspirację do tatuażu?',
+          answer:
+            'Inspiracji można szukać w różnych źródłach: magazynach o tematyce tatuażu, portalach społecznościowych, a nawet w sztuce czy naturze. Ważna jest rozmowa z tatuatorem, który może podsunąć ciekawe pomysły.',
+        },
+        {
+          question: 'Czy mogę przynieść własny projekt?',
+          answer:
+            'Oczywiście, możesz przynieść własny projekt. Tatuator dostosuje go do swoich umiejętności i stylu, a następnie omówi z Tobą wszelkie szczegóły.',
+        },
+        {
+          question: 'Jak wybrać odpowiedni styl tatuażu?',
+          answer:
+            'Wybór stylu zależy od indywidualnych preferencji. Warto przejrzeć portfolio różnych tatuatorów i wybrać takiego, którego styl najbardziej Ci odpowiada. Pomagamy klientom znaleźć inspirację, omawiamy ich pomysły i wspólnie tworzymy unikalny projekt. Napisz do nas, a na pewno wyjdziesz zadowolony z sesji!',
+        },
+        {
+          question:
+            'Czy mogę zmienić rozmiar lub kolor zaproponowanego projektu?',
+          answer:
+            'Tak, nasi tatuatorzy są otwarci na zmiany w projekcie. Możesz modyfikować zarówno rozmiar, jak i kolorystykę oraz wszelkie szczegóły.',
+        },
+      ],
     },
     {
-      question: 'Czy wykonujecie tatuaże osobom poniżej 18 roku życia?',
-      answer:
-        'Osoby poniżej 18 roku życia mogą zrobić tatuaż jedynie za pisemną zgodą rodzica lub opiekuna prawnego. Minimalny wiek to 16 lat. W przypadku piercingu również wymagamy zgody opiekuna prawnego dla osób poniżej pełnoletności.',
+      category: 'Pytania dotyczące studia i tatuatora',
+      questions: [
+        {
+          question:
+            'Czy studio spełnia wszystkie wymagania sanitarne? Czy jest bezpiecznie?',
+          answer:
+            'Nasze studio tatuażu spełnia wszystkie wymogi sanitarne, a tatuatorzy pracują w sterylnych warunkach. Dbamy, abyś czuł, że jesteś w profesjonalnym studiu, z użyciem sterylnego sprzętu i wysokiej jakości tuszu. W naszym studio dbamy o najwyższe standardy higieny.',
+        },
+        {
+          question: 'Czy mogę zobaczyć portfolio tatuatora?',
+          answer:
+            'Tak, nasze social media są miejscem, w którym prezentujemy swoje prace. Możesz je obejrzeć zarówno na stronie internetowej studia, prywatnych socialkach, jak i osobiście podczas wizyty.',
+        },
+        {
+          question: 'Ile kosztuje tatuaż?',
+          answer:
+            'Cena tatuażu zależy od wielu czynników, takich jak wielkość, złożoność, użyte kolory i doświadczenie tatuatora. Najlepiej zapytać o cenę bezpośrednio w studio.',
+        },
+      ],
     },
     {
-      question: 'Czy tatuaż boli?',
-      answer:
-        'Odczucia bólu są bardzo indywidualne i zależą od miejsca, w którym robiony jest tatuaż, oraz progu bólu danej osoby. Przykładamy wszelkie starania, aby sesja była jak najbardziej komfortowa.',
-    },
-    {
-      question: ' Jakie są przeciwwskazania do tatuowania?',
-      answer:
-        'Przeciwwskazania obejmują m.in. infekcje skórne, stany zapalne, choroby przewlekłe skóry, ciążę, karmienie piersią oraz niektóre schorzenia, takie jak cukrzyca lub choroby krwi. Przed wizytą poinformuj nas o wszelkich problemach zdrowotnych.',
-    },
-    {
-      question: 'Jak dbać o nowy tatuaż?',
-      answer:
-        'Po tatuowaniu otrzymasz od nas kartę z zaleceniami dotyczącymi pielęgnacji. Ogólnie zalecamy stosowanie się do instrukcji, aby tatuaż dobrze się goił i zachował jakość. Kluczowe są regularne mycie i nawilżanie oraz unikanie moczenia i wystawiania tatuażu na słońce przez pierwsze tygodnie.',
-    },
-    {
-      question:
-        'Co zrobić, jeśli zauważę reakcję alergiczną lub inną reakcję skórną po wykonaniu tatuażu?',
-      answer:
-        ' Jeśli wystąpi reakcja alergiczna lub inne niepokojące objawy, jak zaczerwienienie, wysypka lub opuchlizna, skontaktuj się z nami lub zasięgnij porady lekarza. W zależności od przyczyny możemy zaproponować darmową poprawkę, jeśli wystąpiły problemy wynikające z naszej strony.',
-    },
-    {
-      question: 'Czy muszę wpłacić zaliczkę?',
-      answer:
-        'Tak, zaliczki są wymagane na większość projektów i są indywidualnie ustalane z każdym artystą. Zaliczka jest zabezpieczeniem terminu i zostanie odjęta od końcowej ceny tatuażu. W razie konieczności odwołania sesji prosimy o informację na 48 godzin przed umówionym terminem.',
-    },
-    {
-      question: 'Czy mogę przyjść ze swoim projektem?',
-      answer:
-        'Oczywiście! Możesz przynieść własny projekt lub pomysł. Nasi artyści pomogą go dostosować lub stworzyć coś wyjątkowego w oparciu o twoją wizję.',
-    },
-    {
-      question: 'Jak długo trwa sesja tatuażu?',
-      answer:
-        'Czas sesji zależy od wielkości, skomplikowania projektu oraz miejsca na ciele, które jest tatuowane. Przed umówieniem wizyty artysta oszacuje czas potrzebny na wykonanie tatuażu.',
-    },
-    {
-      question: 'Czy oferujecie poprawki lub korekty tatuażu?',
-      answer:
-        'Tak, jeśli tatuaż wymaga poprawki z przyczyn niezależnych od klienta, oferujemy darmowe poprawki. Warto zgłosić się do nas w ciągu kilku tygodni od wykonania tatuażu, aby omówić ewentualne modyfikacje.',
-    },
-    {
-      question:
-        'Czy po wykonaniu tatuażu mogę korzystać z basenu lub opalać się?',
-      answer:
-        'Zalecamy unikanie moczenia tatuażu (w basenach, saunach, jeziorach) przez minimum 2-4 tygodnie, a także unikanie bezpośredniego słońca na świeżo wykonanym tatuażu. Niezastosowanie się do tych zaleceń może prowadzić do komplikacji w procesie gojenia.',
-    },
-    {
-      question: 'Czy mogę zobaczyć zdjęcia poprzednich prac artystów?',
-      answer:
-        'Tak, zdjęcia prac naszych artystów są dostępne w galerii na stronie oraz na ich profilach na Instagramie. Zachęcamy do zapoznania się z ich stylem, aby lepiej dopasować artystę do swoich preferencji.',
+      category: 'Pytania dotyczące innych kwestii',
+      questions: [
+        {
+          question: 'Czy tatuowanie jest bezpieczne?',
+          answer:
+            'Tatuowanie jest bezpieczne, jeśli jest wykonywane przez doświadczonego tatuatora w sterylnych warunkach. Nasze studio cieszy się wyłącznie dobrymi opiniami w tej materii.',
+        },
+        {
+          question: 'Czy mogę zrobić tatuaż, jeśli mam alergię?',
+          answer:
+            'Jeśli masz alergię, koniecznie poinformuj o tym tatuatora. On doradzi, jakie farby i środki znieczulające będą dla Ciebie bezpieczne. Reakcje alergiczne na tusz są rzadkie, ale możliwe. Przed zabiegiem możemy przeprowadzić wywiad alergiczny.',
+        },
+        {
+          question: 'Czy mogę usunąć tatuaż?',
+          answer:
+            'Tak, istnieją metody usuwania tatuaży, ale są one kosztowne i bolesne. Przed podjęciem decyzji o usunięciu warto dokładnie przemyśleć swoje wybory.',
+        },
+      ],
     },
   ];
 
