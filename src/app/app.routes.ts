@@ -11,6 +11,7 @@ import { PrivacyPolicyPageComponent } from './pages/privacy-policy-page/privacy-
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { TatooAftercarePageComponent } from './pages/tatoo-aftercare-page/tatoo-aftercare-page.component';
+import { StylesPageComponent } from './pages/styles-page/styles-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -25,5 +26,6 @@ export const routes: Routes = [
   { path: 'polityka-prawnosci', component: PrivacyPolicyPageComponent },
   { path: 'bezpieczenstwo-i-higiena', component: TatooAftercarePageComponent },
   { path: 'faq', component: FaqPageComponent },
+  { path: 'styles', component: StylesPageComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
