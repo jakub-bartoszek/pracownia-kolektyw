@@ -12,6 +12,29 @@
     </p>
   </section>
 
+  <section class="text-left" id="style-teaser">
+    <h3
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+    >
+      Style Tatuażu
+    </h3>
+    <div class="space-y-4 bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
+      <p class="text-lg">
+        Odkryj różnorodność nowoczesnych stylów tatuażu. Od minimalizmu po
+        realizm, każdy styl oferuje unikalne możliwości wyrażenia siebie.
+        Kliknij, aby poznać szczegóły!
+      </p>
+      <div class="mt-4 flex justify-center">
+        <a
+          [routerLink]="'/styles'"
+          class="inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+        >
+          Poznaj style
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="process">
     <h3
       class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
@@ -27,31 +50,30 @@
 
   <section id="tips">
     <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl leading-tight"
     >
-      Porady Przed i Po Zabiegu
+      Jak Dbać o Świeży Tatuaż
     </h3>
-    <div class="space-y-4 rounded-md bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
+    <div class="space-y-4 bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
       <p class="text-lg">
-        Przygotowanie do zabiegu jest ważne – zadbaj o odpowiedni wypoczynek i
-        unikaj alkoholu. Po wykonaniu tatuażu otrzymasz wskazówki dotyczące jego
-        pielęgnacji, aby zapewnić optymalne gojenie.
+        Pielęgnacja świeżego tatuażu jest kluczowa dla prawidłowego gojenia i
+        zachowania intensywności barw oraz detali. Bez względu na to, czy
+        stosujesz sztuczną skórę czy folię spożywczą, odpowiednia troska o
+        tatuaż ma ogromne znaczenie dla procesu gojenia.
       </p>
-      <ul
-        class="ml-4 list-disc space-y-1 text-left marker:text-accent md:space-y-3"
-      >
-        <li class="text-base">
-          Przed sesją tatuażu dobrze się wyśpij i zjedz pełnowartościowy
-          posiłek.
-        </li>
-        <li class="text-base">
-          Unikaj alkoholu i leków przeciwzapalnych na 24 godziny przed wizytą.
-        </li>
-        <li class="text-base">
-          Pamiętaj o odpowiedniej pielęgnacji i stosowaniu zaleconych kosmetyków
-          po zabiegu.
-        </li>
-      </ul>
+      <p class="text-lg">
+        Dowiedz się, jakie kroki podjąć, aby zadbać o swoje nowe dzieło w
+        pierwszych dniach oraz czego unikać, aby cieszyć się pięknym efektem na
+        lata.
+      </p>
+      <div class="mt-4 flex justify-center">
+        <a
+          [routerLink]="'/bezpieczenstwo-i-higiena'"
+          class="inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+        >
+          Więcej informacji
+        </a>
+      </div>
     </div>
   </section>
 

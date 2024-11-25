@@ -1,0 +1,20 @@
+<div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
+  <section class="text-left">
+    <h2
+      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+    >
+      Style Tatuażu
+    </h2>
+    <p class="mb-10 text-lg md:text-xl text-gray-300">
+      Odkryj różnorodność nowoczesnych stylów tatuażu. Każdy styl oferuje
+      unikalne możliwości wyrażenia siebie i tworzenia wyjątkowych dzieł sztuki
+      na skórze.
+    </p>
+    <ul class="space-y-6">
+      <li *ngFor="let style of styles">
+        <h3 class="text-2xl font-semibold text-accent">{{ style.name }}</h3>
+        <p class="mt-2 text-lg text-gray-300">{{ style.description }}</p>
+      </li>
+    </ul>
+  </section>
+</div>
