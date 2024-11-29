@@ -1,33 +1,33 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
   <section id="intro">
     <h2
-      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+      class="mb-4 text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Tatuaże
     </h2>
-    <p class="bg-zinc-900 p-4 text-lg">
+    <p class="text-lg text-zinc-300">
       Nasze tatuaże to wyjątkowa sztuka, która podkreśla Twoją indywidualność.
       Stworzone z pasją i precyzją, projekty dostosowujemy do Twoich potrzeb i
       osobowości, dbając o każdy detal na każdym etapie.
     </p>
   </section>
 
-  <section class="text-left" id="style-teaser">
+  <section id="style-teaser">
     <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+      class="mb-4 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Style Tatuażu
     </h3>
-    <div class="space-y-4 bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
-      <p class="text-lg">
+    <div>
+      <p class="text-zinc-300">
         Odkryj różnorodność nowoczesnych stylów tatuażu. Od minimalizmu po
         realizm, każdy styl oferuje unikalne możliwości wyrażenia siebie.
         Kliknij, aby poznać szczegóły!
       </p>
-      <div class="mt-4 flex justify-center">
+      <div>
         <a
           [routerLink]="'/styles'"
-          class="inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+          class="mt-2 inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
         >
           Poznaj style
         </a>
@@ -37,11 +37,11 @@
 
   <section id="process">
     <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+      class="mb-4 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Proces Tworzenia
     </h3>
-    <p class="bg-zinc-900 p-4 text-lg">
+    <p class="text-zinc-300">
       Każdy tatuaż zaczynamy od konsultacji, aby poznać Twoje oczekiwania.
       Tworzymy projekt zgodnie z Twoją wizją, dbając o każdy detal. Na każdym
       etapie dbamy o komfort i zadowolenie.
@@ -50,26 +50,26 @@
 
   <section id="tips">
     <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl leading-tight"
+      class="mb-4 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl leading-tight"
     >
       Jak Dbać o Świeży Tatuaż
     </h3>
-    <div class="space-y-4 bg-zinc-900 p-4 text-lg md:p-6 lg:p-8">
-      <p class="text-lg">
+    <div>
+      <p class="text-zinc-300">
         Pielęgnacja świeżego tatuażu jest kluczowa dla prawidłowego gojenia i
         zachowania intensywności barw oraz detali. Bez względu na to, czy
         stosujesz sztuczną skórę czy folię spożywczą, odpowiednia troska o
         tatuaż ma ogromne znaczenie dla procesu gojenia.
       </p>
-      <p class="text-lg">
+      <p class="text-zinc-300">
         Dowiedz się, jakie kroki podjąć, aby zadbać o swoje nowe dzieło w
         pierwszych dniach oraz czego unikać, aby cieszyć się pięknym efektem na
         lata.
       </p>
-      <div class="mt-4 flex justify-center">
+      <div>
         <a
           [routerLink]="'/bezpieczenstwo-i-higiena'"
-          class="inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+          class="mt-2 inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
         >
           Więcej informacji
         </a>
@@ -78,11 +78,12 @@
   </section>
 
   <section id="portfolio">
-    <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+    <h2
+      class="mb-4 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl leading-tight"
     >
       Portfolio
-    </h3>
+    </h2>
+
     <div
       *ngIf="tattooImages.length"
       class="grid grid-cols-2 gap-4 md:grid-cols-4"
@@ -91,10 +92,9 @@
         *ngFor="let image of tattooImages.slice(0, 8); let last = last"
         class="relative overflow-hidden"
       >
-        <div class="group h-full w-full cursor-pointer">
+        <div class="group h-full w-full cursor-pointer aspect-[3/4]">
           <img
-            class="h-full w-full transform object-cover transition-transform duration-300"
-            [class.group-hover:scale-105]="!last"
+            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
             [src]="image.imageUrl"
             alt="{{ image.artistId }}"
           />
@@ -104,7 +104,7 @@
           >
             <a
               [routerLink]="['/artysci', image.artistId]"
-              class="transition-colors group-hover:text-accent hover:underline w-min whitespace-nowrap"
+              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
             >
               {{ getArtistFullName(image.artistId) }}
             </a>
@@ -120,7 +120,7 @@
           >
           <a
             [routerLink]="['/galeria']"
-            class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+            class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
           >
             Zobacz Wszystkie
           </a>
@@ -131,7 +131,7 @@
 
   <section id="artists">
     <h3
-      class="mb-6 text-center text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+      class="mb-6 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
     >
       Nasi Artyści
     </h3>

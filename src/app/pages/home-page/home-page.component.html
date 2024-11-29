@@ -10,7 +10,7 @@
     >
       <button
         (click)="scrollToSection('o-nas')"
-        class="transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
+        class="inline-block w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
       >
         Poznaj nas!
       </button>
@@ -19,16 +19,14 @@
 </div>
 
 <div class="mx-auto flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section id="o-nas">
-    <div class="relative mt-8 w-full border-2 border-accent bg-background">
-      <div
-        class="relative mx-auto flex flex-col gap-4 bg-gradient-to-b from-black/60 to-transparent p-4"
-      >
+  <section class="mt-8" id="o-nas">
+    <div class="relative w-full border-2 border-accent bg-background">
+      <div class="relative mx-auto flex flex-col gap-4 p-4">
         <div>
           <h2
-            class="mb-4 text-4xl sm:text-5xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8"
+            class="mb-4 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
           >
-            O Pracowni Kolektyw
+            O pracowni kolektyw
           </h2>
           <p class="leading-relaxed sm:text-xl">
             Pracownia Kolektyw to miejsce, w którym pasja do sztuki tatuażu
@@ -39,8 +37,10 @@
         </div>
 
         <div>
-          <h3 class="mb-2 text-3xl font-semibold text-accent sm:text-4xl">
-            Nasza Misja
+          <h3
+            class="mb-4 text-3xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+          >
+            Nasza misja
           </h3>
           <p class="leading-relaxed sm:text-lg">
             Pragniemy, by każdy tatuaż opowiadał wyjątkową historię. Od
@@ -51,7 +51,9 @@
         </div>
 
         <div>
-          <h3 class="mb-2 text-3xl font-semibold text-accent sm:text-4xl">
+          <h3
+            class="mb-4 text-3xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-4xl"
+          >
             Dlaczego my?
           </h3>
           <p class="leading-relaxed sm:text-lg">
@@ -61,14 +63,12 @@
           </p>
         </div>
 
-        <div class="mt-6">
-          <a
-            [routerLink]="['/o-nas']"
-            class="inline-block transform bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
-          >
-            Dowiedz się więcej
-          </a>
-        </div>
+        <a
+          [routerLink]="['/o-nas']"
+          class="inline-block w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
+        >
+          Dowiedz się więcej
+        </a>
       </div>
 
       <div
@@ -82,35 +82,35 @@
     id="usługi"
   >
     <h2
-      class="mb-12 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+      class="mb-12 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Usługi
     </h2>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-      <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
-        <div
-          class="mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-accent p-8 sm:h-40 sm:w-40 md:h-48 md:w-48 md:p-12"
-        >
-          <img
-            class="cursor-pointer transition duration-200 hover:scale-110"
-            src="/images/tatuaze.png"
-            alt="Tatuaże"
-          />
-        </div>
+      <a
+        [routerLink]="['/uslugi/tatuaze']"
+        class="flex flex-col items-center gap-y-4"
+      >
+        <img
+          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/tatuaze.svg"
+          alt="Tatuaże"
+        />
+
         <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Tatuaże
         </p>
       </a>
-      <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
-        <div
-          class="mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-accent p-8 sm:h-40 sm:w-40 md:h-48 md:w-48 md:p-12"
-        >
-          <img
-            class="cursor-pointer transition duration-200 hover:scale-110"
-            src="/images/piercing.png"
-            alt="Piercing"
-          />
-        </div>
+      <a
+        [routerLink]="['/uslugi/piercing']"
+        class="flex flex-col items-center gap-y-4"
+      >
+        <img
+          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/piercing.svg"
+          alt="Piercing"
+        />
+
         <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Piercing
         </p>
@@ -120,7 +120,7 @@
 
   <section id="galeria">
     <h2
-      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+      class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Prace
     </h2>
@@ -156,7 +156,7 @@
           <span class="text-5xl text-white">+{{ images.length - 8 }}</span>
           <a
             [routerLink]="['/galeria']"
-            class="inline-block transform cursor-pointer bg-accent px-4 py-2 font-semibold uppercase text-background transition duration-200 hover:scale-105 focus:scale-105 focus-visible:outline-none"
+            class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
           >
             Zobacz Wszystkie
           </a>
@@ -169,7 +169,7 @@
 
   <section id="kontakt">
     <h2
-      class="mb-4 text-center text-4xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+      class="mb-8 text-center text-4xl font-bold leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Skontaktuj się z nami
     </h2>
@@ -177,109 +177,5 @@
     <app-contact-form></app-contact-form>
   </section>
 
-  <section id="opinie">
-    <h2
-      class="mb-4 text-center text-4xl font-bold leading-normal tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
-    >
-      Opinie
-    </h2>
-
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-      <div
-        *ngFor="let review of reviews"
-        class="relative flex flex-col bg-zinc-900 p-4"
-      >
-        <div class="flex justify-between items-center">
-          <p class="font-bold text-accent">{{ review.name }}</p>
-          <p class="text-xs text-zinc-400">{{ review.date }}</p>
-        </div>
-        <p class="mb-4 text-sm text-zinc-400">
-          Ocena:
-          <span class="font-semibold text-accent">{{ review.rate }} / 5</span>
-        </p>
-        <p>{{ review.content }}</p>
-
-        <button
-          *ngIf="isLoggedIn && (userReview?.id === review.id || isAdmin)"
-          (click)="review.id && deleteReview(review.id)"
-          class="mt-4 w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Usuń opinię
-        </button>
-      </div>
-    </div>
-
-    <p *ngIf="reviews.length === 0" class="mt-4 text-center text-lg">
-      Brak opinii.
-    </p>
-
-    <ng-container *ngIf="!isAdmin">
-      <ng-container *ngIf="!userReview; else existingReview">
-        <div class="mt-4 bg-zinc-900 p-4 sm:p-8">
-          <h3 class="mb-4 text-center text-2xl font-semibold text-accent">
-            Dodaj swoją opinię
-          </h3>
-
-          <form
-            class="flex flex-col items-center gap-4"
-            (submit)="addReview(); $event.preventDefault()"
-          >
-            <div class="flex w-full flex-col gap-2">
-              <label for="rate" class="text-lg font-medium">Ocena</label>
-              <select
-                id="rate"
-                [(ngModel)]="newReviewRate"
-                class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-                required
-                name="rate"
-              >
-                <option value="5">5 - Doskonała</option>
-                <option value="4">4 - Bardzo dobra</option>
-                <option value="3">3 - Dobra</option>
-                <option value="2">2 - Przeciętna</option>
-                <option value="1">1 - Słaba</option>
-              </select>
-            </div>
-
-            <div class="flex w-full flex-col gap-2">
-              <label for="content" class="text-lg font-medium">Opinia</label>
-              <textarea
-                id="content"
-                rows="4"
-                [(ngModel)]="newReviewContent"
-                class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-                required
-                name="content"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="w-min transform whitespace-nowrap bg-accent px-8 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-            >
-              Dodaj Opinię
-            </button>
-          </form>
-        </div>
-      </ng-container>
-    </ng-container>
-
-    <ng-template #existingReview>
-      <div class="mt-4 bg-zinc-900 p-8 text-center text-lg text-zinc-400">
-        Już dodałeś swoją opinię.
-      </div>
-    </ng-template>
-
-    <ng-template #loginPrompt>
-      <div class="mt-4 bg-zinc-900 p-8 text-center">
-        <p class="text-lg text-accent mb-4">Zaloguj się, aby dodać opinię.</p>
-        <button
-          (click)="openModal()"
-          class="transform bg-accent px-6 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Zaloguj się
-        </button>
-      </div>
-    </ng-template>
-  </section>
+  <app-reviews-section></app-reviews-section>
 </div>

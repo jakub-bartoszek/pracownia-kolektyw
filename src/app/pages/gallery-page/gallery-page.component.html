@@ -15,17 +15,17 @@
   ></app-upload-artwork-modal>
 
   <section id="galeria">
-    <h2
-      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+    <h1
+      class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
-      Nasze Prace
-    </h2>
+      Nasze prace
+    </h1>
 
     <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      <div *ngFor="let image of images" class="relative overflow-hidden">
-        <div class="group h-full w-full cursor-pointer">
+      <div *ngFor="let image of images" class="relative group overflow-hidden">
+        <div class="h-full w-full cursor-pointer">
           <img
-            class="h-full w-full transform object-cover transition-transform duration-300 hover:scale-105"
+            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
             [src]="image.imageUrl"
             alt="{{ image.artistId }}"
           />

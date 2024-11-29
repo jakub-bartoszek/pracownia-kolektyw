@@ -1,39 +1,39 @@
-<div class="mx-auto max-w-[1400px] mt-10 min-h-[400px] h-screen text-white">
+<div class="mx-auto max-w-[1400px] mt-10 min-h-[400px] h-screen">
   <section
+    class="flex h-[calc(100%-80px)] flex-col items-center justify-center"
     id="usługi"
-    class="flex h-full flex-col items-center justify-center gap-y-6 p-4 sm:gap-y-12"
   >
     <h2
-      class="mb-6 text-center text-4xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
+      class="mb-12 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
     >
       Nasze Usługi
     </h2>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-      <a [routerLink]="['/uslugi/tatuaze']" class="flex flex-col items-center">
-        <div
-          class="mb-4 flex h-36 w-36 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
-        >
-          <img
-            class="cursor-pointer p-12 transition-transform hover:scale-110"
-            src="/images/tatuaze.png"
-            alt="Tatuaże"
-          />
-        </div>
-        <p class="text-center text-xl md:text-2xl font-semibold uppercase">
+      <a
+        [routerLink]="['/uslugi/tatuaze']"
+        class="flex flex-col items-center gap-y-4"
+      >
+        <img
+          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/tatuaze.svg"
+          alt="Tatuaże"
+        />
+
+        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Tatuaże
         </p>
       </a>
-      <a [routerLink]="['/uslugi/piercing']" class="flex flex-col items-center">
-        <div
-          class="mb-4 flex h-36 w-36 items-center justify-center rounded-full bg-accent md:h-48 md:w-48"
-        >
-          <img
-            class="cursor-pointer p-12 transition-transform hover:scale-110"
-            src="/images/piercing.png"
-            alt="Piercing"
-          />
-        </div>
-        <p class="text-center text-xl md:text-2xl font-semibold uppercase">
+      <a
+        [routerLink]="['/uslugi/piercing']"
+        class="flex flex-col items-center gap-y-4"
+      >
+        <img
+          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/piercing.svg"
+          alt="Piercing"
+        />
+
+        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Piercing
         </p>
       </a>
