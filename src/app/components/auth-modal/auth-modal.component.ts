@@ -17,6 +17,7 @@ export class AuthModalComponent {
   firstName: string = '';
   lastName: string = '';
   isLoginView: boolean = true;
+  isPasswordVisible: boolean = false;
   errorMessage: string = '';
 
   constructor(private authService: AuthService) {}
@@ -26,17 +27,12 @@ export class AuthModalComponent {
     this.errorMessage = '';
   }
 
+  togglePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
   close() {
     this.closeModal.emit();
-  }
-
-  validateEmail(email: string): boolean {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  }
-
-  validatePassword(password: string): boolean {
-    return password.length >= 8;
   }
 
   login() {
@@ -74,5 +70,14 @@ export class AuthModalComponent {
       .catch((error) => {
         this.errorMessage = 'Błąd rejestracji: ' + error.message;
       });
+  }
+
+  validateEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+
+  validatePassword(password: string): boolean {
+    return password.length >= 8;
   }
 }
