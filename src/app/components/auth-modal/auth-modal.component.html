@@ -24,32 +24,41 @@
           name="email"
           type="email"
           [(ngModel)]="email"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-8"
           autocomplete="email"
           aria-label="Email"
           required
         />
       </div>
 
-      <div class="flex flex-col relative">
+      <div class="flex flex-col">
         <label for="password">Hasło</label>
-        <input
-          id="password"
-          name="password"
-          [type]="isPasswordVisible ? 'text' : 'password'"
-          [(ngModel)]="password"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
-          autocomplete="current-password"
-          aria-label="Hasło"
-          required
-        />
-        <button
-          type="button"
-          class="absolute right-2 top-9 text-zinc-400 hover:text-accent"
-          (click)="togglePasswordVisibility()"
-        >
-          {{ isPasswordVisible ? "Ukryj" : "Pokaż" }}
-        </button>
+        <div class="w-full relative flex items-center">
+          <input
+            id="password"
+            name="password"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            [(ngModel)]="password"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            autocomplete="current-password"
+            aria-label="Hasło"
+            required
+          />
+          <button
+            type="button"
+            class="absolute right-2 text-zinc-500 hover:text-white transition-colors"
+            (click)="togglePasswordVisibility()"
+          >
+            <app-show-icon
+              *ngIf="isPasswordVisible"
+              size="24px"
+            ></app-show-icon>
+            <app-hide-icon
+              *ngIf="!isPasswordVisible"
+              size="24px"
+            ></app-hide-icon>
+          </button>
+        </div>
       </div>
 
       <button
@@ -58,6 +67,99 @@
       >
         Zaloguj
       </button>
+      <button
+        class="px-4 py-2 text-lg font-bold uppercase text-accent outline outline-1 -outline-offset-1 transition-all hover:scale-105 hover:bg-accent hover:text-background focus-visible:scale-105 focus-visible:bg-accent focus-visible:text-background focus-visible:outline-none"
+        (click)="toggleView()"
+      >
+        Załóż konto
+      </button>
+    </div>
+
+    <!-- Register View -->
+
+    <div class="flex flex-col gap-y-4" *ngIf="!isLoginView">
+      <h1 class="text-center text-2xl font-bold uppercase text-accent">
+        Rejestracja
+      </h1>
+
+      <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
+
+      <div class="flex flex-col">
+        <label for="firstName">Imię</label>
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="firstName"
+          type="text"
+          [(ngModel)]="firstName"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="lastName">Nazwisko</label>
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="lastName"
+          type="text"
+          [(ngModel)]="lastName"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="email">Email</label>
+        <input
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+        />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="password">Hasło</label>
+        <div class="w-full relative flex items-center">
+          <input
+            id="password"
+            name="password"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            [(ngModel)]="password"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            autocomplete="current-password"
+            aria-label="Hasło"
+            required
+          />
+          <button
+            type="button"
+            class="absolute right-2 text-zinc-500 hover:text-white transition-colors"
+            (click)="togglePasswordVisibility()"
+          >
+            <app-show-icon
+              *ngIf="isPasswordVisible"
+              size="24px"
+            ></app-show-icon>
+            <app-hide-icon
+              *ngIf="!isPasswordVisible"
+              size="24px"
+            ></app-hide-icon>
+          </button>
+        </div>
+      </div>
+
+      <button
+        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
+        (click)="register()"
+      >
+        Załóż konto
+      </button>
+
+      <div class="text-center">
+        <span class="text-zinc-400">Masz już konto? </span>
+        <button
+          class="hover:text-accent hover:underline"
+          (click)="toggleView()"
+        >
+          Zaloguj się
+        </button>
+      </div>
     </div>
   </form>
 </div>

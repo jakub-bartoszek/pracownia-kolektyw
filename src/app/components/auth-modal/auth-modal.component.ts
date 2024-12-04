@@ -2,10 +2,12 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { ShowIconComponent } from '../../icons/show-icon/show-icon.component';
+import { HideIconComponent } from '../../icons/hide-icon/hide-icon.component';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ShowIconComponent, HideIconComponent],
   selector: 'app-auth',
   templateUrl: './auth-modal.component.html',
 })
@@ -29,6 +31,7 @@ export class AuthModalComponent {
 
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
+    console.log(this.isPasswordVisible);
   }
 
   close() {
@@ -44,8 +47,7 @@ export class AuthModalComponent {
         this.close();
       })
       .catch((error) => {
-        this.errorMessage =
-          'Nieprawidłowe hasło lub adres e-mail.' + error.message;
+        this.errorMessage = 'Nieprawidłowe hasło lub adres e-mail.';
       });
   }
 
@@ -68,7 +70,7 @@ export class AuthModalComponent {
         this.toggleView();
       })
       .catch((error) => {
-        this.errorMessage = 'Błąd rejestracji: ' + error.message;
+        this.errorMessage = 'Błąd rejestracji';
       });
   }
 
