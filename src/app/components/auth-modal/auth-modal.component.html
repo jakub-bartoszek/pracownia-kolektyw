@@ -1,103 +1,175 @@
 <div
-  class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75"
+  class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75 p-8"
 >
   <div
-    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-8"
+    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-4"
   >
-    <button class="absolute right-2 top-2" (click)="close()">✕</button>
+    <button class="absolute right-2 top-2" (click)="close()" type="button">
+      ✕
+    </button>
 
-    <div class="flex flex-col gap-y-4" *ngIf="isLoginView">
+    <!-- Login View -->
+    <form
+      class="flex flex-col gap-y-4"
+      *ngIf="isLoginView"
+      (submit)="login($event, emailField.value, passwordField.value)"
+    >
       <h1 class="text-center text-2xl font-bold uppercase text-accent">
         Logowanie
       </h1>
 
-      <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
-
       <div class="flex flex-col">
         <label for="email">Email</label>
         <input
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
           id="email"
+          #emailField
+          name="email"
           type="email"
-          [(ngModel)]="email"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-8"
+          autocomplete="email"
+          aria-label="Email"
+          required
         />
       </div>
 
       <div class="flex flex-col">
         <label for="password">Hasło</label>
-        <input
-          class="bg-zinc-900 p-2 border focus:outline-none focus:border-accent"
-          id="password"
-          type="password"
-          [(ngModel)]="password"
-        />
+        <div class="w-full relative flex items-center">
+          <input
+            id="password"
+            #passwordField
+            name="password"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            autocomplete="new-password"
+            required
+            minlength="8"
+            (input)="onPasswordInput(passwordField.value)"
+          />
+
+          <button
+            type="button"
+            class="absolute right-2 text-zinc-500 hover:text-white transition-colors"
+            (click)="togglePasswordVisibility()"
+          >
+            <app-show-icon
+              *ngIf="isPasswordVisible"
+              size="24px"
+            ></app-show-icon>
+            <app-hide-icon
+              *ngIf="!isPasswordVisible"
+              size="24px"
+            ></app-hide-icon>
+          </button>
+        </div>
       </div>
 
       <button
+        type="submit"
         class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
-        (click)="login()"
       >
         Zaloguj
       </button>
-
       <button
+        type="button"
         class="px-4 py-2 text-lg font-bold uppercase text-accent outline outline-1 -outline-offset-1 transition-all hover:scale-105 hover:bg-accent hover:text-background focus-visible:scale-105 focus-visible:bg-accent focus-visible:text-background focus-visible:outline-none"
         (click)="toggleView()"
       >
         Załóż konto
       </button>
-    </div>
+    </form>
 
-    <div class="flex flex-col gap-y-4" *ngIf="!isLoginView">
+    <!-- Register View -->
+    <form
+      class="flex flex-col gap-y-4"
+      *ngIf="!isLoginView"
+      (submit)="
+        register(
+          $event,
+          firstNameField.value,
+          lastNameField.value,
+          emailField.value,
+          passwordField.value
+        )
+      "
+    >
       <h1 class="text-center text-2xl font-bold uppercase text-accent">
         Rejestracja
       </h1>
 
-      <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
-
       <div class="flex flex-col">
         <label for="firstName">Imię</label>
         <input
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
           id="firstName"
+          #firstNameField
+          name="firstName"
           type="text"
-          [(ngModel)]="firstName"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          required
+          minlength="2"
         />
       </div>
 
       <div class="flex flex-col">
         <label for="lastName">Nazwisko</label>
         <input
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
           id="lastName"
+          #lastNameField
+          name="lastName"
           type="text"
-          [(ngModel)]="lastName"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          required
+          minlength="2"
         />
       </div>
 
       <div class="flex flex-col">
         <label for="email">Email</label>
         <input
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
           id="email"
+          #emailField
+          name="email"
           type="email"
-          [(ngModel)]="email"
+          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          required
         />
       </div>
 
       <div class="flex flex-col">
         <label for="password">Hasło</label>
-        <input
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
-          id="password"
-          type="password"
-          [(ngModel)]="password"
-        />
+        <div class="w-full relative flex items-center">
+          <input
+            id="password"
+            #passwordField
+            name="password"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            autocomplete="new-password"
+            required
+            minlength="8"
+            (input)="onPasswordInput(passwordField.value)"
+          />
+
+          <button
+            type="button"
+            class="absolute right-2 text-zinc-500 hover:text-white transition-colors"
+            (click)="togglePasswordVisibility()"
+          >
+            <app-show-icon
+              *ngIf="isPasswordVisible"
+              size="24px"
+            ></app-show-icon>
+            <app-hide-icon
+              *ngIf="!isPasswordVisible"
+              size="24px"
+            ></app-hide-icon>
+          </button>
+        </div>
       </div>
 
       <button
+        type="submit"
         class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
-        (click)="register()"
       >
         Załóż konto
       </button>
@@ -105,12 +177,13 @@
       <div class="text-center">
         <span class="text-zinc-400">Masz już konto? </span>
         <button
+          type="button"
           class="hover:text-accent hover:underline"
           (click)="toggleView()"
         >
           Zaloguj się
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </div>
