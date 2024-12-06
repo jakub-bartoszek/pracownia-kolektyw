@@ -1,0 +1,10 @@
+<header>
+  <app-navbar (openModal)="openAuthModal()"></app-navbar>
+</header>
+<main class="min-h-dvh">
+  <router-outlet></router-outlet>
+</main>
+
+<app-auth *ngIf="isAuthModalOpen" (closeModal)="closeAuthModal()"></app-auth>
+
+<app-footer [scrollToSection]="scrollToSection"></app-footer>
