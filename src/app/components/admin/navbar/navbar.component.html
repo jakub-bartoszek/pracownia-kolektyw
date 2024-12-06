@@ -1,0 +1,15 @@
+<div class="h-screen border-r-2 border-accent p-4">
+  <img class="w-32 md:w-40" src="/images/logo-2.png" />
+
+  <div class="w-full mt-4">
+    <ul class="flex flex-col gap-2">
+      <li *ngFor="let link of links">
+        <a
+          class="text-lg uppercase hover:text-accent transition-colors"
+          [routerLink]="[link.href]"
+          >{{ link.title }}</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
