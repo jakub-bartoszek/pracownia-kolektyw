@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { NavbarComponent } from '../../components/main/navbar/navbar.component';
+import { FooterComponent } from '../../components/main/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { AuthModalComponent } from '../../components/auth-modal/auth-modal.component';
+import { AuthModalComponent } from '../../components/main/auth-modal/auth-modal.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
