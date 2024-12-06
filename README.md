@@ -1,4 +1,4 @@
-# PracowniaKolektyw
+# Pracownia Kolektyw
 
 This project is a website for the tattoo studio - Pracownia Kolektyw.
 
