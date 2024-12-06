@@ -4,11 +4,12 @@ import { ArtistsService } from '../../services/artists.service';
 import { GalleryService } from '../../services/gallery.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ImageModalComponent } from "../../components/image-modal/image-modal.component";
 
 @Component({
   selector: 'app-tattoos-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ImageModalComponent],
   templateUrl: './tattoos-page.component.html',
 })
 export class TattoosPageComponent implements OnInit {
@@ -29,11 +30,23 @@ export class TattoosPageComponent implements OnInit {
       description: 'Subtelne, niewielkie wzory, które dyskretnie zdobią ciało.',
     },
   ];
+  selectedImageUrl: string = '';
+  isImageModalOpen: boolean = false;
 
   constructor(
     private artistsService: ArtistsService,
     private galleryService: GalleryService
   ) {}
+
+  openImageModal(imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.isImageModalOpen = false;
+    this.selectedImageUrl = '';
+  }
 
   async ngOnInit(): Promise<void> {
     this.tattooArtists = (await this.artistsService.loadArtists()).filter(

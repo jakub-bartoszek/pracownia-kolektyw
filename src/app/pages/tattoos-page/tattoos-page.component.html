@@ -91,6 +91,7 @@
       <div
         *ngFor="let image of tattooImages.slice(0, 8); let last = last"
         class="relative overflow-hidden"
+        (click)="openImageModal(image.imageUrl)"
       >
         <div class="group h-full w-full cursor-pointer aspect-[3/4]">
           <img
@@ -127,6 +128,11 @@
         </div>
       </div>
     </div>
+    <app-image-modal
+      [imageUrl]="selectedImageUrl"
+      [isOpen]="isImageModalOpen"
+      (closeModal)="closeImageModal()"
+    ></app-image-modal>
   </section>
 
   <section id="artists">

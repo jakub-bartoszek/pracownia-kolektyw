@@ -1,0 +1,13 @@
+<div
+  class="fixed left-0 top-0 z-20 flex h-full w-full items-center justify-center bg-black/75"
+  (click)="close()"
+  *ngIf="isOpen"
+>
+  <div class="h-full w-full flex justify-center items-center p-10">
+    <img
+      (click)="$event.stopPropagation()"
+      [src]="imageUrl"
+      class="h-full object-contain z-20"
+    />
+  </div>
+</div>
