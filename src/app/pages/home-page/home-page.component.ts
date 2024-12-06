@@ -10,6 +10,7 @@ import { ArtistsService } from '../../services/artists.service';
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { ArtistsSectionComponent } from '../../components/artists-section/artists-section.component';
 import { ReviewsSectionComponent } from '../../components/reviews-section/reviews-section.component';
+import { ImageModalComponent } from '../../components/image-modal/image-modal.component';
 
 @Component({
   selector: 'app-home-page',
@@ -22,6 +23,7 @@ import { ReviewsSectionComponent } from '../../components/reviews-section/review
     ContactFormComponent,
     ArtistsSectionComponent,
     ReviewsSectionComponent,
+    ImageModalComponent,
   ],
   templateUrl: './home-page.component.html',
 })
@@ -30,6 +32,8 @@ export class HomePageComponent implements OnInit {
   isAdmin = false;
   artists: Artist[] = [];
   images: ImageData[] = [];
+  selectedImageUrl: string = '';
+  isImageModalOpen: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -39,6 +43,16 @@ export class HomePageComponent implements OnInit {
 
   openModal() {
     this.authService.openAuthModal();
+  }
+
+  openImageModal(imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.isImageModalOpen = false;
+    this.selectedImageUrl = '';
   }
 
   scrollToSection(sectionName: string) {

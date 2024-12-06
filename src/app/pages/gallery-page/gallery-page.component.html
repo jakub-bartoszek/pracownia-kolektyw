@@ -14,6 +14,12 @@
     (close)="closeModal()"
   ></app-upload-artwork-modal>
 
+  <app-image-modal
+    [imageUrl]="selectedImageUrl"
+    [isOpen]="isImageModalOpen"
+    (closeModal)="closeImageModal()"
+  ></app-image-modal>
+
   <section id="galeria">
     <h1
       class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline underline-offset-8 sm:text-5xl"
@@ -22,7 +28,11 @@
     </h1>
 
     <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      <div *ngFor="let image of images" class="relative group overflow-hidden">
+      <div
+        *ngFor="let image of images"
+        class="relative group overflow-hidden"
+        (click)="openImageModal(image.imageUrl)"
+      >
         <div class="h-full w-full cursor-pointer">
           <img
             class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"

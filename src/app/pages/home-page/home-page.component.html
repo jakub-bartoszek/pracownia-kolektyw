@@ -129,6 +129,7 @@
       <div
         *ngFor="let image of images.slice(0, 8); let last = last"
         class="relative overflow-hidden"
+        (click)="openImageModal(image.imageUrl)"
       >
         <div class="group h-full w-full cursor-pointer aspect-[3/4]">
           <img
@@ -136,7 +137,6 @@
             [src]="image.imageUrl"
             alt="{{ image.artistId }}"
           />
-
           <div
             class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
           >
@@ -163,6 +163,12 @@
         </div>
       </div>
     </div>
+
+    <app-image-modal
+      [imageUrl]="selectedImageUrl"
+      [isOpen]="isImageModalOpen"
+      (closeModal)="closeImageModal()"
+    ></app-image-modal>
   </section>
 
   <app-artists-section></app-artists-section>
