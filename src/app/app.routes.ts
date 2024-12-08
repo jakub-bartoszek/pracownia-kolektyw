@@ -20,6 +20,9 @@ import { AdminPageComponent } from './pages/admin/admin-page/admin-page.componen
 import { AdminArtworksPageComponent } from './pages/admin/admin-artworks-page/admin-artworks-page.component';
 import { AdminArtistsPageComponent } from './pages/admin/admin-artists-page/admin-artists-page.component';
 import { AdminReviewsPageComponent } from './pages/admin/admin-reviews-page/admin-reviews-page.component';
+import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
+
+const adminOnly = () => hasCustomClaim('admin');
 
 export const routes: Routes = [
   {
@@ -47,6 +50,8 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: adminOnly },
     children: [
       { path: '', component: AdminPageComponent },
       { path: 'prace', component: AdminArtworksPageComponent },
