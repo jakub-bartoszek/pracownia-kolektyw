@@ -20,9 +20,11 @@ import { AdminPageComponent } from './pages/admin/admin-page/admin-page.componen
 import { AdminArtworksPageComponent } from './pages/admin/admin-artworks-page/admin-artworks-page.component';
 import { AdminArtistsPageComponent } from './pages/admin/admin-artists-page/admin-artists-page.component';
 import { AdminReviewsPageComponent } from './pages/admin/admin-reviews-page/admin-reviews-page.component';
+import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
+
+const adminOnly = () => hasCustomClaim('admin');
 
 export const routes: Routes = [
-  // Layout główny
   {
     path: '',
     component: MainLayoutComponent,
@@ -45,10 +47,11 @@ export const routes: Routes = [
       { path: 'styles', component: StylesPageComponent },
     ],
   },
-  // Layout admina
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: adminOnly },
     children: [
       { path: '', component: AdminPageComponent },
       { path: 'prace', component: AdminArtworksPageComponent },
@@ -56,7 +59,6 @@ export const routes: Routes = [
       { path: 'opinie', component: AdminReviewsPageComponent },
     ],
   },
-  // Obsługa nieznanych tras
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
