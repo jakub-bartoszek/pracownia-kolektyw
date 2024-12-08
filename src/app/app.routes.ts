@@ -22,7 +22,6 @@ import { AdminArtistsPageComponent } from './pages/admin/admin-artists-page/admi
 import { AdminReviewsPageComponent } from './pages/admin/admin-reviews-page/admin-reviews-page.component';
 
 export const routes: Routes = [
-  // Layout główny
   {
     path: '',
     component: MainLayoutComponent,
@@ -45,7 +44,6 @@ export const routes: Routes = [
       { path: 'styles', component: StylesPageComponent },
     ],
   },
-  // Layout admina
   {
     path: 'admin',
     component: AdminLayoutComponent,
@@ -56,7 +54,6 @@ export const routes: Routes = [
       { path: 'opinie', component: AdminReviewsPageComponent },
     ],
   },
-  // Obsługa nieznanych tras
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
