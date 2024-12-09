@@ -7,11 +7,11 @@
 
   <div
     *ngIf="images.length"
-    class="mb-20 grid grid-cols-2 gap-4 md:grid-cols-3"
+    class="mb-20 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5"
   >
     <div
       *ngFor="let image of images"
-      class="flex flex-col gap-y-4 overflow-hidden bg-zinc-900 p-4"
+      class="flex flex-col gap-y-2 overflow-hidden bg-zinc-900 p-2 md:gap-y-4 md:p-4"
     >
       <p class="w-min whitespace-nowrap">
         {{ getArtistFullName(image.artistId) }}
@@ -25,7 +25,7 @@
       </div>
       <button
         (click)="deleteImage(image.id, image.imageUrl)"
-        class="w-full transform bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+        class="w-full transform bg-accent px-4 py-1 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none md:py-2"
       >
         Usuń
       </button>
@@ -35,7 +35,7 @@
   <div class="absolute bottom-4 left-1/2 -translate-x-1/2 transform">
     <button
       (click)="openModal()"
-      class="z-50 w-min transform whitespace-nowrap border-2 border-accent bg-background px-6 py-4 text-lg font-semibold uppercase text-accent shadow-xl transition-colors hover:bg-accent hover:text-background"
+      class="z-50 w-min transform whitespace-nowrap border-2 border-accent bg-background px-3 py-2 font-semibold uppercase text-accent shadow-xl transition-colors hover:bg-accent hover:text-background md:px-6 md:py-4 md:text-lg"
     >
       Dodaj Pracę
     </button>

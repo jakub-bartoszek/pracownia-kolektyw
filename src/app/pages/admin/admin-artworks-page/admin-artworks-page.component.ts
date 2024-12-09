@@ -5,7 +5,7 @@ import { AuthService } from '../../../services/auth.service';
 import { GalleryService } from '../../../services/gallery.service';
 import { Artist, ImageData } from '../../../models/models';
 import { ArtistsService } from '../../../services/artists.service';
-import { UploadArtworkModalComponent } from '../../../components/main/upload-artwork-modal/upload-artwork-modal.component';
+import { UploadArtworkModalComponent } from '../../../components/admin/upload-artwork-modal/upload-artwork-modal.component';
 
 @Component({
   selector: 'app-admin-artworks-page',
