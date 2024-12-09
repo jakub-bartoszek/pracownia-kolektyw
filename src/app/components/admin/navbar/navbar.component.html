@@ -1,14 +1,23 @@
-<div class="h-screen border-r-2 border-accent p-4 w-40 md:w-48">
-  <img class="w-32 md:w-40" src="/images/logo-2.png" />
+<div class="h-screen border-r-2 border-accent p-4">
+  <img class="hidden sm:block w-32 md:w-40 mb-4" src="/images/logo-2.png" />
 
-  <div class="w-full mt-4">
-    <ul class="flex flex-col gap-2">
+  <div class="w-full">
+    <ul class="flex flex-col gap-y-4 sm:gap-y-2">
       <li *ngFor="let link of links">
         <a
-          class="text-lg uppercase hover:text-accent transition-colors"
+          class="hover:text-accent transition-colors flex items-center font-bold gap-x-2"
           [routerLink]="[link.href]"
-          >{{ link.title }}</a
         >
+          <div class="sm:hidden">
+            <ng-container
+              *ngComponentOutlet="link.icon"
+              size="12px"
+            ></ng-container>
+          </div>
+          <span class="hidden sm:block text-lg uppercase">{{
+            link.title
+          }}</span>
+        </a>
       </li>
     </ul>
   </div>
