@@ -1,1 +1,28 @@
-<p>admin-reviews-page works!</p>
+<div class="h-full overflow-y-scroll p-4">
+  <div
+    *ngIf="reviews.length"
+    class="mb-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+  >
+    <div
+      *ngFor="let review of reviews"
+      class="flex flex-col items-start justify-between bg-zinc-900 p-4"
+    >
+      <p class="text-xs text-zinc-500">{{ review.date }}</p>
+
+      <p class="font-bold text-accent text-lg">{{ review.name }}</p>
+
+      <p class="font-semibold text-accent">{{ review.rate }} / 5</p>
+
+      <p class="mb-4">
+        {{ review.content }}
+      </p>
+
+      <button
+        (click)="deleteReview(review.id)"
+        class="w-full transform bg-accent px-4 py-1 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none md:py-2"
+      >
+        Usuń
+      </button>
+    </div>
+  </div>
+</div>
