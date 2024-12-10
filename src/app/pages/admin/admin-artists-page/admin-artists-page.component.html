@@ -1,1 +1,48 @@
-<p>admin-artists-page works!</p>
+<div class="h-full overflow-y-scroll p-4">
+  <app-upload-artist-modal
+    *ngIf="isModalOpen"
+    (close)="closeModal()"
+  ></app-upload-artist-modal>
+
+  <div>
+    <div
+      class="mb-16 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5"
+      *ngIf="artists.length"
+    >
+      <div
+        *ngFor="let artist of artists"
+        class="flex flex-col items-center justify-between gap-y-2 overflow-hidden bg-zinc-900 p-2 md:gap-y-4 md:p-4"
+      >
+        <div
+          class="flex aspect-square h-24 w-24 overflow-hidden rounded-full md:h-32 md:w-32"
+        >
+          <img
+            class="h-full w-full object-cover"
+            [src]="artist.profileImageUrl"
+            alt="{{ artist.name }} {{ artist.surname }}"
+          />
+        </div>
+
+        <p class="text-center text-lg font-bold md:text-xl">
+          {{ artist.name }} {{ artist.surname }}
+        </p>
+
+        <button
+          (click)="deleteArtist(artist.id)"
+          class="w-full transform bg-accent px-4 py-1 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none md:py-2"
+        >
+          Usuń
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 transform">
+    <button
+      (click)="openModal()"
+      class="z-50 w-min transform whitespace-nowrap border-2 border-accent bg-background px-3 py-2 font-semibold uppercase text-accent shadow-xl transition-colors hover:bg-accent hover:text-background md:px-6 md:py-4 md:text-lg"
+    >
+      Dodaj Artystę
+    </button>
+  </div>
+</div>
