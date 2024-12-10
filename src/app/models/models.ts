@@ -8,7 +8,7 @@ export interface Review {
 }
 
 export interface Artist {
-  id?: string;
+  id: string;
   name: string;
   surname: string;
   category: 'piercing' | 'tattoo';
