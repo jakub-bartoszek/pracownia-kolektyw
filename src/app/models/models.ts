@@ -1,5 +1,5 @@
 export interface Review {
-  id?: string;
+  id: string;
   content: string;
   name: string;
   date: any;

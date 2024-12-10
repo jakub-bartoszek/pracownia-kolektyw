@@ -45,7 +45,7 @@ export class ReviewsService {
     const existingReview = await this.getUserReview(user.uid);
     if (existingReview) throw new Error('You have already submitted a review.');
 
-    const review: Omit<Review, 'date'> = {
+    const review: Omit<Review, 'id' | 'date'> = {
       content,
       name: `${userInfo.firstName} ${userInfo.lastName}`,
       rate,
