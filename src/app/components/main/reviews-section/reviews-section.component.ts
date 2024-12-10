@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { ReviewsService } from '../../../services/reviews.service';
 import { Review } from '../../../models/models';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-reviews-section',
@@ -14,8 +14,6 @@ import { FormsModule } from '@angular/forms';
 export class ReviewsSectionComponent {
   reviews: Review[] = [];
   isLoggedIn = false;
-  isAdmin = false;
-  images: ImageData[] = [];
   userReview: Review | null = null;
   newReviewContent: string = '';
   newReviewRate: number = 5;
@@ -72,10 +70,6 @@ export class ReviewsSectionComponent {
 
     this.authService.isLoggedIn$.subscribe((loggedIn) => {
       this.isLoggedIn = loggedIn;
-    });
-
-    this.authService.isAdmin$.subscribe((admin) => {
-      this.isAdmin = admin;
     });
   }
 
