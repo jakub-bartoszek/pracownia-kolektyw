@@ -23,6 +23,7 @@
           alt="{{ image.artistId }}"
         />
       </div>
+      <p class="text-xs text-accent uppercase text-center">{{image.category}}</p>
       <button
         (click)="deleteImage(image.id, image.imageUrl)"
         class="w-full transform bg-accent px-4 py-1 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none md:py-2"
