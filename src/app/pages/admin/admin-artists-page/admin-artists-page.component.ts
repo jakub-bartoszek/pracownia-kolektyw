@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadArtistModalComponent } from '../../../components/main/upload-artist-modal/upload-artist-modal.component';
+import { UploadArtistModalComponent } from '../../../components/admin/upload-artist-modal/upload-artist-modal.component';
 import { AuthService } from '../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Artist } from '../../../models/models';
