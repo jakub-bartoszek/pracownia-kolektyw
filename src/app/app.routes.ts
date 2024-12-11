@@ -21,6 +21,7 @@ import { AdminArtworksPageComponent } from './pages/admin/admin-artworks-page/ad
 import { AdminArtistsPageComponent } from './pages/admin/admin-artists-page/admin-artists-page.component';
 import { AdminReviewsPageComponent } from './pages/admin/admin-reviews-page/admin-reviews-page.component';
 import { AuthGuard, hasCustomClaim } from '@angular/fire/auth-guard';
+import { AdminArtistPageComponent } from './pages/admin/admin-artist-page/admin-artist-page.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 
@@ -56,6 +57,7 @@ export const routes: Routes = [
       { path: '', component: AdminPageComponent },
       { path: 'prace', component: AdminArtworksPageComponent },
       { path: 'artysci', component: AdminArtistsPageComponent },
+      { path: 'artysci/:id', component: AdminArtistPageComponent },
       { path: 'opinie', component: AdminReviewsPageComponent },
     ],
   },
