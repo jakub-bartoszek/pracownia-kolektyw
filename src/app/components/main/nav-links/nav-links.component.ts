@@ -12,6 +12,8 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './nav-links.component.html',
 })
 export class NavLinksComponent {
+  isAdmin = false;
+
   @Input() isSidebar: boolean = false;
   @Output() onLogin: EventEmitter<void> = new EventEmitter();
 
@@ -41,5 +43,11 @@ export class NavLinksComponent {
 
   logout() {
     this.authService.logout().then(() => {});
+  }
+
+  ngOnInit() {
+    this.authService.isAdmin$.subscribe((admin) => {
+      this.isAdmin = admin;
+    });
   }
 }
