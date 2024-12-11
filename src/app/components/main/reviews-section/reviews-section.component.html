@@ -21,7 +21,7 @@
       <p>{{ review.content }}</p>
 
       <button
-        *ngIf="isLoggedIn && (userReview?.id === review.id || isAdmin)"
+        *ngIf="isLoggedIn && userReview?.id === review.id"
         (click)="review.id && deleteReview(review.id)"
         class="mt-4 w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
       >
@@ -30,80 +30,24 @@
     </div>
   </div>
 
-  <div>
-    <p *ngIf="reviews.length === 0" class="mt-4 text-center text-lg">
-      Brak opinii.
-    </p>
+  <p *ngIf="reviews.length === 0" class="mt-4 text-center text-lg">
+    Brak opinii.
+  </p>
 
-    <ng-container *ngIf="!isAdmin">
-      <ng-container *ngIf="isLoggedIn; else loginPrompt">
-        <ng-container *ngIf="!userReview; else existingReview">
-          <div class="mt-4 bg-zinc-900 p-4 sm:p-8">
-            <h3 class="mb-4 text-center text-2xl font-semibold text-accent">
-              Dodaj swoją opinię
-            </h3>
+  <div
+    *ngIf="userReview"
+    class="mt-4 bg-zinc-900 p-8 text-center text-lg text-zinc-400"
+  >
+    Już dodałeś swoją opinię.
+  </div>
 
-            <form
-              class="flex flex-col items-center gap-4"
-              (submit)="addReview(); $event.preventDefault()"
-            >
-              <div class="flex w-full flex-col gap-2">
-                <label for="rate" class="text-lg font-medium">Ocena</label>
-                <select
-                  id="rate"
-                  [(ngModel)]="newReviewRate"
-                  class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-                  required
-                  name="rate"
-                >
-                  <option value="5">5 - Doskonała</option>
-                  <option value="4">4 - Bardzo dobra</option>
-                  <option value="3">3 - Dobra</option>
-                  <option value="2">2 - Przeciętna</option>
-                  <option value="1">1 - Słaba</option>
-                </select>
-              </div>
-
-              <div class="flex w-full flex-col gap-2">
-                <label for="content" class="text-lg font-medium">Opinia</label>
-                <textarea
-                  id="content"
-                  rows="4"
-                  [(ngModel)]="newReviewContent"
-                  class="border border-zinc-700 bg-background p-3 focus:border-accent focus:outline-none"
-                  required
-                  name="content"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                class="w-min transform whitespace-nowrap bg-accent px-8 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-              >
-                Dodaj Opinię
-              </button>
-            </form>
-          </div>
-        </ng-container>
-      </ng-container>
-    </ng-container>
-
-    <ng-template #existingReview>
-      <div class="mt-4 bg-zinc-900 p-8 text-center text-lg text-zinc-400">
-        Już dodałeś swoją opinię.
-      </div>
-    </ng-template>
-
-    <ng-template #loginPrompt>
-      <div class="mt-4 bg-zinc-900 p-8 text-center">
-        <p class="text-lg text-accent mb-4">Zaloguj się, aby dodać opinię.</p>
-        <button
-          (click)="openModal()"
-          class="transform bg-accent px-6 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Zaloguj się
-        </button>
-      </div>
-    </ng-template>
+  <div *ngIf="!isLoggedIn" class="mt-4 bg-zinc-900 p-8 text-center">
+    <p class="text-lg text-accent mb-4">Zaloguj się, aby dodać opinię.</p>
+    <button
+      (click)="openModal()"
+      class="transform bg-accent px-6 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+    >
+      Zaloguj się
+    </button>
   </div>
 </section>

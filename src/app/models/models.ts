@@ -1,5 +1,5 @@
 export interface Review {
-  id?: string;
+  id: string;
   content: string;
   name: string;
   date: any;
@@ -8,7 +8,7 @@ export interface Review {
 }
 
 export interface Artist {
-  id?: string;
+  id: string;
   name: string;
   surname: string;
   category: 'piercing' | 'tattoo';

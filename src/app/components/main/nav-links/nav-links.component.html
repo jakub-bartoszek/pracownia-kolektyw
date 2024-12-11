@@ -25,6 +25,14 @@
     </button>
   </ng-container>
 
+  <app-nav-link
+    *ngIf="isAdmin"
+    class="w-full"
+    [href]="'/admin'"
+    [title]="'Panel'"
+    [isSidebar]="isSidebar"
+  ></app-nav-link>
+
   <ng-template #loginButton>
     <button
       (click)="triggerLogin()"

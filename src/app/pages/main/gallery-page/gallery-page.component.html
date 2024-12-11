@@ -1,19 +1,4 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4">
-  <div *ngIf="isAdmin" class="flex items-center justify-center">
-    <button
-      (click)="openModal()"
-      class="w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-    >
-      Dodaj Pracę
-    </button>
-  </div>
-
-  <app-upload-artwork-modal
-    *ngIf="isModalOpen"
-    [artists]="artists"
-    (close)="closeModal()"
-  ></app-upload-artwork-modal>
-
   <app-image-modal
     [imageUrl]="selectedImageUrl"
     [isOpen]="isImageModalOpen"
@@ -47,13 +32,6 @@
             >
               {{ getArtistFullName(image.artistId) }}
             </p>
-            <button
-              *ngIf="isAdmin"
-              (click)="deleteImage(image.id, image.imageUrl)"
-              class="w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-            >
-              Usuń
-            </button>
           </div>
         </div>
       </div>
