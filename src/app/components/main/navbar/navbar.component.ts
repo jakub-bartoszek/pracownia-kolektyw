@@ -9,27 +9,33 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavLinksComponent } from '../nav-links/nav-links.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MenuToggleComponent } from '../menu-toggle/menu-toggle.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [
-    NavLinksComponent,
-    SidebarComponent,
-    MenuToggleComponent,
-    CommonModule,
-    RouterModule,
-  ],
+  imports: [SidebarComponent, MenuToggleComponent, CommonModule, RouterModule],
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  @Output() openModal: EventEmitter<void> = new EventEmitter();
-  isSidebarOpen = false;
+  links = [
+    { href: '/o-nas', title: 'O nas' },
+    { href: '/galeria', title: 'Galeria' },
+    { href: '/uslugi', title: 'Usługi' },
+    { href: '/artysci', title: 'Artyści' },
+    { href: '/kontakt', title: 'Kontakt' },
+  ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  @Output() openModal: EventEmitter<void> = new EventEmitter();
+  isSidebarOpen = true;
+  isLoggedIn = false;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private authService: AuthService
+  ) {}
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -47,9 +53,17 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  logout() {
+    this.authService.logout().then(() => {});
+  }
+
   ngOnInit() {
     if (isPlatformBrowser(this.platformId) && window.innerWidth >= 768) {
       this.isSidebarOpen = false;
     }
+
+    this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+    });
   }
 }

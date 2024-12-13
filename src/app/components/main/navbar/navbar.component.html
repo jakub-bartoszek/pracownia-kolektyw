@@ -1,16 +1,31 @@
-<nav class="fixed top-0 z-20 h-20 w-full bg-background">
+<nav class="fixed top-0 z-20 h-20 w-full bg-background bg-zinc-900 shadow-lg">
   <div
     class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4"
   >
     <a [routerLink]="['/']" class="h-full">
       <img src="/images/logo.png" class="h-full" />
     </a>
-    <div class="hidden h-full items-center md:flex">
-      <app-nav-links
-        (onLogin)="openModal.emit()"
-        [isSidebar]="false"
-      ></app-nav-links>
-    </div>
+
+    <ul class="hidden items-center gap-x-4 md:flex">
+      <li
+        class="group relative"
+        *ngFor="let link of links"
+        [title]="link.title"
+      >
+        <a
+          routerLinkActive="text-accent underline decoration-2  underline-offset-2"
+          [routerLink]="link.href"
+          class="p-2 font-bold transition-colors hover:text-accent"
+          >{{ link.title }}</a
+        >
+      </li>
+      <li
+        class="flex items-center justify-center bg-accent px-4 py-2 font-bold text-background transition hover:scale-105"
+      >
+        <button (click)="openModal.emit()" *ngIf="!isLoggedIn">Zaloguj</button>
+        <button (click)="logout()" *ngIf="isLoggedIn">Wyloguj</button>
+      </li>
+    </ul>
 
     <app-menu-toggle
       class="md:hidden"
@@ -20,8 +35,13 @@
 </nav>
 
 <app-sidebar
+  [isLoggedIn]="isLoggedIn"
   [isOpen]="isSidebarOpen"
-  (onLogin)="openModal.emit()"
+  [links]="links"
+  (closeSidebar)="closeSidebar()"
+  (login)="openModal.emit()"
+  (logout)="logout()"
+  (openAuthModal)="openModal.emit()"
 ></app-sidebar>
 
 <div

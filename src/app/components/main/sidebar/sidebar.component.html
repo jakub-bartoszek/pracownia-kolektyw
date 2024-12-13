@@ -1,14 +1,35 @@
 <div
-  class="fixed right-0 top-20 z-50 w-full transform bg-background transition-transform duration-300 ease-in-out md:hidden"
+  class="fixed right-0 top-20 z-50 w-full transform bg-background bg-zinc-900 transition-transform duration-300 ease-in-out md:hidden"
   [ngClass]="{
     'translate-x-0': isOpen,
     'translate-x-full': !isOpen
   }"
 >
-  <div class="flex flex-col">
-    <app-nav-links
-      (onLogin)="onLogin.emit()"
-      [isSidebar]="true"
-    ></app-nav-links>
-  </div>
+  <ul class="flex flex-col">
+    <li class="w-full flex" *ngFor="let link of links" [title]="link.title">
+      <a
+        class="h-full w-full p-4 text-center font-bold transition hover:bg-zinc-800 hover:text-accent"
+        routerLinkActive="text-accent underline decoration-2 underline-offset-2"
+        [routerLink]="link.href"
+        (click)="onCloseSidebar()"
+        >{{ link.title }}</a
+      >
+    </li>
+    <li>
+      <button
+        class="group h-full w-full bg-accent p-4 text-center font-bold text-background transition hover:scale-110"
+        (click)="onOpenAuthModal()"
+        *ngIf="!isLoggedIn"
+      >
+        Zaloguj
+      </button>
+      <button
+        class="group h-full w-full bg-accent p-4 text-center font-bold text-background transition hover:scale-110"
+        (click)="onLogout()"
+        *ngIf="isLoggedIn"
+      >
+        Wyloguj
+      </button>
+    </li>
+  </ul>
 </div>
