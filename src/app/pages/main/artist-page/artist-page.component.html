@@ -26,4 +26,46 @@
       {{ artist.biography }}
     </p>
   </section>
+
+  <section id="prace">
+    <h2
+      class="mb-4 text-3xl font-bold tracking-wide text-accent underline underline-offset-8 sm:text-4xl leading-tight"
+    >
+      Prace
+    </h2>
+
+    <div *ngIf="artworks.length" class="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div
+        *ngFor="let image of artworks.slice(0, 8); let last = last"
+        class="relative overflow-hidden"
+        (click)="openImageModal(image.imageUrl)"
+      >
+        <div class="group h-full w-full cursor-pointer aspect-[3/4]">
+          <img
+            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
+            [src]="image.imageUrl"
+            alt="{{ image.artistId }}"
+          />
+        </div>
+
+        <div
+          *ngIf="last && artworks.length > 8"
+          class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
+        >
+          <span class="text-5xl text-white">+{{ artworks.length - 8 }}</span>
+          <a
+            [routerLink]="['/galeria']"
+            class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
+          >
+            Zobacz Wszystkie
+          </a>
+        </div>
+      </div>
+    </div>
+    <app-image-modal
+      [imageUrl]="selectedImageUrl"
+      [isOpen]="isImageModalOpen"
+      (closeModal)="closeImageModal()"
+    ></app-image-modal>
+  </section>
 </div>
