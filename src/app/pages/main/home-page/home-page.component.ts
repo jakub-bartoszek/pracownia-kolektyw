@@ -9,7 +9,7 @@ import { ArtistsService } from '../../../services/artists.service';
 import { ContactFormComponent } from '../../../components/main/contact-form/contact-form.component';
 import { ArtistsSectionComponent } from '../../../components/main/artists-section/artists-section.component';
 import { ReviewsSectionComponent } from '../../../components/main/reviews-section/reviews-section.component';
-import { ImageModalComponent } from '../../../components/main/image-modal/image-modal.component';
+import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
 
 @Component({
   selector: 'app-home-page',
@@ -22,7 +22,7 @@ import { ImageModalComponent } from '../../../components/main/image-modal/image-
     ContactFormComponent,
     ArtistsSectionComponent,
     ReviewsSectionComponent,
-    ImageModalComponent,
+    GallerySectionComponent,
   ],
   templateUrl: './home-page.component.html',
 })
@@ -31,8 +31,6 @@ export class HomePageComponent implements OnInit {
   isAdmin = false;
   artists: Artist[] = [];
   images: ImageData[] = [];
-  selectedImageUrl: string = '';
-  isImageModalOpen: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -44,24 +42,12 @@ export class HomePageComponent implements OnInit {
     this.authService.openAuthModal();
   }
 
-  openImageModal(imageUrl: string) {
-    this.selectedImageUrl = imageUrl;
-    this.isImageModalOpen = true;
-  }
-
-  closeImageModal() {
-    this.isImageModalOpen = false;
-    this.selectedImageUrl = '';
-  }
-
   scrollToSection(sectionName: string) {
     const section = document.getElementById(sectionName);
     if (section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = sectionTop - 80;
-      window.scrollTo({
-        top: offsetPosition,
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   }
 
@@ -76,9 +62,5 @@ export class HomePageComponent implements OnInit {
     this.authService.isAdmin$.subscribe((admin) => {
       this.isAdmin = admin;
     });
-  }
-
-  getArtistFullName(artistId: string): string {
-    return this.artistsService.getArtistFullName(artistId, this.artists);
   }
 }

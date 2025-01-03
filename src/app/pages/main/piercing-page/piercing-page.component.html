@@ -1,1 +1,56 @@
-<p>piercing works!</p>
+<div
+  class="mx-auto mt-20 max-w-[1400px] flex flex-col items-center gap-y-16 p-4 text-center"
+>
+  <section id="wprowadzenie">
+    <h2
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    >
+      Piercing
+    </h2>
+    <p class="max-w-3xl text-lg text-zinc-300">
+      Nasze usługi piercingu to sposób na wyrażenie siebie i podkreślenie
+      Twojego stylu. Wykonywane z najwyższą precyzją i dbałością o higienę,
+      dostosowujemy każdy zabieg do Twoich preferencji, zapewniając
+      bezpieczeństwo i komfort.
+    </p>
+  </section>
+
+  <section id="proces" class="p-8">
+    <h3
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    >
+      Proces Wykonywania Piercingu
+    </h3>
+    <p class="max-w-3xl text-lg text-zinc-300">
+      Każdy zabieg rozpoczynamy od konsultacji, aby zrozumieć Twoje oczekiwania
+      i doradzić najlepsze rozwiązania. W trakcie procedury dbamy o higienę i
+      Twój komfort, a także szczegółowo omawiamy proces gojenia i pielęgnacji.
+    </p>
+  </section>
+
+  <section id="porady" class="p-8">
+    <h3
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    >
+      Jak Dbać o Świeży Piercing
+    </h3>
+    <p class="text-lg text-zinc-300 max-w-3xl">
+      Prawidłowa pielęgnacja świeżego piercingu jest kluczowa dla zapobiegania
+      infekcjom i przyspieszenia procesu gojenia. Ważne jest, aby stosować
+      odpowiednie środki do czyszczenia i unikać dotykania miejsca zabiegu
+      brudnymi rękami.
+    </p>
+  </section>
+
+  <app-artists-section
+    [header]="'Nasi piercerzy'"
+    [artists]="piercingArtists"
+  ></app-artists-section>
+
+  <app-gallery-section
+    [headerPosition]="'center'"
+    [header]="'Prace'"
+    [images]="piercingImages"
+    class="w-full"
+  ></app-gallery-section>
+</div>

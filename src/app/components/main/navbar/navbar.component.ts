@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
   ];
 
   @Output() openModal: EventEmitter<void> = new EventEmitter();
-  isSidebarOpen = true;
+  isSidebarOpen = false;
   isLoggedIn = false;
 
   constructor(

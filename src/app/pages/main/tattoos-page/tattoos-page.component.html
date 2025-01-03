@@ -1,176 +1,88 @@
-<div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section id="intro">
+<div
+  class="mx-auto mt-20 max-w-[1400px] flex flex-col items-center gap-y-16 p-4 text-center"
+>
+  <section id="wprowadzenie">
     <h2
-      class="mb-4 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
     >
       Tatuaże
     </h2>
-    <p class="text-lg text-zinc-300">
+    <p class="max-w-3xl text-lg text-zinc-300">
       Nasze tatuaże to wyjątkowa sztuka, która podkreśla Twoją indywidualność.
       Stworzone z pasją i precyzją, projekty dostosowujemy do Twoich potrzeb i
       osobowości, dbając o każdy detal na każdym etapie.
     </p>
   </section>
 
-  <section id="style-teaser">
+  <section id="style-tatuazu">
     <h3
-      class="mb-4 text-3xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-4xl"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
     >
       Style Tatuażu
     </h3>
-    <div>
-      <p class="text-zinc-300">
+    <div class="max-w-3xl">
+      <p class="text-lg text-zinc-300">
         Odkryj różnorodność nowoczesnych stylów tatuażu. Od minimalizmu po
         realizm, każdy styl oferuje unikalne możliwości wyrażenia siebie.
-        Kliknij, aby poznać szczegóły!
       </p>
-      <div>
-        <a
-          [routerLink]="'/styles'"
-          class="mt-2 inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Poznaj style
-        </a>
-      </div>
+      <a
+        [routerLink]="'/styles'"
+        class="mt-6 inline-block transform bg-accent px-8 py-3 font-semibold uppercase text-background transition-transform hover:scale-105"
+      >
+        Poznaj style
+      </a>
     </div>
   </section>
 
-  <section id="process">
+  <section id="proces-tworzenia" class="p-8">
     <h3
-      class="mb-4 text-3xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-4xl"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
     >
       Proces Tworzenia
     </h3>
-    <p class="text-zinc-300">
+    <p class="max-w-3xl text-lg text-zinc-300">
       Każdy tatuaż zaczynamy od konsultacji, aby poznać Twoje oczekiwania.
       Tworzymy projekt zgodnie z Twoją wizją, dbając o każdy detal. Na każdym
       etapie dbamy o komfort i zadowolenie.
     </p>
   </section>
 
-  <section id="tips">
+  <section id="proady" class="p-8">
     <h3
-      class="mb-4 text-3xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-4xl leading-tight"
+      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
     >
       Jak Dbać o Świeży Tatuaż
     </h3>
-    <div>
-      <p class="text-zinc-300">
+    <div class="max-w-3xl">
+      <p class="text-lg text-zinc-300">
         Pielęgnacja świeżego tatuażu jest kluczowa dla prawidłowego gojenia i
         zachowania intensywności barw oraz detali. Bez względu na to, czy
         stosujesz sztuczną skórę czy folię spożywczą, odpowiednia troska o
         tatuaż ma ogromne znaczenie dla procesu gojenia.
       </p>
-      <p class="text-zinc-300">
+      <p class="text-lg text-zinc-300">
         Dowiedz się, jakie kroki podjąć, aby zadbać o swoje nowe dzieło w
         pierwszych dniach oraz czego unikać, aby cieszyć się pięknym efektem na
         lata.
       </p>
-      <div>
-        <a
-          [routerLink]="'/bezpieczenstwo-i-higiena'"
-          class="mt-2 inline-block transform cursor-pointer bg-accent px-6 py-3 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
-        >
-          Więcej informacji
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <h2
-      class="mb-4 text-3xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-4xl leading-tight"
-    >
-      Portfolio
-    </h2>
-
-    <div
-      *ngIf="tattooImages.length"
-      class="grid grid-cols-2 gap-4 md:grid-cols-4"
-    >
-      <div
-        *ngFor="let image of tattooImages.slice(0, 8); let last = last"
-        class="relative overflow-hidden"
-        (click)="openImageModal(image.imageUrl)"
-      >
-        <div class="group h-full w-full cursor-pointer aspect-[3/4]">
-          <img
-            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
-            [src]="image.imageUrl"
-            alt="{{ image.artistId }}"
-          />
-
-          <div
-            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
-          >
-            <a
-              [routerLink]="['/artysci', image.artistId]"
-              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
-            >
-              {{ getArtistFullName(image.artistId) }}
-            </a>
-          </div>
-        </div>
-
-        <div
-          *ngIf="last && tattooImages.length > 8"
-          class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
-        >
-          <span class="text-5xl text-white"
-            >+{{ tattooImages.length - 8 }}</span
-          >
-          <a
-            [routerLink]="['/galeria']"
-            class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
-          >
-            Zobacz Wszystkie
-          </a>
-        </div>
-      </div>
-    </div>
-    <app-image-modal
-      [imageUrl]="selectedImageUrl"
-      [isOpen]="isImageModalOpen"
-      (closeModal)="closeImageModal()"
-    ></app-image-modal>
-  </section>
-
-  <section id="artists">
-    <h3
-      class="mb-6 text-3xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-4xl"
-    >
-      Nasi Artyści
-    </h3>
-    <div
-      class="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2"
-      *ngIf="tattooArtists.length"
-    >
       <a
-        [routerLink]="['/artysci', artist.id]"
-        *ngFor="let artist of tattooArtists"
-        class="group flex cursor-pointer items-center gap-x-4 sm:gap-x-8 bg-zinc-900 p-4"
+        [routerLink]="'/bezpieczenstwo-i-higiena'"
+        class="mt-6 inline-block transform bg-accent px-8 py-3 font-semibold uppercase text-background rounded-lg transition-transform hover:scale-105"
       >
-        <div
-          class="flex aspect-square h-24 w-24 min-w-24 overflow-hidden rounded-full sm:h-32 sm:w-32 sm:min-w-32"
-        >
-          <img
-            class="h-full w-full object-cover transition-transform group-hover:scale-105"
-            [src]="artist.profileImageUrl"
-            alt="{{ artist.name }} {{ artist.surname }}"
-          />
-        </div>
-
-        <div>
-          <p
-            class="text-2xl sm:text-3xl font-bold transition-colors group-hover:text-accent"
-          >
-            {{ artist.name }} {{ artist.surname }}
-          </p>
-          <p class="mt-2 text-sm sm:text-base text-gray-400">
-            {{ artist.biography | slice : 0 : 150 }}...
-          </p>
-        </div>
+        Więcej informacji
       </a>
     </div>
   </section>
+
+  <app-artists-section
+    [header]="'Nasi tatuatorzy'"
+    [headerPosition]="'center'"
+    [artists]="tattooArtists"
+  ></app-artists-section>
+
+  <app-gallery-section
+    [headerPosition]="'center'"
+    [header]="'Prace'"
+    [images]="tattooImages"
+  ></app-gallery-section>
 </div>
