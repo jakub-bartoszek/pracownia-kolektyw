@@ -59,9 +59,7 @@ export class HomePageComponent implements OnInit {
     if (section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = sectionTop - 80;
-      window.scrollTo({
-        top: offsetPosition,
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   }
 
