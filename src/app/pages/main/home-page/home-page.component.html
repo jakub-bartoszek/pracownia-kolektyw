@@ -118,60 +118,18 @@
     </div>
   </section>
 
-  <section id="galeria">
-    <h2
-      class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
-      Nasze Prace
-    </h2>
+  <app-gallery-section
+    headerPosition="center"
+    header="Nasze prace"
+    [images]="images"
+    [maxImages]="8"
+  ></app-gallery-section>
 
-    <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-4">
-      <div
-        *ngFor="let image of images.slice(0, 8); let last = last"
-        class="relative overflow-hidden"
-        (click)="openImageModal(image.imageUrl)"
-      >
-        <div class="group h-full w-full cursor-pointer aspect-[3/4]">
-          <img
-            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
-            [src]="image.imageUrl"
-            alt="{{ image.artistId }}"
-          />
-          <div
-            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
-          >
-            <a
-              [routerLink]="['/artysci', image.artistId]"
-              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
-            >
-              {{ getArtistFullName(image.artistId) }}
-            </a>
-          </div>
-        </div>
-
-        <div
-          *ngIf="last && images.length > 8"
-          class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
-        >
-          <span class="text-5xl text-white">+{{ images.length - 8 }}</span>
-          <a
-            [routerLink]="['/galeria']"
-            class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
-          >
-            Zobacz Wszystkie
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <app-image-modal
-      [imageUrl]="selectedImageUrl"
-      [isOpen]="isImageModalOpen"
-      (closeModal)="closeImageModal()"
-    ></app-image-modal>
-  </section>
-
-  <app-artists-section></app-artists-section>
+  <app-artists-section
+    headerPosition="center"
+    header="Nasi artyści"
+    [artists]="artists"
+  ></app-artists-section>
 
   <section id="kontakt">
     <h2

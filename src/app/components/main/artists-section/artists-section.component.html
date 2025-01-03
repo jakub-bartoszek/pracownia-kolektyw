@@ -1,11 +1,12 @@
 <section id="artysci">
   <h2
-    class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    class="mb-8 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    [ngClass]="headerPosition === 'center' ? 'text-center' : ''"
   >
-    Nasi Artyści
+    {{ header }}
   </h2>
 
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2" *ngIf="artists.length">
+  <div class="grid grid-cols-1 gap-4 text-left lg:grid-cols-2" *ngIf="artists.length">
     <a
       [routerLink]="['/artysci', artist.id]"
       *ngFor="let artist of artists"

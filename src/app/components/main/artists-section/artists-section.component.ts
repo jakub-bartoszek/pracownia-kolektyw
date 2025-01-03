@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ArtistsService } from '../../../services/artists.service';
@@ -10,12 +10,8 @@ import { Artist } from '../../../models/models';
   selector: 'app-artists-section',
   templateUrl: './artists-section.component.html',
 })
-export class ArtistsSectionComponent implements OnInit {
-  artists: Artist[] = [];
-
-  constructor(private artistsService: ArtistsService) {}
-
-  async ngOnInit(): Promise<void> {
-    this.artists = await this.artistsService.loadArtists();
-  }
+export class ArtistsSectionComponent {
+  @Input() artists: Artist[] = [];
+  @Input() headerPosition?: 'center' | 'left' = 'left';
+  @Input() header: string = 'Nasi artyści';
 }

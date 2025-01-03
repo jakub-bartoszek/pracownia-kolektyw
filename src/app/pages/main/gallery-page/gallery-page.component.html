@@ -1,40 +1,7 @@
 <div class="mx-auto mt-20 flex max-w-[1400px] flex-col gap-y-4 p-4">
-  <app-image-modal
-    [imageUrl]="selectedImageUrl"
-    [isOpen]="isImageModalOpen"
-    (closeModal)="closeImageModal()"
-  ></app-image-modal>
-
-  <section id="galeria">
-    <h1
-      class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
-      Nasze prace
-    </h1>
-
-    <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      <div
-        *ngFor="let image of images"
-        class="relative group overflow-hidden"
-        (click)="openImageModal(image.imageUrl)"
-      >
-        <div class="h-full w-full cursor-pointer">
-          <img
-            class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
-            [src]="image.imageUrl"
-            alt="{{ image.artistId }}"
-          />
-          <div
-            class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
-          >
-            <p
-              class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
-            >
-              {{ getArtistFullName(image.artistId) }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <app-gallery-section
+    [header]="'Galeria'"
+    [headerPosition]="'center'"
+    [images]="images"
+  ></app-gallery-section>
 </div>

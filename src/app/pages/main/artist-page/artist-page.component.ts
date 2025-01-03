@@ -4,35 +4,24 @@ import { CommonModule } from '@angular/common';
 import { Artist, ImageData } from '../../../models/models';
 import { ArtistsService } from '../../../services/artists.service';
 import { GalleryService } from '../../../services/gallery.service';
-import { ImageModalComponent } from '../../../components/main/image-modal/image-modal.component';
+import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
 
 @Component({
   selector: 'app-artist-page',
   standalone: true,
-  imports: [CommonModule, ImageModalComponent, RouterModule],
+  imports: [CommonModule, RouterModule, GallerySectionComponent],
   templateUrl: './artist-page.component.html',
 })
 export class ArtistPageComponent implements OnInit {
   artist: Artist | null = null;
   artworks: ImageData[] = [];
   selectedImageUrl: string = '';
-  isImageModalOpen: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private artistsService: ArtistsService,
     private galleryService: GalleryService
   ) {}
-
-  openImageModal(imageUrl: string) {
-    this.selectedImageUrl = imageUrl;
-    this.isImageModalOpen = true;
-  }
-
-  closeImageModal() {
-    this.isImageModalOpen = false;
-    this.selectedImageUrl = '';
-  }
 
   async ngOnInit(): Promise<void> {
     const id = this.route.snapshot.paramMap.get('id');
