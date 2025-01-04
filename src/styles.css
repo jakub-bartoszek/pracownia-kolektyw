@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*, html {
- box-sizing: border-box;
+*,
+html {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 @layer base {
- :root {
-  --color-background: #121212;
-  --color-primary: #ffffff;
-  --color-accent: #bf9e32;
- }
+  :root {
+    --color-background: #212121;
+    --color-primary: #ffffff;
+    --color-accent: #bf9e32;
+  }
 }
 
 body {
- background-color: var(--color-background);
- color: var(--color-primary);
- @apply font-sans;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  @apply font-sans;
 }
