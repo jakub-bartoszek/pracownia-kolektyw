@@ -10,14 +10,17 @@ html {
 
 @layer base {
   :root {
-    --color-background: #212121;
-    --color-primary: #ffffff;
-    --color-accent: #bf9e32;
+    --color-background-rgb: 33, 33, 33;
+    /* #212121 */
+    --color-primary-rgb: 255, 255, 255;
+    /* #ffffff */
+    --color-accent-rgb: 191, 158, 50;
+    /* #bf9e32 */
   }
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-primary);
+  background-color: rgb(var(--color-background-rgb));
+  color: rgb(var(--color-primary-rgb));
   @apply font-sans;
 }
