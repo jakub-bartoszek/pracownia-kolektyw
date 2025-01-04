@@ -10,6 +10,7 @@ import { ContactFormComponent } from '../../../components/main/contact-form/cont
 import { ArtistsSectionComponent } from '../../../components/main/artists-section/artists-section.component';
 import { ReviewsSectionComponent } from '../../../components/main/reviews-section/reviews-section.component';
 import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
+import { BannerComponent } from "../../../components/main/banner/banner.component";
 
 @Component({
   selector: 'app-home-page',
@@ -23,7 +24,8 @@ import { GallerySectionComponent } from '../../../components/main/gallery-sectio
     ArtistsSectionComponent,
     ReviewsSectionComponent,
     GallerySectionComponent,
-  ],
+    BannerComponent
+],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit {
