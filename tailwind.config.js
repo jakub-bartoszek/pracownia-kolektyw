@@ -25,9 +25,9 @@ module.exports = {
         },
         muted: ({ opacityValue }) => {
           if (opacityValue !== undefined) {
-            return `rgba(var(--color-primary-rgb), 0.5)`; // Zawsze 50% przezroczystości
+            return `rgba(var(--color-primary-rgb), 0.5)`;
           }
-          return `rgba(var(--color-primary-rgb), 0.5)`; // Domyślna wartość
+          return `rgba(var(--color-primary-rgb), 0.5)`;
         },
       },
       backgroundImage: {
