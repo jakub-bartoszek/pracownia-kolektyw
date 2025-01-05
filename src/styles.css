@@ -10,11 +10,11 @@ html {
 
 @layer base {
   :root {
-    --color-background-rgb: 33, 33, 33;
+    --color-background-rgb: 22, 22, 22;
     /* #212121 */
     --color-primary-rgb: 255, 255, 255;
     /* #ffffff */
-    --color-accent-rgb: 191, 158, 50;
+    --color-accent-rgb: 221, 177, 24;
     /* #bf9e32 */
   }
 }
