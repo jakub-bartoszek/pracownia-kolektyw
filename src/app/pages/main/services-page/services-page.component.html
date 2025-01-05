@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-[1400px] mt-10 min-h-[400px] h-screen">
+<div class="mx-auto mt-10 h-dvh min-h-[400px] max-w-[1400px]">
   <section
     class="flex h-[calc(100%-80px)] flex-col items-center justify-center"
     id="usługi"
@@ -13,11 +13,7 @@
         [routerLink]="['/uslugi/tatuaze']"
         class="flex flex-col items-center gap-y-4"
       >
-        <img
-          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/tatuaze.svg"
-          alt="Tatuaże"
-        />
+        <img src="/images/tattoo-icon.png" alt="Tatuaże" />
 
         <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Tatuaże
@@ -27,11 +23,7 @@
         [routerLink]="['/uslugi/piercing']"
         class="flex flex-col items-center gap-y-4"
       >
-        <img
-          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/piercing.svg"
-          alt="Piercing"
-        />
+        <img src="/images/piercing-icon.png" alt="Piercing" />
 
         <p class="text-center text-xl font-semibold uppercase md:text-2xl">
           Piercing
