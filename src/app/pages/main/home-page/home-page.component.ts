@@ -10,7 +10,7 @@ import { ContactFormComponent } from '../../../components/main/contact-form/cont
 import { ArtistsSectionComponent } from '../../../components/main/artists-section/artists-section.component';
 import { ReviewsSectionComponent } from '../../../components/main/reviews-section/reviews-section.component';
 import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
-import { BannerComponent } from "../../../components/main/banner/banner.component";
+import { BannerComponent } from '../../../components/main/banner/banner.component';
 
 @Component({
   selector: 'app-home-page',
@@ -24,8 +24,8 @@ import { BannerComponent } from "../../../components/main/banner/banner.componen
     ArtistsSectionComponent,
     ReviewsSectionComponent,
     GallerySectionComponent,
-    BannerComponent
-],
+    BannerComponent,
+  ],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit {
@@ -64,5 +64,22 @@ export class HomePageComponent implements OnInit {
     this.authService.isAdmin$.subscribe((admin) => {
       this.isAdmin = admin;
     });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const element = entry.target as HTMLElement;
+
+        if (entry.isIntersecting) {
+          element.classList.remove('opacity-0');
+          element.classList.add('opacity-100');
+        } else {
+          element.classList.remove('opacity-100');
+          element.classList.add('opacity-0');
+        }
+      });
+    });
+
+    const elements = document.querySelectorAll('.fade-in');
+    elements.forEach((element) => observer.observe(element));
   }
 }
