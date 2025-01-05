@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
 
   @Output() openModal: EventEmitter<void> = new EventEmitter();
   isSidebarOpen = false;
+  isScrolled = false;
   isLoggedIn = false;
 
   constructor(
@@ -51,6 +52,12 @@ export class NavbarComponent implements OnInit {
     if (width >= 768 && this.isSidebarOpen) {
       this.isSidebarOpen = false;
     }
+  }
+
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    this.isScrolled = scrollTop > 0;
   }
 
   logout() {

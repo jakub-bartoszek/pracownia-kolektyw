@@ -1,36 +1,44 @@
-<nav class="fixed top-0 z-20 h-20 w-full bg-background bg-zinc-900 shadow-lg">
+<nav
+  class="fixed top-0 z-30 h-14 w-full transition duration-500"
+  [ngClass]="{
+    'bg-background shadow-xl': isSidebarOpen || isScrolled,
+    'bg-transparent': !isSidebarOpen && !isScrolled
+  }"
+>
   <div
-    class="mx-auto flex h-full max-w-[1400px] items-center justify-between p-4"
+    class="mx-auto flex h-full w-full max-w-[1400px] items-center justify-between px-4"
   >
-    <a [routerLink]="['/']" class="h-full">
-      <img src="/images/logo.png" class="h-full" />
-    </a>
-
-    <ul class="hidden items-center gap-x-4 md:flex">
+    <ul class="hidden w-full items-center gap-x-4 sm:flex">
       <li
         class="group relative"
         *ngFor="let link of links"
         [title]="link.title"
       >
         <a
-          routerLinkActive="text-accent underline decoration-2  underline-offset-2"
+          routerLinkActive="text-accent underline underline-offset-2"
           [routerLink]="link.href"
-          class="p-2 font-bold transition-colors hover:text-accent"
+          class="p-2 transition-colors hover:text-accent"
           >{{ link.title }}</a
         >
       </li>
-      <li
-        class="flex items-center justify-center bg-accent px-4 py-2 font-bold text-background transition hover:scale-105"
-      >
-        <button (click)="openModal.emit()" *ngIf="!isLoggedIn">Zaloguj</button>
-        <button (click)="logout()" *ngIf="isLoggedIn">Wyloguj</button>
+      <li class="ml-auto">
+        <button
+          class="flex items-center justify-center px-3 py-1 text-accent transition hover:bg-accent hover:text-background rounded"
+          (click)="openModal.emit()"
+          *ngIf="!isLoggedIn"
+        >
+          Zaloguj
+        </button>
+        <button
+          class="flex items-center justify-center px-3 py-1 text-accent transition hover:bg-accent hover:text-background"
+          (click)="logout()"
+          *ngIf="isLoggedIn"
+        >
+          Wyloguj
+        </button>
       </li>
     </ul>
-
-    <app-menu-toggle
-      class="md:hidden"
-      (toggleSidebar)="toggleSidebar()"
-    ></app-menu-toggle>
+    <app-menu-toggle (toggleSidebar)="toggleSidebar()"></app-menu-toggle>
   </div>
 </nav>
 
@@ -43,12 +51,3 @@
   (logout)="logout()"
   (openAuthModal)="openModal.emit()"
 ></app-sidebar>
-
-<div
-  class="fixed bottom-0 left-0 right-0 top-20 z-40 bg-black transition-opacity duration-300"
-  [ngClass]="{
-    'pointer-events-none  opacity-0': !isSidebarOpen,
-    'opacity-50': isSidebarOpen
-  }"
-  (click)="closeSidebar()"
-></div>
