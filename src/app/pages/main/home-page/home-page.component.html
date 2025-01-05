@@ -1,101 +1,70 @@
 <app-banner [scrollToSection]="scrollToSection"></app-banner>
 
-<div class="mx-auto flex max-w-[1400px] flex-col gap-y-16 p-4">
-  <section class="mt-8" id="o-nas">
-    <div class="relative w-full border-2 border-accent bg-background">
-      <div class="relative mx-auto flex flex-col gap-4 p-4">
-        <div>
-          <h2
-            class="mb-4 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-          >
-            O pracowni kolektyw
-          </h2>
-          <p class="leading-relaxed sm:text-xl">
-            Pracownia Kolektyw to miejsce, w którym pasja do sztuki tatuażu
-            spotyka się z indywidualnym podejściem do każdego klienta. Nasz
-            zespół doświadczonych artystów tworzy unikatowe projekty, zawsze
-            dopasowane do Twoich potrzeb.
-          </p>
-        </div>
-
-        <div>
-          <h3
-            class="mb-1 text-3xl font-bold capitalize leading-tight tracking-wide text-accent sm:text-4xl"
-          >
-            Nasza misja
-          </h3>
-          <p class="leading-relaxed sm:text-lg">
-            Pragniemy, by każdy tatuaż opowiadał wyjątkową historię. Od
-            koncepcji po wykonanie, dbamy o każdy detal, oferując pełne wsparcie
-            na każdym etapie. Gwarantujemy profesjonalizm i bezpieczeństwo przy
-            realizacji każdego projektu.
-          </p>
-        </div>
-
-        <div>
-          <h3
-            class="mb-1 text-3xl font-bold capitalize leading-tight tracking-wide text-accent sm:text-4xl"
-          >
-            Dlaczego my?
-          </h3>
-          <p class="leading-relaxed sm:text-lg">
-            W Pracowni Kolektyw stawiamy na jakość, precyzję i niepowtarzalność.
-            W przyjaznej atmosferze tworzymy nie tylko tatuaże, ale wyjątkowe
-            dzieła sztuki, które towarzyszą Ci przez całe życie.
-          </p>
-        </div>
-
-        <a
-          [routerLink]="['/o-nas']"
-          class="inline-block w-min transform whitespace-nowrap bg-accent px-6 py-4 text-lg font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
-        >
-          Dowiedz się więcej
-        </a>
-      </div>
-
-      <div
-        class="absolute inset-0 -z-10 h-full w-full rotate-2 border-2 border-accent sm:rotate-3"
-      ></div>
+<div class="mx-auto flex max-w-[1400px] flex-col gap-y-72 p-4">
+  <section
+    id="wprowadzenie"
+    class="fade-in mt-60 flex w-full flex-col items-center justify-center text-center opacity-0 transition duration-700"
+  >
+    <h1 class="mb-4 text-3xl font-bold text-primary md:text-5xl">
+      Sztuka na Twoim ciele
+    </h1>
+    <p class="mb-6 max-w-lg text-sm italic text-muted md:text-base">
+      Tworzymy dzieła, które opowiadają Twoją historię. Nasze studio to
+      połączenie pasji, profesjonalizmu i indywidualnego podejścia do każdego
+      projektu.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a
+        routerLink="/galeria"
+        class="w-48 whitespace-nowrap rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
+      >
+        Zobacz nasze portfolio
+      </a>
+      <a
+        routerLink="/kontakt"
+        class="w-48 rounded-lg border border-primary px-6 py-3 text-sm font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-background md:w-auto md:text-base"
+      >
+        Skontaktuj się z nami
+      </a>
     </div>
   </section>
 
   <section
-    class="flex h-[600px] flex-col items-center justify-center"
-    id="usługi"
+    id="uslugi"
+    class="fade-in flex w-full flex-col items-center justify-center text-center opacity-0 transition duration-700"
   >
-    <h2
-      class="mb-12 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
-      Nasze Usługi
-    </h2>
-    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
+    <h1 class="mb-4 text-3xl font-bold text-primary md:text-5xl">
+      Nasze usługi
+    </h1>
+    <p class="mb-6 max-w-lg text-sm italic text-muted md:text-base">
+      Nasze studio specjalizuje się zarówno w tatuażach, jak i piercingu,
+      oferując szeroki zakres usług, które pozwalają wyrazić siebie w unikalny
+      sposób.
+    </p>
+    <div class="flex gap-8">
       <a
-        [routerLink]="['/uslugi/tatuaze']"
+        routerLink="/uslugi/tatuaze"
         class="flex flex-col items-center gap-y-4"
       >
         <img
-          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/tatuaze.svg"
+          class="h-32 w-32 cursor-pointer transition hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/tattoo-icon.png"
           alt="Tatuaże"
         />
 
-        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
-          Tatuaże
-        </p>
+        <p class="mb-4 uppercase md:mb-6 md:text-xl">Tatuaże</p>
       </a>
       <a
-        [routerLink]="['/uslugi/piercing']"
+        routerLink="/uslugi/piercing"
         class="flex flex-col items-center gap-y-4"
       >
         <img
-          class="h-32 w-32 cursor-pointer transition duration-200 hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/piercing.svg"
+          class="h-32 w-32 cursor-pointer transition hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+          src="/images/piercing-icon.png"
           alt="Piercing"
         />
 
-        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
-          Piercing
-        </p>
+        <p class="mb-4 uppercase md:mb-6 md:text-xl">Piercing</p>
       </a>
     </div>
   </section>
