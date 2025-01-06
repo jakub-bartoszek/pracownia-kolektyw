@@ -21,7 +21,7 @@
       "
       class="group relative overflow-hidden rounded transition-transform duration-500"
       [ngClass]="{
-        'hover:scale-105': !(images.length > 8 && last && isWidget)
+        'hover:scale-[103%]': !(images.length > 8 && last && isWidget)
       }"
       (click)="
         !(images.length > 8 && last && isWidget) &&
@@ -29,9 +29,11 @@
       "
     >
       <div
-        class="h-full w-full aspect-[3/4] cursor-pointer transition"
+        class="h-full w-full cursor-pointer transition"
         [ngClass]="{
-          'group-hover:scale-105': !(images.length > 8 && last && isWidget)
+          'group-hover:scale-[103%]': !(images.length > 8 && last && isWidget),
+          'aspect-[4/5]': isWidget,
+          'aspect-[2/3]': !isWidget
         }"
       >
         <img
