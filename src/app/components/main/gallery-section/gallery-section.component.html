@@ -1,48 +1,54 @@
-<section id="galeria">
-  <h2
-    class="mb-8 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    [ngClass]="headerPosition === 'center' ? 'text-center' : ''"
+<section
+  class="flex w-full flex-col items-center justify-center text-center"
+  id="galeria"
+>
+  <h1 class="mb-4 text-3xl font-bold text-primary md:text-5xl">{{ header }}</h1>
+  <p
+    *ngIf="isWidget"
+    class="mb-6 max-w-lg text-sm italic text-muted md:text-base"
   >
-    {{ header }}
-  </h2>
+    Zobacz nasze prace i znajdź inspirację.
+  </p>
 
-  <div *ngIf="images.length" class="grid grid-cols-2 gap-4 md:grid-cols-4">
+  <div
+    *ngIf="images.length"
+    class="grid grid-cols-2 gap-4 md:grid-cols-4 animate-fadeInUp"
+  >
     <div
       *ngFor="
-        let image of images.slice(0, maxImages || images.length);
+        let image of isWidget ? images.slice(0, 8) : images;
         let last = last
       "
-      class="relative overflow-hidden"
-      (click)="openImageModal(image.imageUrl)"
+      class="group relative overflow-hidden rounded transition-transform duration-500"
+      [ngClass]="{
+        'hover:scale-105': !(images.length > 8 && last && isWidget)
+      }"
+      (click)="
+        !(images.length > 8 && last && isWidget) &&
+          openImageModal(image.imageUrl)
+      "
     >
-      <div class="group h-full w-full cursor-pointer aspect-[3/4]">
+      <div
+        class="h-full w-full aspect-[3/4] cursor-pointer transition"
+        [ngClass]="{
+          'group-hover:scale-105': !(images.length > 8 && last && isWidget)
+        }"
+      >
         <img
-          class="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105"
+          class="h-full w-full object-cover"
           [src]="image.imageUrl"
           alt="{{ image.artistId }}"
         />
-        <div
-          class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-background p-2 pt-16"
-        >
-          <a
-            [routerLink]="['/artysci', image.artistId]"
-            class="w-min whitespace-nowrap transition-colors hover:underline group-hover:text-accent"
-          >
-            {{ getArtistFullName(image.artistId) }}
-          </a>
-        </div>
       </div>
 
       <div
-        *ngIf="shouldShowSeeAllButton() && last"
+        *ngIf="images.length > 8 && last && isWidget"
         class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
       >
-        <span class="text-5xl text-white"
-          >+{{ images.length - (maxImages || images.length) }}</span
-        >
+        <span class="text-5xl text-white">+{{ images.length - 8 }}</span>
         <a
-          [routerLink]="['/galeria']"
-          class="inline-block w-min transform whitespace-nowrap bg-accent px-3 py-2 font-semibold uppercase text-background transition hover:scale-105 focus:scale-105 focus-visible:outline-none"
+          routerLink="/galeria"
+          class="rounded bg-accent px-3 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus-visible:outline-none"
         >
           Zobacz Wszystkie
         </a>
