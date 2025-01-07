@@ -21,7 +21,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   links = [
-    { href: '/o-nas', title: 'O nas' },
+    { href: '/', title: 'Strona główna' },
     { href: '/galeria', title: 'Galeria' },
     { href: '/uslugi', title: 'Usługi' },
     { href: '/artysci', title: 'Artyści' },
