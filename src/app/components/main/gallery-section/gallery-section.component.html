@@ -56,7 +56,7 @@
         *ngIf="images.length > 8 && last && isWidget"
         class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-y-4 bg-black/50"
       >
-        <span class="text-5xl">+{{ images.length - 8 }}</span>
+        <span class="text-5xl font-semibold">+{{ images.length - 8 }}</span>
         <a
           routerLink="/galeria"
           class="rounded bg-accent px-3 py-2 font-semibold uppercase text-background transition-transform hover:scale-105"
