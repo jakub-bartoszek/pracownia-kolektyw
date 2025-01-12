@@ -1,22 +1,25 @@
 <section id="artysci">
   <h2
-    class="mb-8 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
+    class="mb-4 text-3xl font-bold text-primary md:text-5xl"
     [ngClass]="headerPosition === 'center' ? 'text-center' : ''"
   >
     {{ header }}
   </h2>
 
-  <div class="grid grid-cols-1 gap-4 text-left lg:grid-cols-2" *ngIf="artists.length">
+  <div
+    class="grid grid-cols-1 gap-4 text-left lg:grid-cols-2"
+    *ngIf="artists.length"
+  >
     <a
       [routerLink]="['/artysci', artist.id]"
       *ngFor="let artist of artists"
-      class="group flex cursor-pointer items-center gap-x-4 sm:gap-x-8 bg-zinc-900 p-4"
+      class="group flex cursor-pointer items-center gap-x-4 rounded bg-zinc-900 p-4 sm:gap-x-8"
     >
       <div
         class="flex aspect-square h-24 w-24 min-w-24 overflow-hidden rounded-full sm:h-32 sm:w-32 sm:min-w-32"
       >
         <img
-          class="h-full w-full object-cover transition-transform group-hover:scale-105"
+          class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           [src]="artist.profileImageUrl"
           alt="{{ artist.name }} {{ artist.surname }}"
         />
@@ -24,11 +27,11 @@
 
       <div>
         <p
-          class="text-2xl sm:text-3xl font-bold transition-colors group-hover:text-accent"
+          class="mb-2 text-2xl font-bold transition-colors group-hover:text-accent sm:text-3xl"
         >
           {{ artist.name }} {{ artist.surname }}
         </p>
-        <p class="mt-2 text-sm sm:text-base text-gray-400">
+        <p class="text-sm italic text-muted md:text-base">
           {{ artist.biography | slice : 0 : 150 }}...
         </p>
       </div>
