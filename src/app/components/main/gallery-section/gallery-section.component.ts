@@ -15,7 +15,7 @@ export class GallerySectionComponent implements OnInit {
   @Input() images: ImageData[] = [];
   @Input() header: string = '';
   @Input() headerPosition: 'center' | 'left' = 'left';
-  @Input() maxImages?: number;
+  @Input() isWidget?: boolean = false;
 
   artists: Artist[] = [];
   selectedImageUrl: string = '';
@@ -35,10 +35,6 @@ export class GallerySectionComponent implements OnInit {
 
   getArtistFullName(artistId: string): string {
     return this.artistsService.getArtistFullName(artistId, this.artists);
-  }
-
-  shouldShowSeeAllButton(): boolean {
-    return this.maxImages !== undefined && this.maxImages < this.images.length;
   }
 
   async ngOnInit(): Promise<void> {

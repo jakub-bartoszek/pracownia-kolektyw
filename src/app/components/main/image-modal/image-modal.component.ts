@@ -10,9 +10,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ImageModalComponent {
   @Input() imageUrl!: string;
   @Input() isOpen: boolean = false;
-  @Output() closeModal = new EventEmitter<void>();
+  @Output() closeImageModal = new EventEmitter<void>();
 
-  close() {
-    this.closeModal.emit();
+  onCloseImageModal() {
+    this.closeImageModal.emit();
   }
 }

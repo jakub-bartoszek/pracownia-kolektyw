@@ -1,13 +1,14 @@
 <div
-  class="fixed left-0 top-0 z-20 flex h-full w-full items-center justify-center bg-black/75"
-  (click)="close()"
-  *ngIf="isOpen"
+  class="fixed left-0 top-0 z-20 flex h-full w-full flex-col justify-center items-center transition duration-500 bg-black/50 backdrop-blur-lg p-12"
+  [ngClass]="{
+    'pointer-events-none opacity-0': !isOpen,
+    'opacity-100': isOpen
+  }"
+  (click)="onCloseImageModal()"
 >
-  <div class="h-full w-full flex justify-center items-center p-10">
-    <img
-      (click)="$event.stopPropagation()"
-      [src]="imageUrl"
-      class="h-full object-contain z-20"
-    />
-  </div>
+  <img
+    (click)="$event.stopPropagation()"
+    class="max-h-[80vh] w-auto aspect-[2/3]"
+    [src]="imageUrl"
+  />
 </div>
