@@ -1,22 +1,21 @@
-<div class="bg-zinc-900 p-4">
+<div class="bg-zinc-900 p-4 rounded w-full max-w-4xl mx-auto">
   <div class="flex flex-col items-center" *ngIf="formStatus === 'loading'">
     <app-mail-send-icon class="text-accent" size="64px"></app-mail-send-icon>
-    <span class="text-xl font-semibold">Wysyłanie...</span>
+    <span class="mt-4 text-xl font-semibold text-accent">Wysyłanie...</span>
   </div>
 
   <div
     class="flex flex-col items-center gap-y-4"
     *ngIf="formStatus === 'error'"
   >
-    <p class="font-bold text-3xl text-accent">Błąd!</p>
-    <div class="text-center">
-      <p class="font-semibold">Wystąpił błąd podczas wysyłania wiadomości.</p>
+    <p class="text-3xl font-bold text-accent">Błąd!</p>
+    <div class="text-center text-muted">
+      <p class="font-medium">Wystąpił błąd podczas wysyłania wiadomości.</p>
       <p>Proszę spróbować ponownie.</p>
     </div>
-
     <button
       (click)="resetForm()"
-      class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
+      class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
     >
       Spróbuj ponownie
     </button>
@@ -31,12 +30,12 @@
       size="64px"
     ></app-mail-success-icon>
     <div class="text-center">
-      <p class="font-semibold">Dziękujemy za wiadomość!</p>
-      <p>Odpowiemy tak szybko jak to możliwe.</p>
+      <p class="font-medium">Dziękujemy za wiadomość!</p>
+      <p class="text-muted">Odpowiemy tak szybko, jak to możliwe.</p>
     </div>
     <button
-      class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none whitespace-nowrap w-min"
       (click)="resetForm()"
+      class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
     >
       Wyślij kolejną wiadomość
     </button>
@@ -44,14 +43,16 @@
 
   <div *ngIf="!formStatus">
     <form
-      class="flex flex-col gap-y-4 items-center"
+      class="flex flex-col gap-y-6 items-center"
       (ngSubmit)="onFormSubmit()"
       #contactForm="ngForm"
     >
       <div class="flex flex-col w-full gap-y-2">
-        <label for="name">Twoje imię</label>
+        <label for="name" class="text-sm font-medium text-muted"
+          >Twoje imię</label
+        >
         <input
-          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-800 p-2 focus:border-accent focus:outline-none"
           [(ngModel)]="name"
           name="name"
           required
@@ -60,9 +61,11 @@
       </div>
 
       <div class="flex flex-col w-full gap-y-2">
-        <label for="email">Twój adres e-mail</label>
+        <label for="email" class="text-sm font-medium text-muted"
+          >Twój adres e-mail</label
+        >
         <input
-          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-800 p-2 focus:border-accent focus:outline-none"
           [(ngModel)]="email"
           name="email"
           required
@@ -71,9 +74,11 @@
       </div>
 
       <div class="flex flex-col w-full gap-y-2">
-        <label for="message">Twoja wiadomość</label>
+        <label for="message" class="text-sm font-medium text-muted"
+          >Twoja wiadomość</label
+        >
         <textarea
-          class="border bg-zinc-950 p-3 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-800 p-2 focus:border-accent focus:outline-none"
           [(ngModel)]="message"
           name="message"
           required
@@ -81,7 +86,7 @@
       </div>
 
       <button
-        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none disabled:scale-100"
+        class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 disabled:scale-100 disabled:opacity-50 md:w-auto md:text-base"
         [disabled]="!name || !email || !message"
         type="submit"
       >

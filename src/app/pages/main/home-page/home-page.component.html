@@ -16,13 +16,13 @@
     <div class="flex flex-wrap items-center justify-center gap-4">
       <a
         routerLink="/galeria"
-        class="w-48 whitespace-nowrap rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
+        class="w-48 whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
       >
         Zobacz nasze portfolio
       </a>
       <a
         routerLink="/kontakt"
-        class="w-48 rounded-lg border border-primary px-6 py-3 text-sm font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-background md:w-auto md:text-base"
+        class="w-48 rounded border border-primary px-6 py-3 text-sm font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-background md:w-auto md:text-base"
       >
         Skontaktuj się z nami
       </a>
@@ -47,15 +47,7 @@
     [artists]="artists"
   ></app-artists-section>
 
-  <section id="kontakt">
-    <h2
-      class="mb-8 text-center text-4xl font-bold leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
-      Skontaktuj się z nami
-    </h2>
-
-    <app-contact-form></app-contact-form>
-  </section>
+  <app-contact-section> </app-contact-section>
 
   <app-reviews-section></app-reviews-section>
 </div>

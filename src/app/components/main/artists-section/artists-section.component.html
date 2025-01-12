@@ -1,10 +1,16 @@
-<section id="artysci">
+<section class="flex flex-col items-center" id="artysci">
   <h2
     class="mb-4 text-3xl font-bold text-primary md:text-5xl"
     [ngClass]="headerPosition === 'center' ? 'text-center' : ''"
   >
     {{ header }}
   </h2>
+
+  <p class="mb-6 max-w-lg text-center text-sm italic text-muted md:text-base">
+    Pasja i precyzja to nasza wizytówka. Niezależnie od tego, czy wybierasz
+    tatuaż, czy piercing, nasi specjaliści zadbają o każdy szczegół, by
+    podkreślić Twój styl.
+  </p>
 
   <div
     class="grid grid-cols-1 gap-4 text-left lg:grid-cols-2"

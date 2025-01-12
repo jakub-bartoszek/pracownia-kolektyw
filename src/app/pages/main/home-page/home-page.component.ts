@@ -12,6 +12,7 @@ import { ReviewsSectionComponent } from '../../../components/main/reviews-sectio
 import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
 import { BannerComponent } from '../../../components/main/banner/banner.component';
 import { ServicesSectionComponent } from "../../../components/main/services-section/services-section.component";
+import { ContactSectionComponent } from "../../../components/main/contact-section/contact-section.component";
 
 @Component({
   selector: 'app-home-page',
@@ -21,12 +22,12 @@ import { ServicesSectionComponent } from "../../../components/main/services-sect
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    ContactFormComponent,
     ArtistsSectionComponent,
     ReviewsSectionComponent,
     GallerySectionComponent,
     BannerComponent,
-    ServicesSectionComponent
+    ServicesSectionComponent,
+    ContactSectionComponent
 ],
   templateUrl: './home-page.component.html',
 })
