@@ -5,9 +5,9 @@
     id="wprowadzenie"
     class="fade-in mt-60 flex w-full flex-col items-center justify-center text-center opacity-0 transition duration-700"
   >
-    <h1 class="mb-4 text-3xl font-bold text-primary md:text-5xl">
+    <h2 class="mb-4 text-3xl font-bold text-primary md:text-5xl">
       Sztuka na Twoim ciele
-    </h1>
+    </h2>
     <p class="mb-6 max-w-lg text-sm italic text-muted md:text-base">
       Tworzymy dzieła, które opowiadają Twoją historię. Nasze studio to
       połączenie pasji, profesjonalizmu i indywidualnego podejścia do każdego
@@ -29,45 +29,9 @@
     </div>
   </section>
 
-  <section
-    id="uslugi"
-    class="fade-in flex w-full flex-col items-center justify-center text-center opacity-0 transition duration-700"
-  >
-    <h1 class="mb-4 text-3xl font-bold text-primary md:text-5xl">
-      Nasze usługi
-    </h1>
-    <p class="mb-6 max-w-lg text-sm italic text-muted md:text-base">
-      Nasze studio specjalizuje się zarówno w tatuażach, jak i piercingu,
-      oferując szeroki zakres usług, które pozwalają wyrazić siebie w unikalny
-      sposób.
-    </p>
-    <div class="flex gap-8">
-      <a
-        routerLink="/uslugi/tatuaze"
-        class="flex flex-col items-center gap-y-4"
-      >
-        <img
-          class="h-32 w-32 cursor-pointer transition hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/tattoo-icon.png"
-          alt="Tatuaże"
-        />
-
-        <p class="mb-4 uppercase md:mb-6 md:text-xl">Tatuaże</p>
-      </a>
-      <a
-        routerLink="/uslugi/piercing"
-        class="flex flex-col items-center gap-y-4"
-      >
-        <img
-          class="h-32 w-32 cursor-pointer transition hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
-          src="/images/piercing-icon.png"
-          alt="Piercing"
-        />
-
-        <p class="mb-4 uppercase md:mb-6 md:text-xl">Piercing</p>
-      </a>
-    </div>
-  </section>
+  <app-services-section
+    class="fade-in opacity-0 transition duration-700"
+  ></app-services-section>
 
   <app-gallery-section
     class="fade-in opacity-0 transition duration-700"
