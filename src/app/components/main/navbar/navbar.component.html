@@ -17,6 +17,7 @@
         <a
           routerLinkActive="text-accent underline underline-offset-2"
           [routerLink]="link.href"
+          [routerLinkActiveOptions]="{ exact: true }"
           class="p-2 transition-colors hover:text-accent"
           >{{ link.title }}</a
         >
