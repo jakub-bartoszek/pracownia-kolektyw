@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { ContactFormComponent } from '../../../components/main/contact-form/contact-form.component';
+import { ContactSectionComponent } from '../../../components/main/contact-section/contact-section.component';
 
 @Component({
   selector: 'app-contact-page',
   standalone: true,
-  imports: [ContactFormComponent],
-  templateUrl: './contact-page.component.html'
+  imports: [ContactSectionComponent],
+  templateUrl: './contact-page.component.html',
 })
-export class ContactPageComponent {
-
-}
+export class ContactPageComponent {}
