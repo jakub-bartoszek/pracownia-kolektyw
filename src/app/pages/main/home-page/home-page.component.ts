@@ -11,6 +11,7 @@ import { ArtistsSectionComponent } from '../../../components/main/artists-sectio
 import { ReviewsSectionComponent } from '../../../components/main/reviews-section/reviews-section.component';
 import { GallerySectionComponent } from '../../../components/main/gallery-section/gallery-section.component';
 import { BannerComponent } from '../../../components/main/banner/banner.component';
+import { ServicesSectionComponent } from "../../../components/main/services-section/services-section.component";
 
 @Component({
   selector: 'app-home-page',
@@ -25,7 +26,8 @@ import { BannerComponent } from '../../../components/main/banner/banner.componen
     ReviewsSectionComponent,
     GallerySectionComponent,
     BannerComponent,
-  ],
+    ServicesSectionComponent
+],
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent implements OnInit {

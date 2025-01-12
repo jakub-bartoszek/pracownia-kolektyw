@@ -1,34 +1,5 @@
-<div class="mx-auto mt-10 h-dvh min-h-[400px] max-w-[1400px]">
-  <section
-    class="flex h-[calc(100%-80px)] flex-col items-center justify-center"
-    id="usługi"
-  >
-    <h2
-      class="mb-12 text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
-      Nasze Usługi
-    </h2>
-    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-      <a
-        [routerLink]="['/uslugi/tatuaze']"
-        class="flex flex-col items-center gap-y-4"
-      >
-        <img src="/images/tattoo-icon.png" alt="Tatuaże" />
-
-        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
-          Tatuaże
-        </p>
-      </a>
-      <a
-        [routerLink]="['/uslugi/piercing']"
-        class="flex flex-col items-center gap-y-4"
-      >
-        <img src="/images/piercing-icon.png" alt="Piercing" />
-
-        <p class="text-center text-xl font-semibold uppercase md:text-2xl">
-          Piercing
-        </p>
-      </a>
-    </div>
-  </section>
+<div
+  class="mx-auto mt-10 h-[calc(100dvh-56px)] min-h-[400px] flex items-center justify-center max-w-[1400px]"
+>
+  <app-services-section></app-services-section>
 </div>
