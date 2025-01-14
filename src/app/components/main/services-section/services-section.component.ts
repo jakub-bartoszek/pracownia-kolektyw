@@ -8,5 +8,4 @@ import { RouterModule } from '@angular/router';
   templateUrl: './services-section.component.html',
 })
 export class ServicesSectionComponent {
-  @Input() headerPosition: 'center' | 'left' = 'left';
 }
