@@ -13,6 +13,7 @@ import { GallerySectionComponent } from '../../../components/main/gallery-sectio
 import { BannerComponent } from '../../../components/main/banner/banner.component';
 import { ServicesSectionComponent } from "../../../components/main/services-section/services-section.component";
 import { ContactSectionComponent } from "../../../components/main/contact-section/contact-section.component";
+import { IntroSectionComponent } from "../../../components/main/intro-section/intro-section.component";
 
 @Component({
   selector: 'app-home-page',
@@ -27,7 +28,8 @@ import { ContactSectionComponent } from "../../../components/main/contact-sectio
     GallerySectionComponent,
     BannerComponent,
     ServicesSectionComponent,
-    ContactSectionComponent
+    ContactSectionComponent,
+    IntroSectionComponent
 ],
   templateUrl: './home-page.component.html',
 })
