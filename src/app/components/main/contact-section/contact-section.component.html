@@ -4,11 +4,14 @@
 >
   <h2 class="mb-4 text-3xl font-bold text-primary md:text-5xl">Kontakt</h2>
   <p class="mb-6 max-w-lg text-center text-sm italic text-muted md:text-base">
-    Jesteśmy tutaj, aby pomóc! Skontaktuj się z nami za pomocą poniższych
-    informacji lub wypełnij formularz.
+    {{
+      isWidget
+        ? "Jesteśmy tutaj, aby pomóc! Skontaktuj się z nami za pomocą poniższego formularza."
+        : "Jesteśmy tutaj, aby pomóc! Skontaktuj się z nami za pomocą poniższych informacji lub wypełnij formularz."
+    }}
   </p>
 
-  <div class="w-full">
+  <div *ngIf="!isWidget" class="w-full">
     <h2 class="mb-4 text-3xl font-bold text-primary md:text-4xl">
       Dane kontaktowe
     </h2>
@@ -43,7 +46,10 @@
     </div>
   </div>
 
-  <h2 class="mb-4 text-3xl font-bold text-primary md:text-4xl">
+  <h2
+    *ngIf="!isWidget"
+    class="mb-4 text-3xl font-bold text-primary md:text-4xl"
+  >
     Formularz kontaktowy
   </h2>
   <app-contact-form class="w-full max-w-6xl"></app-contact-form>
