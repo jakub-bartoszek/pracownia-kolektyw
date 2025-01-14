@@ -1,13 +1,11 @@
 <div
-  class="mx-auto mt-20 max-w-[1400px] flex flex-col items-center gap-y-16 p-4 text-center"
+  class="mx-auto mt-20 max-w-[1400px] flex flex-col items-center gap-y-12 md:gap-y-16 p-4 text-center"
 >
   <section id="wprowadzenie">
-    <h2
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
+    <h2 class="mb-2 text-3xl font-bold text-primary md:mb-4 md:text-5xl">
       Tatuaże
     </h2>
-    <p class="max-w-3xl text-lg text-zinc-300">
+    <p class="max-w-2xl text-sm text-muted md:text-base">
       Nasze tatuaże to wyjątkowa sztuka, która podkreśla Twoją indywidualność.
       Stworzone z pasją i precyzją, projekty dostosowujemy do Twoich potrzeb i
       osobowości, dbając o każdy detal na każdym etapie.
@@ -15,19 +13,17 @@
   </section>
 
   <section id="style-tatuazu">
-    <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
+    <h3 class="mb-2 text-3xl font-bold text-primary md:mb-4 md:text-5xl">
       Style Tatuażu
     </h3>
     <div class="max-w-3xl">
-      <p class="text-lg text-zinc-300">
+      <p class="max-w-2xl text-sm text-muted md:text-base">
         Odkryj różnorodność nowoczesnych stylów tatuażu. Od minimalizmu po
         realizm, każdy styl oferuje unikalne możliwości wyrażenia siebie.
       </p>
       <a
         [routerLink]="'/styles'"
-        class="mt-6 inline-block transform bg-accent px-8 py-3 font-semibold uppercase text-background transition-transform hover:scale-105"
+        class="mt-2 inline-block cursor-pointer whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:mt-2 md:w-auto md:text-base"
       >
         Poznaj style
       </a>
@@ -35,12 +31,10 @@
   </section>
 
   <section id="proces-tworzenia" class="p-8">
-    <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
+    <h3 class="mb-2 text-3xl font-bold text-primary md:mb-4 md:text-5xl">
       Proces Tworzenia
     </h3>
-    <p class="max-w-3xl text-lg text-zinc-300">
+    <p class="max-w-2xl text-sm text-muted md:text-base">
       Każdy tatuaż zaczynamy od konsultacji, aby poznać Twoje oczekiwania.
       Tworzymy projekt zgodnie z Twoją wizją, dbając o każdy detal. Na każdym
       etapie dbamy o komfort i zadowolenie.
@@ -48,26 +42,24 @@
   </section>
 
   <section id="proady" class="p-8">
-    <h3
-      class="mb-6 text-4xl font-bold tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-    >
+    <h3 class="mb-2 text-3xl font-bold text-primary md:mb-4 md:text-5xl">
       Jak Dbać o Świeży Tatuaż
     </h3>
     <div class="max-w-3xl">
-      <p class="text-lg text-zinc-300">
+      <p class="max-w-2xl text-sm text-muted md:text-base">
         Pielęgnacja świeżego tatuażu jest kluczowa dla prawidłowego gojenia i
         zachowania intensywności barw oraz detali. Bez względu na to, czy
         stosujesz sztuczną skórę czy folię spożywczą, odpowiednia troska o
         tatuaż ma ogromne znaczenie dla procesu gojenia.
       </p>
-      <p class="text-lg text-zinc-300">
+      <p class="mt-2 max-w-2xl text-sm text-muted md:mt-4 md:text-base">
         Dowiedz się, jakie kroki podjąć, aby zadbać o swoje nowe dzieło w
         pierwszych dniach oraz czego unikać, aby cieszyć się pięknym efektem na
         lata.
       </p>
       <a
         [routerLink]="'/bezpieczenstwo-i-higiena'"
-        class="mt-6 inline-block transform bg-accent px-8 py-3 font-semibold uppercase text-background rounded-lg transition-transform hover:scale-105"
+        class="mt-2 inline-block cursor-pointer whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:mt-4 md:w-auto md:text-base"
       >
         Więcej informacji
       </a>
