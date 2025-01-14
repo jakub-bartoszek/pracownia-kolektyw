@@ -24,14 +24,14 @@
       </li>
       <li class="ml-auto">
         <button
-          class="flex items-center justify-center px-3 py-1 text-accent transition hover:bg-accent hover:text-background rounded"
+          class="flex items-center justify-center rounded px-3 py-1 text-accent transition hover:bg-accent hover:text-background"
           (click)="openModal.emit()"
           *ngIf="!isLoggedIn"
         >
           Zaloguj
         </button>
         <button
-          class="flex items-center justify-center px-3 py-1 text-accent transition hover:bg-accent hover:text-background"
+          class="flex items-center justify-center rounded px-3 py-1 text-accent transition hover:bg-accent hover:text-background"
           (click)="logout()"
           *ngIf="isLoggedIn"
         >
