@@ -1,8 +1,8 @@
 <div
-  class="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/75 p-8"
+  class="fixed left-0 top-0 z-20 flex h-dvh w-full flex-col items-center justify-center transition duration-500 bg-black/50 backdrop-blur-lg"
 >
   <div
-    class="relative flex w-96 flex-col border border-zinc-800 bg-background p-4"
+    class="relative flex w-96 flex-col border border-zinc-800 bg-background rounded p-4"
   >
     <button class="absolute right-2 top-2" (click)="close()" type="button">
       ✕
@@ -18,29 +18,31 @@
         Logowanie
       </h2>
 
-      <div class="flex flex-col">
-        <label for="email">Email</label>
+      <div class="flex flex-col space-y-1">
+        <label for="email" class="text-sm font-medium text-muted">Email</label>
         <input
           id="email"
           #emailField
           name="email"
           type="email"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-8"
+          class="rounded border bg-zinc-950 p-2 pr-8 focus:border-accent focus:outline-none"
           autocomplete="email"
           aria-label="Email"
           required
         />
       </div>
 
-      <div class="flex flex-col">
-        <label for="password">Hasło</label>
+      <div class="flex flex-col space-y-1">
+        <label for="password" class="text-sm font-medium text-muted"
+          >Hasło</label
+        >
         <div class="w-full relative flex items-center">
           <input
             id="password"
             #passwordField
             name="password"
             [type]="isPasswordVisible ? 'text' : 'password'"
-            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            class="w-full rounded border bg-zinc-950 p-2 pr-16 focus:border-accent focus:outline-none"
             autocomplete="new-password"
             required
             minlength="8"
@@ -66,13 +68,13 @@
 
       <button
         type="submit"
-        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
+        class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 disabled:scale-100 disabled:opacity-50 md:w-auto md:text-base"
       >
         Zaloguj
       </button>
       <button
         type="button"
-        class="px-4 py-2 text-lg font-bold uppercase text-accent outline outline-1 -outline-offset-1 transition-all hover:scale-105 hover:bg-accent hover:text-background focus-visible:scale-105 focus-visible:bg-accent focus-visible:text-background focus-visible:outline-none"
+        class="cursor-pointer rounded border border-primary px-6 py-3 text-sm font-semibold text-primary transition-all hover:scale-105 hover:bg-primary hover:text-background md:w-auto md:text-base"
         (click)="toggleView()"
       >
         Załóż konto
@@ -97,53 +99,59 @@
         Rejestracja
       </h2>
 
-      <div class="flex flex-col">
-        <label for="firstName">Imię</label>
+      <div class="flex flex-col space-y-1">
+        <label class="text-sm font-medium text-muted" for="firstName"
+          >Imię</label
+        >
         <input
           id="firstName"
           #firstNameField
           name="firstName"
           type="text"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-950 p-2 pr-8 focus:border-accent focus:outline-none"
           required
           minlength="2"
         />
       </div>
 
-      <div class="flex flex-col">
-        <label for="lastName">Nazwisko</label>
+      <div class="flex flex-col space-y-1">
+        <label class="text-sm font-medium text-muted" for="lastName"
+          >Nazwisko</label
+        >
         <input
           id="lastName"
           #lastNameField
           name="lastName"
           type="text"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-950 p-2 pr-8 focus:border-accent focus:outline-none"
           required
           minlength="2"
         />
       </div>
 
-      <div class="flex flex-col">
-        <label for="email">Email</label>
+      <div class="flex flex-col space-y-1">
+        <label class="text-sm font-medium text-muted" for="email">Email</label>
         <input
           id="email"
           #emailField
           name="email"
           type="email"
-          class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none"
+          class="rounded border bg-zinc-950 p-2 pr-8 focus:border-accent focus:outline-none"
           required
         />
       </div>
 
-      <div class="flex flex-col">
-        <label for="password">Hasło</label>
+      <div class="flex flex-col space-y-1">
+        <label class="text-sm font-medium text-muted" for="password"
+          >Hasło</label
+        >
         <div class="w-full relative flex items-center">
           <input
             id="password"
             #passwordField
             name="password"
             [type]="isPasswordVisible ? 'text' : 'password'"
-            class="border bg-zinc-900 p-2 focus:border-accent focus:outline-none pr-16 w-full"
+            class="w-full rounded border bg-zinc-950 p-2 pr-16 focus:border-accent focus:outline-none"
             autocomplete="new-password"
             required
             minlength="8"
@@ -169,7 +177,7 @@
 
       <button
         type="submit"
-        class="bg-accent px-4 py-2 text-lg font-bold uppercase text-background transition-all hover:scale-105 focus-visible:scale-105 focus-visible:outline-none"
+        class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 disabled:scale-100 disabled:opacity-50 md:w-auto md:text-base"
       >
         Załóż konto
       </button>
