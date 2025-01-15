@@ -14,7 +14,6 @@ import { ArtistsService } from '../../../services/artists.service';
 export class GallerySectionComponent implements OnInit {
   @Input() images: ImageData[] = [];
   @Input() header: string = '';
-  @Input() headerPosition: 'center' | 'left' = 'left';
   @Input() isWidget?: boolean = false;
 
   artists: Artist[] = [];

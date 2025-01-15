@@ -1,179 +1,181 @@
-<footer class="flex w-full flex-col gap-6 bg-zinc-900 p-8 md:flex-row">
-  <div class="flex flex-col items-center gap-4 md:items-start w-full md:w-1/3">
-    <img
-      src="/images/logo-2.png"
-      class="hidden w-48 md:block"
-      alt="Logo Salon Tatużu"
-    />
-    <img
-      src="/images/logo.png"
-      class="block w-48 md:hidden"
-      alt="Logo Salon Tatużu"
-    />
-
-    <div class="flex gap-4">
-      <a
-        target="_blank"
-        href="https://www.facebook.com/pracowniakolektyw/"
-        aria-label="Facebook"
-      >
-        <app-facebook-icon
-          class="transition-colors hover:text-accent"
-          size="32px"
-        ></app-facebook-icon>
-      </a>
-      <a
-        target="_blank"
-        href="https://www.instagram.com/pracowniakolektyw/"
-        aria-label="Instagram"
-      >
-        <app-instagram-icon
-          class="transition-colors hover:text-accent"
-          size="32px"
-        ></app-instagram-icon>
-      </a>
-    </div>
-
-    <ul
-      class="flex flex-col gap-2 text-center text-lg leading-normal text-white md:text-start"
-    >
-      <li>
-        <p class="font-semibold">Poniedziałek - Piątek</p>
-        <p class="text-zinc-400">11:00 - 18:00</p>
-      </li>
-      <li>
-        <p class="font-semibold">Sobota</p>
-        <p class="text-zinc-400">12:00 - 16:00</p>
-      </li>
-      <li>
-        <p class="font-semibold">Niedziela</p>
-        <p class="text-zinc-400">Zamknięte</p>
-      </li>
-    </ul>
-  </div>
-
+<footer class="bg-zinc-900">
   <div
-    class="grid w-full grid-cols-1 gap-6 text-center md:w-2/3 md:grid-cols-2 md:text-start xl:grid-cols-3"
+    class="mx-auto flex max-w-[1400px] flex-col justify-between gap-6 p-6 md:flex-row md:gap-16"
   >
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Kontakt</h2>
-      <ul class="space-y-1 leading-normal text-zinc-400">
+    <div
+      class="flex flex-col items-center gap-4 md:items-start w-full md:w-min whitespace-nowrap"
+    >
+      <img
+        src="/images/logo-2.png"
+        class="hidden w-48 md:block"
+        alt="Logo Salon Tatużu"
+      />
+      <img
+        src="/images/logo.png"
+        class="block w-48 md:hidden"
+        alt="Logo Salon Tatużu"
+      />
+
+      <div class="flex gap-4">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/pracowniakolektyw/"
+          aria-label="Facebook"
+        >
+          <app-facebook-icon
+            class="transition-colors hover:text-accent"
+            size="32px"
+          ></app-facebook-icon>
+        </a>
+        <a
+          target="_blank"
+          href="https://www.instagram.com/pracowniakolektyw/"
+          aria-label="Instagram"
+        >
+          <app-instagram-icon
+            class="transition-colors hover:text-accent"
+            size="32px"
+          ></app-instagram-icon>
+        </a>
+      </div>
+
+      <ul
+        class="flex flex-col gap-2 text-center text-lg leading-normal text-white md:text-start"
+      >
         <li>
-          <a
-            target="_blank"
-            class="text-zinc-400 hover:text-white hover:underline"
-            href="https://www.google.pl/maps/place/Pracownia+Kolektyw/@50.872099,20.6219422,17z/data=!4m6!3m5!1s0x4718275674803dab:0x67ef9f09cacad38c!8m2!3d50.872099!4d20.6245171!16s%2Fg%2F11fpyw_kbb?entry=ttu&g_ep=EgoyMDI0MTAxMy4wIKXMDSoASAFQAw%3D%3D"
-            >Henryka Sienkiewicza 45, 25-005 Kielce</a
-          >
+          <p class="font-semibold">Poniedziałek - Piątek</p>
+          <p class="text-muted">11:00 - 18:00</p>
         </li>
         <li>
-          <a
-            class="text-zinc-400 hover:text-white hover:underline"
-            href="tel:+48 576 028 525"
-            >+48 576 028 525</a
-          >
+          <p class="font-semibold">Sobota</p>
+          <p class="text-muted">12:00 - 16:00</p>
         </li>
         <li>
-          <a
-            class="text-zinc-400 hover:text-white hover:underline"
-            href="mailto:admkopacz@gmail.com"
-            >admkopacz&#64;gmail.com</a
-          >
+          <p class="font-semibold">Niedziela</p>
+          <p class="text-muted">Zamknięte</p>
         </li>
       </ul>
     </div>
 
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Przydatne Linki</h2>
-      <ul class="space-y-1 leading-normal">
-        <li>
-          <button
-            (click)="navigateAndScrollToSection('kontakt')"
-            class="text-zinc-400 hover:text-white hover:underline"
-          >
-            Formularz Kontaktowy
-          </button>
-        </li>
-        <li>
-          <a
-            href="/artysci"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Zespół Artystów</a
-          >
-        </li>
-        <li>
-          <a
-            href="/galeria"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Galeria Tatuaży</a
-          >
-        </li>
-        <li>
-          <a href="/faq" class="text-zinc-400 hover:text-white hover:underline"
-            >FAQ</a
-          >
-        </li>
-      </ul>
-    </div>
+    <div
+      class="grid grid-cols-1 gap-6 text-center md:grid-cols-2 md:gap-16 md:text-left xl:grid-cols-[repeat(4,_auto)]"
+    >
+      <div class="flex flex-col gap-2">
+        <h2 class="text-xl font-bold">Kontakt</h2>
+        <ul class="space-y-1 leading-normal text-muted">
+          <li>
+            <a
+              class="text-muted hover:text-white hover:underline"
+              routerLink="/kontakt"
+            >
+              Formularz Kontaktowy
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              class="text-muted hover:text-white hover:underline"
+              href="https://www.google.pl/maps/place/Pracownia+Kolektyw/@50.872099,20.6219422,17z/data=!4m6!3m5!1s0x4718275674803dab:0x67ef9f09cacad38c!8m2!3d50.872099!4d20.6245171!16s%2Fg%2F11fpyw_kbb?entry=ttu&g_ep=EgoyMDI0MTAxMy4wIKXMDSoASAFQAw%3D%3D"
+              >Henryka Sienkiewicza 45, 25-005 Kielce</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-muted hover:text-white hover:underline"
+              href="tel:+48 576 028 525"
+              >+48 576 028 525</a
+            >
+          </li>
+          <li>
+            <a
+              class="text-muted hover:text-white hover:underline"
+              href="mailto:admkopacz@gmail.com"
+              >admkopacz&#64;gmail.com</a
+            >
+          </li>
+        </ul>
+      </div>
 
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Polityka Prywatności</h2>
-      <ul class="space-y-1 leading-normal">
-        <li>
-          <a
-            href="/polityka-prawnosci"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Polityka Prywatności</a
-          >
-        </li>
-        <li>
-          <a
-            href="/regulamin"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Regulamin</a
-          >
-        </li>
-      </ul>
-    </div>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-xl font-bold">Przydatne Linki</h2>
+        <ul class="space-y-1 leading-normal">
+          <li>
+            <a
+              routerLink="/artysci"
+              class="text-muted hover:text-white hover:underline"
+              >Zespół Artystów</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/galeria"
+              class="text-muted hover:text-white hover:underline"
+              >Galeria Tatuaży</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/style"
+              class="text-muted hover:text-white hover:underline"
+              >Style Tatuażu</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/bezpieczenstwo-i-higiena"
+              class="text-muted hover:text-white hover:underline"
+              >Bezpieczenstwo i Higiena</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/faq"
+              class="text-muted hover:text-white hover:underline"
+              >FAQ</a
+            >
+          </li>
+        </ul>
+      </div>
 
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Bezpieczeństwo i Higiena</h2>
-      <ul class="space-y-1 leading-normal">
-        <li>
-          <a
-            href="/bezpieczenstwo-i-higiena"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Nasze zasady bezpieczeństwa i higieny</a
-          >
-        </li>
-      </ul>
-    </div>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-xl font-bold">Polityka Prywatności</h2>
+        <ul class="space-y-1 leading-normal">
+          <li>
+            <a
+              routerLink="/polityka-prawnosci"
+              class="text-muted hover:text-white hover:underline"
+              >Polityka Prywatności</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/regulamin"
+              class="text-muted hover:text-white hover:underline"
+              >Regulamin</a
+            >
+          </li>
+        </ul>
+      </div>
 
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Opinie</h2>
-      <ul class="space-y-1 leading-normal">
-        <li>
-          <button
-            (click)="navigateAndScrollToSection('opinie')"
-            class="text-zinc-400 hover:text-white hover:underline"
-          >
-            Opinie naszych klientów
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="flex flex-col gap-2 text-white">
-      <h2 class="text-xl font-bold">Nasze usługi</h2>
-      <ul class="space-y-1 leading-normal">
-        <li>
-          <a
-            href="/uslugi"
-            class="text-zinc-400 hover:text-white hover:underline"
-            >Usługi</a
-          >
-        </li>
-      </ul>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-xl font-bold">Nasze usługi</h2>
+        <ul class="space-y-1 leading-normal">
+          <li>
+            <a
+              routerLink="/uslugi/tatuaze"
+              class="text-muted hover:text-white hover:underline"
+              >Tatuaże</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/uslugi/piercing"
+              class="text-muted hover:text-white hover:underline"
+              >Piercing</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </footer>

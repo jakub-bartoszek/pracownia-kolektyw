@@ -45,7 +45,7 @@ export const routes: Routes = [
         component: TatooAftercarePageComponent,
       },
       { path: 'faq', component: FaqPageComponent },
-      { path: 'styles', component: StylesPageComponent },
+      { path: 'style', component: StylesPageComponent },
     ],
   },
   {

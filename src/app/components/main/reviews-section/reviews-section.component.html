@@ -1,20 +1,22 @@
-<section id="opinie">
-  <h2
-    class="mb-8 text-center text-4xl font-bold capitalize leading-tight tracking-wide text-accent underline decoration-4 underline-offset-[6px] sm:text-5xl"
-  >
-    Opinie
+<section id="opinie" class="flex w-full flex-col items-center">
+  <h2 class="mb-2 text-3xl font-bold text-primary md:mb-4 md:text-5xl">
+    Opinie naszych klientów
   </h2>
+  <p class="mb-6 max-w-lg text-sm italic text-muted md:text-base text-center">
+    Poznaj doświadczenia osób, które nam zaufały. Twoja opinia również się
+    liczy!
+  </p>
 
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+  <div class="w-full grid grid-cols-1 gap-4 md:grid-cols-2">
     <div
       *ngFor="let review of reviews"
-      class="relative flex flex-col bg-zinc-900 p-4"
+      class="relative flex flex-col bg-zinc-900 p-4 rounded"
     >
-      <div class="flex justify-between items-center">
-        <p class="font-bold text-accent">{{ review.name }}</p>
-        <p class="text-xs text-zinc-400">{{ review.date }}</p>
+      <div class="flex justify-between items-center mb-2">
+        <p class="font-bold text-primary">{{ review.name }}</p>
+        <p class="text-xs text-muted">{{ review.date }}</p>
       </div>
-      <p class="mb-4 text-sm text-zinc-400">
+      <p class="mb-4 text-sm text-muted">
         Ocena:
         <span class="font-semibold text-accent">{{ review.rate }} / 5</span>
       </p>
@@ -23,29 +25,35 @@
       <button
         *ngIf="isLoggedIn && userReview?.id === review.id"
         (click)="review.id && deleteReview(review.id)"
-        class="mt-4 w-min transform whitespace-nowrap bg-accent px-4 py-2 font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+        class="mt-4 w-min whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:text-base"
       >
         Usuń opinię
       </button>
     </div>
   </div>
 
-  <p *ngIf="reviews.length === 0" class="mt-4 text-center text-lg">
-    Brak opinii.
-  </p>
+  <div
+    *ngIf="reviews.length === 0"
+    class="mt-4 w-full rounded bg-zinc-900 p-8 text-center text-lg text-muted"
+  >
+    Brak opinii. Bądź pierwszą osobą, która podzieli się swoim doświadczeniem!
+  </div>
 
   <div
     *ngIf="userReview"
-    class="mt-4 bg-zinc-900 p-8 text-center text-lg text-zinc-400"
+    class="mt-4 w-full rounded bg-zinc-900 p-8 text-center text-lg text-muted"
   >
     Już dodałeś swoją opinię.
   </div>
 
-  <div *ngIf="!isLoggedIn" class="mt-4 bg-zinc-900 p-8 text-center">
-    <p class="text-lg text-accent mb-4">Zaloguj się, aby dodać opinię.</p>
+  <div
+    *ngIf="!isLoggedIn"
+    class="mt-4 bg-zinc-900 p-4 w-full rounded text-center"
+  >
+    <p class="mb-4 text-lg text-muted">Zaloguj się, aby dodać opinię.</p>
     <button
       (click)="openModal()"
-      class="transform bg-accent px-6 py-3 text-lg font-semibold uppercase text-background transition-transform hover:scale-105 focus:scale-105 focus:outline-none"
+      class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
     >
       Zaloguj się
     </button>

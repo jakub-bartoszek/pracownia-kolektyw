@@ -12,6 +12,7 @@ import { Artist } from '../../../models/models';
 })
 export class ArtistsSectionComponent {
   @Input() artists: Artist[] = [];
-  @Input() headerPosition?: 'center' | 'left' = 'left';
+
   @Input() header: string = 'Nasi artyści';
+  @Input() showDescription: boolean = true;
 }
