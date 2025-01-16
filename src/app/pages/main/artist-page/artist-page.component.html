@@ -9,20 +9,14 @@
       alt="{{ artist.name }} {{ artist.surname }}"
     />
 
-    <h2
-      class="mb-2 text-center text-4xl font-extrabold tracking-widest text-accent sm:mb-4 sm:text-5xl"
-    >
+    <h2 class="mb-2 text-3xl font-bold text-primary md:text-5xl">
       {{ artist.name }} {{ artist.surname }}
     </h2>
-    <p
-      class="mb-2 text-center text-2xl font-semibold tracking-widest text-accent sm:mb-4"
-    >
+    <p class="uppercase text-accent font-semibold mb-4 md:text-lg">
       {{ artist.category | titlecase }}
     </p>
 
-    <p
-      class="max-w-3xl bg-black/60 p-4 text-center text-base leading-relaxed text-zinc-300 sm:text-lg"
-    >
+    <p class="mb-6 max-w-3xl text-center italic text-muted md:text-base">
       {{ artist.biography }}
     </p>
   </section>
