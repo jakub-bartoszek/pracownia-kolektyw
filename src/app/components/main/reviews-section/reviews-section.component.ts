@@ -44,7 +44,6 @@ export class ReviewsSectionComponent {
     try {
       await this.reviewsService.removeReview(reviewId);
       this.userReview = null;
-      this.loadReviews();
     } catch (error) {
       console.error('Error deleting review:', error);
     }
@@ -58,14 +57,8 @@ export class ReviewsSectionComponent {
     });
   }
 
-  loadReviews() {
-    this.reviewsService.loadReviews().subscribe((reviews) => {
-      this.reviews = reviews;
-    });
-  }
-
   async ngOnInit(): Promise<void> {
-    this.loadReviews();
+    this.reviews = await this.reviewsService.loadReviews();
     this.loadUserReview();
 
     this.authService.isLoggedIn$.subscribe((loggedIn) => {

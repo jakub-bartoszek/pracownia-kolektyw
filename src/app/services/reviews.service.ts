@@ -23,17 +23,21 @@ import { Review } from '../models/models';
 export class ReviewsService {
   constructor(private firestore: Firestore, private authService: AuthService) {}
 
-  loadReviews(): Observable<Review[]> {
-    const reviewsCollection = collection(this.firestore, 'reviews');
-    return collectionData(reviewsCollection, { idField: 'id' }).pipe(
-      map((reviews: Review[]) =>
-        reviews.map((review) => ({
-          ...review,
-          date: this.formatTimestamp(review.date),
-        }))
-      )
-    ) as Observable<Review[]>;
+  async loadReviews(): Promise<Review[]> {
+    const querySnapshot = await getDocs(collection(this.firestore, 'reviews'));
+    return querySnapshot.docs.map((doc) => {
+      const data = doc.data(); // Pobranie surowych danych z dokumentu
+      return {
+        id: doc.id, // ID dokumentu
+        content: data['content'], // Dostęp przez indeks
+        name: data['name'], // Dostęp przez indeks
+        date: this.formatTimestamp(data['date']), // Formatowanie daty
+        rate: data['rate'], // Dostęp przez indeks
+        userId: data['userId'], // Dostęp przez indeks
+      } as Review; // Rzutowanie na typ Review
+    });
   }
+  
 
   async submitReview(content: string, rate: number): Promise<void> {
     const user = this.authService.currentUser;
