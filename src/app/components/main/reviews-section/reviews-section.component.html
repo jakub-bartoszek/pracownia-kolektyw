@@ -58,4 +58,51 @@
       Zaloguj się
     </button>
   </div>
+
+  <div
+    *ngIf="(reviews.length === 0 || !userReview) && isLoggedIn"
+    class="bg-zinc-900 w-full rounded p-4 mt-4"
+  >
+    <h3 class="my-4 text-center text-2xl font-semibold text-accent">
+      Dodaj swoją opinię
+    </h3>
+    <form
+      class="flex flex-col items-center gap-4"
+      (submit)="addReview(); $event.preventDefault()"
+    >
+      <div class="flex w-full flex-col gap-2">
+        <label for="rate" class="text-lg font-medium">Ocena</label>
+        <select
+          id="rate"
+          [(ngModel)]="newReviewRate"
+          class="rounded border bg-background p-2 pr-8 focus:border-accent focus:outline-none"
+          required
+          name="rate"
+        >
+          <option value="5">5 - Doskonała</option>
+          <option value="4">4 - Bardzo dobra</option>
+          <option value="3">3 - Dobra</option>
+          <option value="2">2 - Przeciętna</option>
+          <option value="1">1 - Słaba</option>
+        </select>
+      </div>
+      <div class="flex w-full flex-col gap-2">
+        <label for="content" class="text-lg font-medium">Opinia</label>
+        <textarea
+          id="content"
+          rows="4"
+          [(ngModel)]="newReviewContent"
+          class="rounded border bg-background p-2 pr-8 focus:border-accent focus:outline-none"
+          required
+          name="content"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="whitespace-nowrap rounded bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:scale-105 md:w-auto md:text-base"
+      >
+        Dodaj Opinię
+      </button>
+    </form>
+  </div>
 </section>
