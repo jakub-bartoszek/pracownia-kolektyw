@@ -34,7 +34,8 @@ export class ReviewsSectionComponent {
         this.newReviewRate
       );
       this.resetReviewFields();
-      this.loadUserReview();
+      await this.loadUserReview();
+      this.reviews = await this.reviewsService.loadReviews();
     } catch (error) {
       console.error('Error adding review:', error);
     }
@@ -44,6 +45,8 @@ export class ReviewsSectionComponent {
     try {
       await this.reviewsService.removeReview(reviewId);
       this.userReview = null;
+      await this.loadUserReview();
+      this.reviews = await this.reviewsService.loadReviews();
     } catch (error) {
       console.error('Error deleting review:', error);
     }
