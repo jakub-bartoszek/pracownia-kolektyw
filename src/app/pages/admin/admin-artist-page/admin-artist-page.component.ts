@@ -62,6 +62,7 @@ export class AdminArtistPageComponent implements OnInit {
         await this.artistsService.updateArtistWithProfileImage(
           this.artist.id,
           {
+            ...this.artist,
             name: this.artist.name,
             surname: this.artist.surname,
             biography: this.artist.biography,
